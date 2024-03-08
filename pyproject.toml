@@ -1,0 +1,85 @@
+[tool.poetry]
+name = "openimagingdatamodel"
+version = "0.1.0"
+description = "Representation of data context for imaging informatics"
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pydantic = "^2.6.3"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.3.1"
+pytest = "^8.0.2"
+poethepoet = "^0.25.0"
+mypy = "^1.9.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+src = ["openimagingdatamodel"]
+line-length = 120
+exclude = [
+    ".venv",
+    ".git",
+    "__pycache__",
+    "build",
+    "dist",
+    "venv",
+    "ipy_snippets"
+]
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors (settings from FastAPI, thanks, @tiangolo!)
+    "F",  # pyflakes
+    "I",  # isort
+    "C4",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+    "SIM",  # flake8-simplify
+    "TCH",  # flake8-type-checking
+]
+ignore = [
+    "C901",  # too complex
+    "COM812", # missing trailing comma
+    "COM819", # prohibited trailing comma
+    "D206",  # indent-with-spaces
+    "D300",  # triple-single-quotes
+    # "E111",  # indentation is not a multiple of four
+    # "E114",  # indentation is not a multiple of four (comment)
+    # "E117",  # over-indented
+    "ISC001", # single-line-implicit-string-concatenation
+    "ISC002", # multi-line-implicit-string-concatenation
+    "Q000",  # Remove bad quotes inline string
+    "Q001",  # Remove bad quotes from multiline string
+    "Q002",  # Remove bad quotes from docstring
+    "Q003",  # avoidable-escaped-quote
+    "W191",  # indentation contains tabs
+]
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402", "F401"]
+
+[tool.ruff.format]
+preview = true
+
+[tool.ruff.isort]
+order-by-type = true
+relative-imports-order = "closest-to-furthest"
+extra-standard-library = ["typing"]
+section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]
+known-first-party = []
+
+[tool.mypy]
+files = ["openimagingdatamodel"]
+ignore_missing_imports = true
+strict_optional = false
+
+[tool.poe.tasks]
+mypy = "mypy"
+ruff_lint = "ruff check"
+ruff_format = "ruff format"
+lint = ["ruff_lint", "mypy", "ruff_format"]
