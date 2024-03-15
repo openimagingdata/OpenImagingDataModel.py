@@ -20,11 +20,63 @@ class Authors(BaseModel): ...
 
 class Reference(BaseModel): ...
 
-class BodyPart(BaseModel): ...
+
+
 
 class CDEElement(BaseModel): ...
 
-class IndexCode(BaseModel): ...
+# These classes correspond to the indexCode.ts file in OIDM
+class SystemEnum(str, Enum):
+    RADLEX = 'RADLEX'
+    SNOMEDCT = 'SNOMEDCT'
+    LOINC = 'LOINC'
+
+class IndexCodeData(BaseModel):
+    system: SystemEnum
+    code: str
+    display: Optional[str] = None
+    href: Optional[HttpUrl] = None
+
+class IndexCode:
+    def __init__(self, in_data: IndexCodeData):
+        self._data = in_data
+
+    @property
+    def code(self):
+        return self._data.code
+
+    @property
+    def system(self):
+        return self._data.system
+
+    @property
+    def display(self):
+        return self._data.display
+
+    @property
+    def href(self):
+        return self._data.href
+
+
+# These classes correspond to the bodyPart.ts file in OIDM
+class BodyPartData(BaseModel):
+    name: str
+    index_codes: Optional[IndexCodeData] = None
+
+class BodyPart:
+    def __init__(self, in_data: BodyPartData):
+        self._data = in_data
+        self._indexCode = IndexCode(in_data.index_codes) if in_data.index_codes else None
+
+    @property
+    def name(self):
+        return self._data.name
+
+    @property
+    def index_codes(self):
+        return self._indexCode
+
+
 
 class Status(BaseModel): ...
 

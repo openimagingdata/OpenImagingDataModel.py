@@ -2,9 +2,10 @@ from pydantic import BaseModel, Field
 from typing import List, Optional, Union
 from enum import Enum
 
-class IndexCode(BaseModel):...
+from cde_set import IndexCode
+#class IndexCode(BaseModel):...
 
-class Author(BaseModel):...
+class Authors(BaseModel):...
 
 class Event(BaseModel):...
 
@@ -32,7 +33,7 @@ class BaseElement(BaseModel):
     question: Optional[str] = None
     version: Version
     index_codes: Optional[List[IndexCode]] = None
-    authors: Optional[Author] = None
+    authors: Optional[Authors] = None
     history: Optional[List[Event]] = None
     specialty: Optional[List[Specialty]] = None
     references: Optional[List[Reference]] = None
@@ -43,6 +44,7 @@ class ValueSetValue(BaseModel):
     name: str
     definition: Optional[str] = None
     index_codes: Optional[List[IndexCode]] = None
+#To Do: Include images, eventually
 
 
 # This corresponds to the valueSetElementSchema class in the cdElement.ts file
@@ -268,4 +270,62 @@ class ValueSetElement(CdElement):
     def elementType(self) -> ElementType:
         return ElementType.valueSet
 
-    ## define rest of getter methods for ValueSetElement class
+
+# This corresponds to the isValueSetElementData function in the cdElement.ts file
+
+class ElementData(BaseModel):
+    value_set: Optional[dict] = Field(None, alias='value_set')
+    float_values: Optional[dict] = Field(None, alias='float_values')
+    integer_values: Optional[dict] = Field(None, alias='integer_values')
+    boolean_values: Optional[dict] = Field(None, alias='boolean_values')
+
+class ValueSetElementData(BaseModel):
+    value_type: str
+
+class FloatElementData(BaseModel):
+    value_type: str
+
+class IntegerElementData(BaseModel):
+    value_type: str
+
+class BooleanElementData(BaseModel):
+    value_type: str
+
+def is_value_set_element_data(element_data: ElementData) -> bool:
+    return element_data.value_set is not None and element_data.value_set.get('value_type') == 'valueSet'
+
+def is_float_element_data(element_data: ElementData) -> bool:
+    return element_data.float_values is not None and element_data.float_values.get('value_type') == 'float'
+
+def is_integer_element_data(element_data: ElementData) -> bool:
+    return element_data.integer_values is not None and element_data.integer_values.get('value_type') == 'integer'
+
+def is_boolean_element_data(element_data: ElementData) -> bool:
+    return element_data.boolean_values is not None and element_data.boolean_values.get('value_type') == 'boolean'
+
+
+# This corresponds to the CdElementFactory class in the cdElement.ts file
+class CdElementFactory:
+    @staticmethod
+    def create(inData: ElementData) -> CdElement:
+        if 'value_set' in inData and inData.value_set.value_type == 'valueSet':
+            return ValueSetElement(inData)
+        elif 'float_values' in inData and inData.float_values.value_type == 'float':
+            return FloatElement(inData)
+        elif 'integer_values' in inData and inData.integer_values.value_type == 'integer':
+            return IntegerElement(inData)
+        elif 'boolean_values' in inData and inData.boolean_values.value_type == 'boolean':
+            return BooleanElement(inData)
+        else:
+            raise ValueError("Unknown element type: doesn't seem to have value_set, float_values, integer_values, or boolean_values.")
+
+## create a CdElement object from JSON data
+
+    @staticmethod
+    def createFromJson(json: Union[str, dict]) -> CdElement:
+        if isinstance(json, str):
+            parsedJson = json.loads(json)
+        else:
+            parsedJson = json
+        inData = ElementData(**parsedJson)
+        return CdElementFactory.create(inData)
