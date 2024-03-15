@@ -3,6 +3,7 @@
 from pydantic import BaseModel, Field, HttpUrl
 from typing import List, Optional, Union, Array
 import requests
+from enum import Enum
 
 # The order of classes below is based off the order of imports from the cdeSet.ts file
 class Specialty(BaseModel): ...
