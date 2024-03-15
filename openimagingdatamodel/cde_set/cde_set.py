@@ -1,7 +1,8 @@
 """Represents a CDE Set with its component Elements."""
 
-from enum import Enum
-from typing import Array, List, Optional, Union
+from __future__ import annotations
+
+from enum import StrEnum
 
 import requests
 from pydantic import BaseModel, Field, HttpUrl
@@ -33,58 +34,22 @@ class CDEElement(BaseModel): ...
 
 
 # These classes correspond to the indexCode.ts file in OIDM
-class SystemEnum(str, Enum):
+class SystemEnum(StrEnum):
     RADLEX = "RADLEX"
     SNOMEDCT = "SNOMEDCT"
     LOINC = "LOINC"
 
 
-class IndexCodeData(BaseModel):
+class IndexCode(BaseModel):
     system: SystemEnum
     code: str
-    display: Optional[str] = None
-    href: Optional[HttpUrl] = None
+    display: str | None = None
+    href: HttpUrl | None = None
 
 
-class IndexCode:
-    def __init__(self, in_data: IndexCodeData):
-        self._data = in_data
-
-    @property
-    def code(self):
-        return self._data.code
-
-    @property
-    def system(self):
-        return self._data.system
-
-    @property
-    def display(self):
-        return self._data.display
-
-    @property
-    def href(self):
-        return self._data.href
-
-
-# These classes correspond to the bodyPart.ts file in OIDM
-class BodyPartData(BaseModel):
+class BodyPart(BaseModel):
     name: str
-    index_codes: Optional[IndexCodeData] = None
-
-
-class BodyPart:
-    def __init__(self, in_data: BodyPartData):
-        self._data = in_data
-        self._indexCode = IndexCode(in_data.index_codes) if in_data.index_codes else None
-
-    @property
-    def name(self):
-        return self._data.name
-
-    @property
-    def index_codes(self):
-        return self._indexCode
+    index_codes: list[IndexCode] = Field(default_factory=list)
 
 
 class Status(BaseModel): ...
@@ -99,22 +64,14 @@ class CDESet(BaseModel):
     description: str = Field(..., max_length=100, description="Must be 100 or fewer characters long")
     version: Version
     status: Status
-    # url field is a string containing a URL
-    url: HttpUrl  # str = Field(..., regex="^https?://") - can do it this way or use pydantic built-in HttpUrl class that does the same thing
-    index_codes: Array[IndexCode]
-    body_parts: Array[BodyPart]
-    authors: List[Union[Person, Organization]]
-    history: Array[Event]
-    specialty: Array[Specialty]
-    elements: Array[CDEElement]
-    references: Array[Reference]
-
-
-# question about code above, the RSNA data type or most of these is an 'array': it can be coded as: index_codes: List[IndexCode] and still return an array in pydantic.
-# however, you can also import Array from typing and use it as shown above.
-# you can also use a pydantic library called 'pydantic-numpy' and use it to convert the array to a numpy array. But I am guessing we don't want to do that because
-# it would convert the array to the default numpy data type which is float. Correct?
-# I assume we want to keep the data type as an array of strings, so we can use the array data type from the typing library or the list method? -Adam
+    url: HttpUrl
+    index_codes: list[IndexCode] = Field(default_factory=list)
+    body_parts: list[BodyPart] = Field(default_factory=list)
+    authors: list[Person | Organization] = Field(default_factory=list)
+    history: list[Event] = Field(default_factory=list)
+    specialty: list[Specialty] = Field(default_factory=list)
+    elements: list[CDEElement] = Field(default_factory=list)
+    references: list[Reference] = Field(default_factory=list)
 
 
 class CDESetProcessor:
@@ -126,7 +83,7 @@ class CDESetProcessor:
         self.elements = [CDEElement(**element) for element in data.elements]
 
     @staticmethod
-    def fetch_from_repo(rdes_id: str) -> Optional["CDESetProcessor"]:
+    def fetch_from_repo(rdes_id: str) -> CDESetProcessor | None:
         rad_element_api = f"https://api3.rsna.org/radelement/v1/sets/{rdes_id}"
         response = requests.get(rad_element_api)
         if response.status_code != 200:
