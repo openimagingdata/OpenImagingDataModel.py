@@ -1,4 +1,4 @@
-from element import CDElement as CDElement
-from set import CDESet as CDESet
+from .element import CDEElement as CDEElement
+from .set import CDESet as CDESet
 
-__all__ = ["CDESet", "CDElement"]
+__all__ = ["CDESet", "CDEElement"]

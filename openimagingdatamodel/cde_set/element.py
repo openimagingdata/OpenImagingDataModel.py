@@ -9,7 +9,7 @@ from .common import (
     IndexCode,
     Reference,
     SchemaVersion,
-    Specialties,
+    Specialty,
     Status,
     Version,
 )
@@ -27,7 +27,7 @@ class BaseElement(BaseModel):
     index_codes: list[IndexCode] | None = None
     contributors: Contributors | None = None
     history: list[Event] | None = None
-    specialties: list[Specialties] | None = None
+    specialties: list[Specialty] | None = None
     references: list[Reference] | None = None
     source: str | None = None
 
