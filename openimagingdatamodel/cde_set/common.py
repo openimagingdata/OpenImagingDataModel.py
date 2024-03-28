@@ -1,6 +1,6 @@
-from typing import Literal
+from typing import Annotated, Literal
 
-from pydantic import BaseModel, Field, HttpUrl, FiniteFloat
+from pydantic import BaseModel, Field, HttpUrl
 
 
 # Change Specialty to Specialties
@@ -11,22 +11,18 @@ class Specialties(BaseModel):
     name: str
 
 
-# class Version(BaseModel):
-#     number: int  # TODO: Minimum 1
-#     date: str  # TODO: Add date format
-
-## Changing Version to SetVersion and ElementVersion
-class SetVersion(BaseModel):
-    number: int = Field(gt=1) #Minimum 1
+class Version(BaseModel):
+    number: int  # TODO: Minimum 1
     date: str  # TODO: Add date format
 
-class ElementVersion(BaseModel):
-    number: int = Field(gt=1)  #Minimum 1
-    date: str  # TODO: Add date format
 
-## Adding SchemaVersion
-class SchemaVersion(BaseModel):
-    finite: FiniteFloat = Field(gt=0.0) # used Pydantic FiniteFloat to represent a float number that is not NaN or infinity
+# Use Annotated to create a type which is a custom string with a specific regex pattern
+SchemaVersion = Annotated[
+    str,
+    Field(
+        regex="^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
+    ),
+]
 
 
 class Status(BaseModel):

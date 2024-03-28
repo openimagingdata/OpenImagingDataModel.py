@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING
 from pydantic import BaseModel, Field, HttpUrl
 
 if TYPE_CHECKING:
-    from .common import BodyPart, Contributors, Event, IndexCode, Reference, Specialties, Status, SetVersion, ElementVersion, SchemaVersion
+    from .common import BodyPart, Contributors, Event, IndexCode, Reference, SchemaVersion, Specialties, Status, Version
     from .element import CDEElement
 
 
@@ -18,9 +18,7 @@ class CDESet(BaseModel):
     id: str = Field(..., pattern="^(RDES|TO_BE_DETERMINED)\d+", description="Must be a valid ID")
     name: str = Field(..., max_length=50, description="Must be 50 or fewer characters long")
     description: str = Field(..., max_length=100, description="Must be 100 or fewer characters long")
-    #version: Version
-    set_version: SetVersion
-    element_version: ElementVersion
+    set_version: Version
     schema_version: SchemaVersion
     status: Status
     url: HttpUrl | None = None
