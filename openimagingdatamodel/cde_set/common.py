@@ -1,18 +1,32 @@
 from typing import Literal
 
-from pydantic import BaseModel, Field, HttpUrl
+from pydantic import BaseModel, Field, HttpUrl, FiniteFloat
 
 
-class Specialty(BaseModel):
+# Change Specialty to Specialties
+class Specialties(BaseModel):
     abbreviation: Literal[
         "AB", "BR", "CA", "CH", "ER", "GI", "GU", "HN", "IR", "MI", "MK", "NR", "OB", "OI", "OT", "PD", "QI", "RS", "VA"
     ]
     name: str
 
 
-class Version(BaseModel):
-    number: int  # TODO: Minimum 1
+# class Version(BaseModel):
+#     number: int  # TODO: Minimum 1
+#     date: str  # TODO: Add date format
+
+## Changing Version to SetVersion and ElementVersion
+class SetVersion(BaseModel):
+    number: int = Field(gt=1) #Minimum 1
     date: str  # TODO: Add date format
+
+class ElementVersion(BaseModel):
+    number: int = Field(gt=1)  #Minimum 1
+    date: str  # TODO: Add date format
+
+## Adding SchemaVersion
+class SchemaVersion(BaseModel):
+    finite: FiniteFloat = Field(gt=0.0) # used Pydantic FiniteFloat to represent a float number that is not NaN or infinity
 
 
 class Status(BaseModel):

@@ -2,7 +2,7 @@ from typing import Literal, Union
 
 from pydantic import BaseModel
 
-from .common import Contributors, Event, Image, IndexCode, Reference, Specialty, Status, Version
+from .common import Contributors, Event, Image, IndexCode, Reference, Specialties, Status, SetVersion, ElementVersion, SchemaVersion
 
 
 class BaseElement(BaseModel):
@@ -11,12 +11,15 @@ class BaseElement(BaseModel):
     name: str
     definition: str | None = None
     question: str | None = None
-    version: Version
+    #version: Version
+    set_version: SetVersion
+    element_version: ElementVersion
+    schema_version: SchemaVersion
     status: Status
     index_codes: list[IndexCode] | None = None
     contributors: Contributors | None = None
     history: list[Event] | None = None
-    specialty: list[Specialty] | None = None
+    specialties: list[Specialties] | None = None
     references: list[Reference] | None = None
     source: str | None = None
 
