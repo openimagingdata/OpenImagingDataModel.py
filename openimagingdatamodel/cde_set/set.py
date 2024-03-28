@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING
 from pydantic import BaseModel, Field, HttpUrl
 
 if TYPE_CHECKING:
-    from .common import BodyPart, Contributors, Event, IndexCode, Reference, SchemaVersion, Specialties, Status, Version
+    from .common import BodyPart, Contributors, Event, IndexCode, Reference, SchemaVersion, Specialty, Status, Version
     from .element import CDEElement
 
 
@@ -26,6 +26,6 @@ class CDESet(BaseModel):
     body_parts: list[BodyPart] | None = None
     contributors: Contributors | None = None
     history: list[Event] = Field(default_factory=list)
-    specialties: list[Specialties] = Field(default_factory=list)
+    specialties: list[Specialty] = Field(default_factory=list)
     elements: list[CDEElement] = Field(default_factory=list)  # TODO: Require at least one element
     references: list[Reference] | None = None

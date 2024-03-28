@@ -1,1 +1,1 @@
-from cde_set import CDESet
+from cde_set import CDESet as CDESet

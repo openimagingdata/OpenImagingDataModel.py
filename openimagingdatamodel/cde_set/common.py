@@ -4,7 +4,7 @@ from pydantic import BaseModel, Field, HttpUrl
 
 
 # Change Specialty to Specialties
-class Specialties(BaseModel):
+class Specialty(BaseModel):
     abbreviation: Literal[
         "AB", "BR", "CA", "CH", "ER", "GI", "GU", "HN", "IR", "MI", "MK", "NR", "OB", "OI", "OT", "PD", "QI", "RS", "VA"
     ]
