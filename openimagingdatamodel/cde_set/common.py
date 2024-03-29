@@ -11,6 +11,29 @@ class Specialty(BaseModel):
     name: str
 
 
+SPECIALTY_NAMES = {
+    "AB": "Abdominal",
+    "BR": "Breast",
+    "CA": "Cardiac",
+    "CH": "Chest",
+    "ER": "Emergency Radiology",
+    "GI": "Gastrointestinal",
+    "GU": "Genitourinary",
+    "HN": "Head and Neck",
+    "IR": "Interventional Radiology",
+    "MI": "Molecular Imaging",
+    "MK": "Musculoskeletal",
+    "NR": "Neuroradiology",
+    "OB": "Obstetrics/Gynecology",
+    "OI": "Oncologic Imaging",
+    "OT": "Other",
+    "PD": "Pediatric",
+    "QI": "Quality Improvement",
+    "RS": "Radiation Safety",
+    "VA": "Vascular",
+}
+
+
 class Version(BaseModel):
     number: int  # TODO: Minimum 1
     date: str  # TODO: Add date format

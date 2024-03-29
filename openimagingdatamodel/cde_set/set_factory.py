@@ -3,8 +3,9 @@
 import random
 from datetime import date
 
-from openimagingdatamodel.cde_set.element import ValueSetElement
-from openimagingdatamodel.cde_set.set import CDESet
+from .common import Event, Status, Version
+from .element import ValueSet, ValueSetElement
+from .set import CDESet
 
 
 class SetFactory:
@@ -13,34 +14,29 @@ class SetFactory:
         return "".join(random.choices("0123456789", k=4))
 
     @staticmethod
-    def default_set_metadata(name: str) -> CDESet:
+    def create_set_scaffold(name: str, add_presence_element: bool = False) -> CDESet:
         """Return a default required CDE Set metadata."""
 
         assert name, "Name is required for a CDE Set"
         random_digits = SetFactory.random_digits()
         today = date.today().strftime("%Y-%m-%d")
-        CDESet(
+        version = Version(number=1, date=today)
+        status = Status(date=today, name="Proposed")
+        history = [Event(date=today, status=status)]
+        set = CDESet(
             id=f"TO_BE_DETERMINED{random_digits}",
             name=name,
             description=f"Description for {name}",
             schema_version="1.0.0",
-            set_version={
-                "number": 1,
-                "date": today,
-            },
-            status={
-                "date": today,
-                "name": "Proposed",
-            },
-            history=[
-                {
-                    "date": today,
-                    "status": "Proposed",
-                }
-            ],
+            set_version=version,
+            status=status,
+            history=history,
             index_codes=[],
             specialties=[],
         )
+        if add_presence_element:
+            set.elements.append(SetFactory.presence_element(name))
+        return set
 
     @staticmethod
     def default_element_metadata(name) -> dict[str, str | dict | list]:
@@ -64,17 +60,17 @@ class SetFactory:
         }
 
     @staticmethod
-    def presence_element() -> ValueSetElement:
+    def presence_element(finding_name: str = None) -> ValueSetElement:
         """Return a presence element."""
         element_id = "TO_BE_DETERMINED" + SetFactory.random_digits()
         boilerplate = SetFactory.default_element_metadata("Presence")
         boilerplate["id"] = element_id
-        boilerplate["definition"] = "Presence of the feature"
-        boilerplate["question"] = "Is the feature present?"
+        boilerplate["definition"] = f"Presence of {finding_name}" if finding_name else "Presence of the feature"
+        boilerplate["question"] = f"Is the {finding_name} present?" if finding_name else "Is the feature present?"
 
         return ValueSetElement(
             **boilerplate,
-            value_set={
+            value_set=ValueSet.model_validate({
                 "min_cardinality": 0,
                 "max_cardinality": 1,
                 "values": [
@@ -99,5 +95,5 @@ class SetFactory:
                         "name": "indetermiante",
                     },
                 ],
-            },
+            }),
         )

@@ -2,13 +2,20 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 from pydantic import BaseModel, Field, HttpUrl
 
-if TYPE_CHECKING:
-    from .common import BodyPart, Contributors, Event, IndexCode, Reference, SchemaVersion, Specialty, Status, Version
-    from .element import CDEElement
+from .common import (  # noqa: TCH001
+    BodyPart,
+    Contributors,
+    Event,
+    IndexCode,
+    Reference,
+    SchemaVersion,
+    Specialty,
+    Status,
+    Version,
+)
+from .element import CDEElement  # noqa: TCH001
 
 
 # https://github.com/RSNA/ACR-RSNA-CDEs/blob/master/cde.schema.json
