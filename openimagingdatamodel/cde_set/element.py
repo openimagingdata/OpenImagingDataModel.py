@@ -16,7 +16,7 @@ from .common import (
 
 
 class BaseElement(BaseModel):
-    id: str
+    id: str  # TODO: Add regex for ID
     parent_set: str | None = None  # TODO: add formatting for a Set ID
     name: str
     definition: str | None = None

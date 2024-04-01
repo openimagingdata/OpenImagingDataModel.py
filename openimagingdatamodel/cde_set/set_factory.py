@@ -4,7 +4,7 @@ import random
 from datetime import date
 
 from .common import Event, Status, Version
-from .element import ValueSet, ValueSetElement
+from .element import BooleanElement, FloatElement, FloatValue, IntegerElement, IntegerValue, ValueSet, ValueSetElement
 from .set import CDESet
 
 
@@ -14,7 +14,7 @@ class SetFactory:
         return "".join(random.choices("0123456789", k=4))
 
     @staticmethod
-    def create_set_scaffold(name: str, add_presence_element: bool = False) -> CDESet:
+    def create_set(name: str, add_presence_element: bool = False) -> CDESet:
         """Return a default required CDE Set metadata."""
 
         assert name, "Name is required for a CDE Set"
@@ -35,7 +35,7 @@ class SetFactory:
             specialties=[],
         )
         if add_presence_element:
-            set.elements.append(SetFactory.presence_element(name))
+            set.elements.append(SetFactory.create_presence_element(name))
         return set
 
     @staticmethod
@@ -60,40 +60,131 @@ class SetFactory:
         }
 
     @staticmethod
-    def presence_element(finding_name: str = None) -> ValueSetElement:
-        """Return a presence element."""
+    def create_integer_element(
+        name: str,
+        /,
+        min: int | None = None,
+        max: int | None = None,
+        step: int | None = None,
+        unit: str | None = None,
+    ) -> IntegerElement:
+        """Return an integer element."""
         element_id = "TO_BE_DETERMINED" + SetFactory.random_digits()
-        boilerplate = SetFactory.default_element_metadata("Presence")
+        boilerplate = SetFactory.default_element_metadata(name)
         boilerplate["id"] = element_id
-        boilerplate["definition"] = f"Presence of {finding_name}" if finding_name else "Presence of the feature"
-        boilerplate["question"] = f"Is the {finding_name} present?" if finding_name else "Is the feature present?"
 
-        return ValueSetElement(
-            **boilerplate,
-            value_set=ValueSet.model_validate({
-                "min_cardinality": 0,
-                "max_cardinality": 1,
-                "values": [
-                    {
-                        "code": f"{element_id}.0",
-                        "value": "absent",
-                        "name": "Absent",
-                    },
-                    {
-                        "code": f"{element_id}.1",
-                        "value": "present",
-                        "name": "Present",
-                    },
-                    {
-                        "code": f"{element_id}.2",
-                        "value": "unknown",
-                        "name": "Unknown",
-                    },
-                    {
-                        "code": f"{element_id}.3",
-                        "value": "indetermiante",
-                        "name": "indetermiante",
-                    },
-                ],
-            }),
-        )
+        integer_value_args = {}
+        if min is not None:
+            integer_value_args["min"] = min
+        if max is not None:
+            integer_value_args["max"] = max
+        if step is not None:
+            integer_value_args["step"] = step
+        if unit is not None:
+            integer_value_args["unit"] = unit
+        return IntegerElement(**boilerplate, integer_value=IntegerValue(**integer_value_args))
+
+    @staticmethod
+    def create_float_element(
+        name: str,
+        /,
+        min: float | None = None,
+        max: float | None = None,
+        step: float | None = None,
+        unit: str | None = None,
+    ) -> FloatElement:
+        """Return a float element."""
+        element_id = "TO_BE_DETERMINED" + SetFactory.random_digits()
+        boilerplate = SetFactory.default_element_metadata(name)
+        boilerplate["id"] = element_id
+
+        float_value_args = {}
+        if min is not None:
+            float_value_args["min"] = min
+        if max is not None:
+            float_value_args["max"] = max
+        if step is not None:
+            float_value_args["step"] = step
+        if unit is not None:
+            float_value_args["unit"] = unit
+        return FloatElement(**boilerplate, float_value=FloatValue(**float_value_args))
+
+    @staticmethod
+    def create_boolean_element(name: str) -> BooleanElement:
+        """Return a boolean element."""
+        element_id = "TO_BE_DETERMINED" + SetFactory.random_digits()
+        boilerplate = SetFactory.default_element_metadata(name)
+        boilerplate["id"] = element_id
+
+        return BooleanElement(**boilerplate, boolean_value="boolean")
+
+    @staticmethod
+    def create_value_set_element(
+        name: str,
+        values: list[dict[str, str] | str],
+        /,
+        definition: str | None = None,
+        question: str | None = None,
+        min_cardinality: int = 1,
+        max_cardinality: int = 1,
+    ) -> ValueSetElement:
+        """Return a value set element."""
+        element_id = "TO_BE_DETERMINED" + SetFactory.random_digits()
+        boilerplate = SetFactory.default_element_metadata(name)
+        boilerplate["id"] = element_id
+        if definition:
+            boilerplate["definition"] = definition
+        if question:
+            boilerplate["question"] = question
+
+        assert values and len(values) >= 2, "Value set must have at least two values"
+
+        def check_and_fix_value(value: dict[str, str] | str, ind: int) -> dict[str, str]:
+            out_value = value.copy() if isinstance(value, dict) else {"name": value}
+            if "name" not in out_value:
+                raise ValueError("Value must have a name")
+            out_value["code"] = f"{element_id}.{ind}"
+            return out_value
+
+        values = [check_and_fix_value(value, i) for i, value in enumerate(values)]
+
+        value_set = ValueSet.model_validate({
+            "min_cardinality": min_cardinality,
+            "max_cardinality": max_cardinality,
+            "values": values,
+        })
+
+        return ValueSetElement(**boilerplate, value_set=value_set)
+
+    @staticmethod
+    def create_presence_element(
+        finding_name: str | None = None, /, definition: str | None = None, question: str | None = None
+    ) -> ValueSetElement:
+        """Return a presence element."""
+
+        name = f"Presence of {finding_name}" if finding_name else "Presence"
+        if not definition:
+            definition = f"Presence of {finding_name}" if finding_name else "Presence of the feature"
+        if not question:
+            question = f"Is the {finding_name} present?" if finding_name else "Is the feature present?"
+
+        values = [
+            {
+                "value": "absent",
+                "name": "Absent",
+            },
+            {
+                "value": "present",
+                "name": "Present",
+            },
+            {
+                "value": "unknown",
+                "name": "Unknown",
+            },
+            {
+                "value": "indetermiante",
+                "name": "Indetermiante",
+            },
+        ]
+
+        return SetFactory.create_value_set_element(name, values, definition=definition, question=question)
