@@ -4,7 +4,7 @@
 
 
 [ ] - `TODO`
-1. Transform the RadLex data that is in the ontology database in the `RadLex` collection.
+1. Transform ALL RadLex data that is in the ontology database in the `RadLex` collection.
     * Sample RadLex document:
 
 `
@@ -59,3 +59,11 @@
         * Skip definition if it's already in the top level
         * `mayBeCausedBy`: `RID4962`
         * ...
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+Mapping out TODO tasks:
+[x] - Create new collection in MongoDB ontology database named `radlex`
+[] - Write a script that at a high-level does this:
+        * Takes in each individual RadLex document from MongoDB directory: `ontologies/RadLex`
+        * Transforms data into desired format.
+        * Pushes transformed data back to MongoDB collection `radlex`
