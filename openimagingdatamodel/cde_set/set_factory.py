@@ -3,6 +3,8 @@
 import random
 from datetime import date
 
+from openimagingdatamodel.cde_set.finding_model import FindingModel
+
 from .common import Event, Status, Version
 from .element import BooleanElement, FloatElement, FloatValue, IntegerElement, IntegerValue, ValueSet, ValueSetElement
 from .set import CDESet
@@ -188,3 +190,23 @@ class SetFactory:
         ]
 
         return SetFactory.create_value_set_element(name, values, definition=definition, question=question)
+
+    @staticmethod
+    def create_set_from_finding_model(model: FindingModel) -> CDESet:
+        set: CDESet = SetFactory.create_set(model.finding_name)
+        set.description = model.description
+        for element in model.attributes:
+            if element.type == "choice":
+                values = [value.model_dump() for value in element.values]
+                new_el = SetFactory.create_value_set_element(element.name, values)
+                for el_value, att_value in zip(new_el.value_set.values, values):
+                    if description := att_value.get("description"):
+                        el_value.definition = description
+            if element.type == "numeric":
+                new_el = SetFactory.create_float_element(
+                    element.name, min=element.minimum, max=element.maximum, unit=element.unit
+                )
+            if element.description:
+                new_el.definition = element.description
+            set.elements.append(new_el)
+        return set
