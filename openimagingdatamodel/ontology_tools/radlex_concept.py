@@ -1,12 +1,24 @@
-from pydantic import BaseModel, ConfigDict, validator
 import caseswitcher
+from pydantic import BaseModel, ConfigDict, field_validator
+
+# Define RadLexProperties dictionary to account for "http://radlex" field
+RadLexProperties = dict[str, str | list[str]]
+
 
 # ConfigDict for RadLex Properties
 class RadLexConcept(BaseModel):
-    model_config = ConfigDict(populate_by_name=True)
+    model_config = ConfigDict(populate_by_name=True, coerce_numbers_to_str=True)
+
+    # Define the new document format and fields
+    id: str
+    preferred_label: str
+    synonyms: list[str] | None = None
+    parent: str | None = None
+    definition: str | None = None
+    radlex_properties: RadLexProperties
 
     # Field validator for model_config dictionary keys
-    @validator('model_config', pre=True)
+    @field_validator("radlex_properties", mode="before")
     def convert_model_config_keys(cls, value):
         if isinstance(value, dict):
             snake_case_config = {}
