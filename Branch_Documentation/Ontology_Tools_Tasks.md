@@ -92,11 +92,32 @@ Part 3: move away from trying to create a specific `RadLexProperties` type the w
     * See if there are pipe characters in the value; if there are, split into separate strings in a list. (That's the str | list[str] above.)
 [x] - Don't do the case conversions yourself--import a useful library, https://pypi.org/project/case-switcher/
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+More Code Change Tasks
+Date: 4/3/2024
+
+[] - `transform_radlex()` function => needs to include code to look in properties dict to see if multiple '|' separated values, if so, split and turn into list.
+      * This step needs to occur before transforming the `http://.....RID23434` into `RID23434`
+[] - Do NOT include **synonyms** or **preferred terms** in `radlex_properties` (these are already in the top-level)
+[] - make sure we have camelCase for property names for BOTH `top-level` and `sub-object` in the database.
+[] - Write some code that goes through the RadLex collection 100 elements at a time, transforms them, and batch-writes them back to the radlex collection.
+    * Purpose: Use `radlex_concept.py` file and the `RadLexConcept` objects created/formatted to then port these back to the MongoDB instance.
+[] - Demo the JSON dump of what you're proposing to write back to the database.
+[] - May want to use a `field_serializer` for JSON exports. link: https://docs.pydantic.dev/latest/api/functional_serializers/#pydantic.functional_serializers.field_serializer
+[] - Once JSON dump is approved, write code to port back to MongoDB `radlex` collection in the `ontology` database.
+
+
+
+
+
+
+
+
 
 
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
-Other Related Notes to document:
+Future Notes:
 * The next step is that we generate wrapper libraries for the concepts in the database: RadLexConcept and SnomedConcept
 * We can also create RadLexConceptRepo and SnomedConceptRepo for getting the data from the database and populating such objects.
