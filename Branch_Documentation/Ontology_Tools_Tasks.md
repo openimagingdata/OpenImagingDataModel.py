@@ -3,7 +3,7 @@
 * Goals:
 
 
-[ ] - `TODO`
+[x] - `TODO`
 1. Transform ALL RadLex data that is in the ontology database in the `RadLex` collection.
     * Sample RadLex document:
 
@@ -41,7 +41,7 @@
 
 
 
-* [ ] - `TODO`
+* [x] - `TODO`
 3. Work on creating a script that transforms the data from the "inconvenient format" above into a more workable format, consider the following steps:
 
     * Put it all into a new collection named `radlex`
@@ -63,7 +63,40 @@
 -------------------------------------------------------------------------------------------------------------------------------------------------
 Mapping out TODO tasks:
 [x] - Create new collection in MongoDB ontology database named `radlex`
-[] - Write a script that at a high-level does this:
+[x] - Write a script that at a high-level does this:
         * Takes in each individual RadLex document from MongoDB directory: `ontologies/RadLex`
         * Transforms data into desired format.
         * Pushes transformed data back to MongoDB collection `radlex`
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Editing Tasks
+* Date: 4/3/2024
+
+Part 1: file management
+[x] - Rename your file to something like `radlex_importer.py`:
+[x] - Move the definition of `RadLexConcept` to a new file, `radlex_concept.py`
+[x] - Change `Transform` class to a function named `transform_radlex` that takes an old-style RadLex object as a dict type and returns a `RadLexConcept`
+
+
+
+Part 2: In `RadLexConcept`:
+[x] - Are you sure we have all the keys that might be used in `RadLexProperties`? There are 75, we only accounted for 9 of them. I checked with a MongoDB query. However, we will NOT use a pydantic class for this as its too much data to detail. Instead we will return a dict of string keys and either string or list of string values.
+[x] - Can you make sure we're using appropriate **snake case** for all the property names in `RadLexProperties`? (e.g., is_a, may_be_caused_by, etc.)
+[x] - Be aware that in fact, the values of `RadLexProperties` might be **lists of strings** rather than **simple strings**, I think
+[x] - Don't include `preferredName` in the properties object, because we already have it at the top
+[x] - When we make the real `RadLexConcept` class for working with the cleaned up data, let's convert the keys from camel to snake case using a `field validator`.
+
+Part 3: move away from trying to create a specific `RadLexProperties` type the way you do. There are so many possible tags there, we don't want to try to represent them all in an object.
+[x] - Instead, let's just put them all in a `radlex_properties` dictionary, which we can type as `dict[str, str|list[str]]`.
+[x]The only processing we should do is:
+    * Convert the property names to camel case when we write to the database
+    * See if there are pipe characters in the value; if there are, split into separate strings in a list. (That's the str | list[str] above.)
+[x] - Don't do the case conversions yourself--import a useful library, https://pypi.org/project/case-switcher/
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+Other Related Notes to document:
+* The next step is that we generate wrapper libraries for the concepts in the database: RadLexConcept and SnomedConcept
+* We can also create RadLexConceptRepo and SnomedConceptRepo for getting the data from the database and populating such objects.

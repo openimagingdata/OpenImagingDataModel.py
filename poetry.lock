@@ -220,6 +220,17 @@ webencodings = "*"
 css = ["tinycss2 (>=1.1.0,<1.3)"]
 
 [[package]]
+name = "case-switcher"
+version = "1.3.13"
+description = "Library to change the casing of strings."
+optional = false
+python-versions = ">=3.9,<4.0"
+files = [
+    {file = "case-switcher-1.3.13.tar.gz", hash = "sha256:e8c9df5437ac58aa396617bde347093a025812b77fd73fa48439c3d4ae8294c8"},
+    {file = "case_switcher-1.3.13-py3-none-any.whl", hash = "sha256:564e5dba2062e38862d1766187446362bbdaf9fe80eac9675757310d190712ca"},
+]
+
+[[package]]
 name = "certifi"
 version = "2024.2.2"
 description = "Python package for providing Mozilla's CA Bundle."
@@ -2592,4 +2603,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "b2627e002052536c3e5127823bad48010f4328dac59a1b859a310db1e949027f"
+content-hash = "1bd9975221daca341b1f6bc4a58488ce895584a47280e0c587f623ad0c109a39"
