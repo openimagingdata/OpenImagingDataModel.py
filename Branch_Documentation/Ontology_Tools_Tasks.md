@@ -96,26 +96,60 @@ Part 3: move away from trying to create a specific `RadLexProperties` type the w
 More Code Change Tasks
 Date: 4/3/2024
 
-[] - `transform_radlex()` function => needs to include code to look in properties dict to see if multiple '|' separated values, if so, split and turn into list.
+[x] - `transform_radlex()` function => needs to include code to look in properties dict to see if multiple '|' separated values, if so, split and turn into list.
       * This step needs to occur before transforming the `http://.....RID23434` into `RID23434`
-[] - Do NOT include **synonyms** or **preferred terms** in `radlex_properties` (these are already in the top-level)
-[] - make sure we have camelCase for property names for BOTH `top-level` and `sub-object` in the database.
-[] - Write some code that goes through the RadLex collection 100 elements at a time, transforms them, and batch-writes them back to the radlex collection.
+[x] - Do NOT include **synonyms** or **preferred terms** in `radlex_properties` (these are already in the top-level)
+
+
+
+camelCase conversion back to MongoDB database
+[x] - make sure we have camelCase for property names for BOTH `top-level` and `sub-object` in the database.
+[x] - Write some code that goes through the RadLex collection 100 elements at a time, transforms them, and batch-writes them back to the radlex collection.
     * Purpose: Use `radlex_concept.py` file and the `RadLexConcept` objects created/formatted to then port these back to the MongoDB instance.
-[] - Demo the JSON dump of what you're proposing to write back to the database.
-[] - May want to use a `field_serializer` for JSON exports. link: https://docs.pydantic.dev/latest/api/functional_serializers/#pydantic.functional_serializers.field_serializer
-[] - Once JSON dump is approved, write code to port back to MongoDB `radlex` collection in the `ontology` database.
+[x] - Demo the JSON dump of what you're proposing to write back to the database.
+
+[x] - May want to use a `field_serializer` for JSON exports. link: https://docs.pydantic.dev/latest/api/functional_serializers/#pydantic.functional_serializers.field_serializer
+    * using the field_serializer from Pydantic for enabling custom field serialization.
+    * Used to serialize the data as a sorted list.
+    * Goal:
+      * our internal representation is snake_case
+      * just apply to radlex properties field.
+      * use `field_serializer decorator` => takes a function and wraps it with other functionality => gets called whenever you call either the `model_dump` or `model_dump_json` methods
+      * when call decorator it gives parameters for how you want it to do the wrapping.
+      * `radlex_properties` is the field we want to apply it to.
+      * use default 'always' for the when_used parameters
+      * Take in an argument called "in_props" => str | list[str] => dict[str => str | list[str]]
+      * function to use:
+            `@field_serializer(radlex_properties)`
+            `def change_keys_to_camel_case(in_props: dict[str, str|list[str]) → dict[str, str|list[str]):`
+                  `out = { camel_case(k): v for k, v in in_props.items } return out`
+      * use Pydantic alias generator class => convert all snake_case to camelCase (Uses a built-in AliasGenerator camelCase generator)
 
 
 
+[x] - Once JSON dump is approved, write code to port back to MongoDB `radlex` collection in the `ontology` database.
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+More Code Change Tasks
+Date: 4/4/2024
 
+[] - Fix the JSON output for `radlexProperties` so that:
+  * The HTML links are output as a **list of strings**, for example for `hasRegionalPart` becomes: ['RID39870',RID41870','RID39765']
 
-
-
-
-
-
+`{
+  "_id": "RID49379",
+  "preferredLabel": "left tibia",
+  "parent": "RID2885",
+  "definition": "",
+  "radlexProperties": {
+    "fmaid": "24478",
+    "hasConstitutionalPart": "RID49038",
+    "hasRegionalPart": [
+      "http://radlex.org/RID/RID39870",
+      "http://radlex.org/RID/RID41870",
+      "http://radlex.org/RID/RID39765"
+    ]
+  }`
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 Future Notes:

@@ -17,15 +17,30 @@ def transform_radlex(doc: dict) -> RadLexConcept:
         raise ValueError("Class ID field does not exist in the document.")
 
     synonym_list = doc.get("Synonyms")
-    synonym_list = synonym_list.replace("|", ", ").split(", ") if synonym_list else None
+    if synonym_list:
+        if "|" in synonym_list:
+            synonym_list = [synonym_list.strip() for synonym_list in synonym_list.split("|")]
+        else:
+            synonym_list = [synonym_list]
 
     # create a new object for the properties from the "http://radlex" field
     original_properties = doc.get("http://radlex", {})
     fixed_properties = {}
+
+    # Query keys to avoid repetition
+    query_keys = ['definition', 'synonym', 'synonym_german', 'preferred_name', 'preferred_name_german']
+
+    def get_last_part(input_string: str) -> str:
+        return input_string.split("/")[-1] if input_string.startswith("http") else input_string
+
     for key, value in original_properties.items():
-        new_key = key.split("/")[-1]
-        new_key = to_snake(new_key)
-        new_value = value.split("/")[-1] if isinstance(value, str) and "http" in value else value
+        if not value or key in query_keys:
+            continue
+
+        new_key = to_snake(key.split("/")[-1])
+
+        new_value = [get_last_part(item) for item in value.split("|")] if "|" in value else get_last_part(value)
+
         fixed_properties[new_key] = new_value
 
     # create a new document with the desired top-level properties
@@ -35,7 +50,7 @@ def transform_radlex(doc: dict) -> RadLexConcept:
         synonyms=synonym_list,
         parent=doc.get("Parents", "").split("/")[-1] if doc.get("Parents") else "",
         definition=doc.get("Definitions", ""),
-        radlex_properties=fixed_properties,
+        radlex_properties=fixed_properties
     )
 
     return new_doc
