@@ -28,7 +28,7 @@ def transform_radlex(doc: dict) -> RadLexConcept:
     fixed_properties = {}
 
     # Query keys to avoid repetition
-    query_keys = ["definition", "synonym", "synonym_german", "preferred_name", "preferred_name_german"]
+    query_keys = ["definition", "synonym", "preferred_name"]
 
     def get_last_part(input_string: str) -> str:
         return input_string.split("/")[-1] if input_string.startswith("http") else input_string
@@ -51,11 +51,15 @@ def transform_radlex(doc: dict) -> RadLexConcept:
     # create a new document with the desired top-level properties
     new_doc = RadLexConcept(
         _id=radlex_id,
-        preferred_label=doc.get("Preferred Label", ""),
-        synonyms=synonym_list,
-        parent=doc.get("Parents", "").split("/")[-1] if doc.get("Parents") else "",
-        definition=doc.get("Definitions", ""),
-        radlex_properties=fixed_properties,
+        preferred_label=doc.get("Preferred Label"),
     )
+    if synonym_list:
+        new_doc.synonyms = synonym_list
+    if doc.get("Parents"):
+        new_doc.parent = doc.get("Parents").split("/")[-1]
+    if doc.get("Definitions"):
+        new_doc.definition = doc.get("Definitions")
+    if fixed_properties:
+        new_doc.radlex_properties = fixed_properties
 
     return new_doc

@@ -1,14 +1,21 @@
+from typing import Sequence
+
 import caseswitcher
 from pydantic import BaseModel, ConfigDict, Field, field_serializer, field_validator
 from pydantic.alias_generators import to_camel
 
 # Define RadLexProperties dictionary to account for "http://radlex" field
-RadLexProperties = dict[str, str | list[str]]
+RadLexProperties = dict[str, str | Sequence[str]]
 
 
 # ConfigDict for RadLex Properties
 class RadLexConcept(BaseModel):
-    model_config = ConfigDict(populate_by_name=True, coerce_numbers_to_str=True, alias_generator=to_camel)
+    model_config = ConfigDict(
+        populate_by_name=True,
+        coerce_numbers_to_str=True,
+        alias_generator=to_camel,
+        validate_assignment=True,
+    )
 
     # Define the new document format and fields
     id: str = Field(alias="_id")
@@ -16,7 +23,7 @@ class RadLexConcept(BaseModel):
     synonyms: list[str] | None = None
     parent: str | None = None
     definition: str | None = None
-    radlex_properties: RadLexProperties
+    radlex_properties: RadLexProperties | None = None
 
     # Field validator for radlex property dictionary keys
     @field_validator("radlex_properties", mode="before")
