@@ -1,16 +1,14 @@
 import caseswitcher
-from pydantic import BaseModel, ConfigDict, field_validator, field_serializer, Field
+from pydantic import BaseModel, ConfigDict, Field, field_serializer, field_validator
 from pydantic.alias_generators import to_camel
-from typing import List, Union
 
 # Define RadLexProperties dictionary to account for "http://radlex" field
 RadLexProperties = dict[str, str | list[str]]
 
+
 # ConfigDict for RadLex Properties
 class RadLexConcept(BaseModel):
-    model_config = ConfigDict(populate_by_name=True,
-                              coerce_numbers_to_str=True,
-                              alias_generator=to_camel)
+    model_config = ConfigDict(populate_by_name=True, coerce_numbers_to_str=True, alias_generator=to_camel)
 
     # Define the new document format and fields
     id: str = Field(alias="_id")
@@ -31,7 +29,7 @@ class RadLexConcept(BaseModel):
         return value
 
     # Field serializer to convert radlex property dictionary keys back to camel case
-    @field_serializer('radlex_properties', when_used='unless-none')
+    @field_serializer("radlex_properties", when_used="unless-none")
     def radlex_property_keys_to_camel(in_props: RadLexProperties) -> RadLexProperties:
-        out_props = { caseswitcher.to_camel(k): v for k, v in in_props.items() }
+        out_props = {caseswitcher.to_camel(k): v for k, v in in_props.items()}
         return out_props

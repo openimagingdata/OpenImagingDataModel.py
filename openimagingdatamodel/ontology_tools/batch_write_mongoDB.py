@@ -1,6 +1,7 @@
 # Description: This script is used to batch transform and write the radlex collection to the MongoDB database.
 from .radlex_importer import transform_radlex
 
+
 # function to write batch sizes of 100 back to MongoDB ontologies database 'radlex' collection
 def batch_transform_and_write_to_db(collection):
     batch_size = 100
@@ -14,8 +15,6 @@ def batch_transform_and_write_to_db(collection):
             batch = []
     if batch:
         collection.insert_many(batch)
-
-
 
 
 # Example usage to use in the notebook experiment
