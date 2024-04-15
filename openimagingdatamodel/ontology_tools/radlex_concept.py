@@ -37,6 +37,9 @@ class RadLexConcept(BaseModel):
 
     # Field serializer to convert radlex property dictionary keys back to camel case
     @field_serializer("radlex_properties", when_used="unless-none")
-    def radlex_property_keys_to_camel(in_props: RadLexProperties) -> RadLexProperties:
+    def radlex_property_keys_to_camel(self, in_props: RadLexProperties) -> RadLexProperties:
         out_props = {caseswitcher.to_camel(k): v for k, v in in_props.items()}
         return out_props
+
+
+# class RadLexConceptRepo(db)

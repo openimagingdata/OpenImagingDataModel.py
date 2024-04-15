@@ -133,7 +133,7 @@ camelCase conversion back to MongoDB database
 More Code Change Tasks
 Date: 4/4/2024
 
-[] - Fix the JSON output for `radlexProperties` so that:
+[x] - Fix the JSON output for `radlexProperties` so that:
   * The HTML links are output as a **list of strings**, for example for `hasRegionalPart` becomes: ['RID39870',RID41870','RID39765']
 
 `{
@@ -150,6 +150,24 @@ Date: 4/4/2024
       "http://radlex.org/RID/RID39765"
     ]
   }`
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+MongoDB Search Tool Design Tasks
+Date: 4/10/2024
+
+[ ] - Goal is to build a POC for a full text MongoDB indices search tool in a Jupyter notebook within this branch. The tool should do the following:
+        [ ] - search new `radlex` collection in the ontology database within MongoDB.
+        [ ] - Search any keyword, any field.
+        [ ] - Values to include in search
+                * preferredLabel
+                * definition
+                * synonym
+        [ ] - refer to mongoDB documentation:
+              * https://www.mongodb.com/developer/videos/mongodb-atlas-search-python/
+              * https://www.mongodb.com/basics/full-text-search
+              * https://www.mongodb.com/docs/atlas/atlas-search/atlas-search-overview/
+              * https://www.digitalocean.com/community/tutorials/how-to-perform-full-text-search-in-mongodb
+              * https://www.slingacademy.com/article/mongodb-full-text-index-a-practical-guide-with-examples/
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
 Future Notes:
