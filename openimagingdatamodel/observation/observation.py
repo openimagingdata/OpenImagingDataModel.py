@@ -1,11 +1,12 @@
-from typing import Literal
+from typing import Any, Literal, Mapping
 
 from pydantic import BaseModel, ConfigDict, Field
 
 
 class Identifier(BaseModel):
-    system: str
+    system: str  # TODO: Use URI type
     value: str
+    # Can add type (CodeableConcept), use (Code), period (Period), assigner (Reference)
 
 
 class Coding(BaseModel):
@@ -29,132 +30,50 @@ StatusValue = Literal[
 ]
 
 
+class Reference(BaseModel):
+    reference: str
+    type: str | None = None  # TODO: Use URI type and limit to the FHIR reference types
+    identifier: Identifier | None = None
+    display: str | None = None
+
+
+class CodeableConceptComponent(BaseModel):
+    code: CodeableConcept
+    value_codeable_concept: CodeableConcept = Field(alias="valueCodeableConcept")
+
+
+class StringComponent(BaseModel):
+    code: CodeableConcept
+    value_string: str = Field(alias="valueString")
+
+
+class IntegerComponent(BaseModel):
+    code: CodeableConcept
+    value_integer: int = Field(alias="valueInteger")
+
+
+class BooleanComponent(BaseModel):
+    code: CodeableConcept
+    value_boolean: bool = Field(alias="valueBoolean")
+
+
+# This is a union of all possible component types
+Component = CodeableConceptComponent | StringComponent | IntegerComponent | BooleanComponent
+
+
 class Observation(BaseModel):
     """
     The Observation class is the model for FHIR Observation objects
     """
 
-    model_config = ConfigDict(allow_population_by_field_name=True)
+    model_config = ConfigDict(populate_by_name=True)
 
     resourceType: Literal["Observation"] = "Observation"
     id_: str = Field(alias="id")
     identifiers: list[Identifier] | None = Field(default=None, alias="identifier")
     status: StatusValue
-    # subject
-    # focus
-    # derivedFrom
-    # bodySite
-    # components
-
-
-SAMPLE_OBSERVATION = """
-{
-    "resourceType": "Observation",
-    "id": "example1OIDMradiologist",
-    "identifier": [
-        {
-            "system": "urn:dicom:uid",
-            "value": "urn:oid:1.3.6.1.4.1.14519.5.2.1.4334.1501.109763379583496662079353689166.1",
-        }
-    ],
-    "code": {"coding": [{"system": "https://radelement.org", "code": "RDES195", "display": "Pulmonary Nodule"}]},
-    "status": "final",
-    "subject": {"reference": "Patient/example1OIDM"},
-    "focus": [
-        {
-            "bodyStructure": [
-                {
-                    "identifier": {
-                        "type": {
-                            "coding": [
-                                {
-                                    "system": "http://hl7.org/fhir/uv/dicom-sr/CodeSystem/dicom-identifier-type",
-                                    "code": "tracking-uid",
-                                    "display": "Tracking UID",
-                                }
-                            ]
-                        },
-                        "system": "urn:dicom:uid",
-                        "value": "urn:oid:2.25.293638943492893970490299793280.5.9.114.1",
-                    },
-                    "includedStructure": {
-                        "structure": {
-                            "valueCodeableConcept": {
-                                "coding": [
-                                    {"system": "http://radlex.org", "code": "RID50149", "display": "pulmonary nodule"}
-                                ]
-                            }
-                        }
-                    },
-                }
-            ]
-        },
-        {
-            "imagingSelection": [
-                {
-                    "identifier": {
-                        "type": {
-                            "coding": [
-                                {
-                                    "system": "http://hl7.org/fhir/uv/dicom-sr/CodeSystem/dicom-identifier-type",
-                                    "code": "tracking-uid",
-                                    "display": "Tracking UID",
-                                }
-                            ]
-                        },
-                        "system": "urn:dicom:uid",
-                        "value": "urn:oid:2.25.293638943492893970490299793280.5.9.114.1",
-                    },
-                    "status": "unknown",
-                    "code": {"text": "Region selected from image"},
-                    "studyUid": "1.3.6.1.4.1.14519.5.2.1.4334.1501.109763379583496662079353689166",
-                    "seriesUid": "1.3.6.1.4.1.14519.5.2.1.4334.1501.493076156577048480691957527964",
-                    "instance": [
-                        {"uid": "1.3.6.1.4.1.14519.5.2.1.4334.1501.114045620398352064908952520781"},
-                        {
-                            "imageRegion": [
-                                {
-                                    "regionType": "circle",
-                                    "coordinate": [
-                                        374.594249201278,
-                                        284.0809371671991,
-                                        379.5015974440895,
-                                        288.98828541001063,
-                                    ],
-                                }
-                            ]
-                        },
-                    ],
-                }
-            ]
-        },
-    ],
-    "bodySite": {
-        "code": {
-            "coding": [
-                {"system": "https://anatomiclocations.org/", "code": "RID1338", "display": "lower lobe of left lung"},
-                {"system": "http://snomed.info/sct", "code": "41224006", "display": "left lower lobe"},
-            ]
-        }
-    },
-    "derivedFrom": [{"reference": "ImagingStudy/example1OIDMstudy"}],
-    "component": [
-        {
-            "code": {"coding": [{"system": "https://radelement.org", "code": "RDE1717", "display": "Presence"}]},
-            "valueCodeableConcept": {"coding": [{"code": "RDE1717.1", "display": "present"}]},
-        },
-        {
-            "code": {"coding": [{"system": "https://radelement.org", "code": "RDE1301", "display": "Composition"}]},
-            "valueCodeableConcept": {"coding": [{"code": "RDE1301.0", "display": "solid"}]},
-        },
-        {
-            "code": {"coding": [{"system": "https://radelement.org", "code": "RDE1304", "display": "Location"}]},
-            "valueCodeableConcept": {"coding": [{"code": "RDE1304.4", "display": "left lower lobe"}]},
-        },
-        {
-            "code": {"coding": [{"system": "https://radelement.org", "code": "RDE1305", "display": "Morphology"}]},
-            "valueCodeableConcept": {"coding": [{"code": "RDE1305.1", "display": "lobulated"}]},
-        },
-    ],
-}
-"""
+    subject: Reference | None = None
+    focus: list[Mapping[str, Any]] | None = None
+    derived_from: list[Reference] | None = Field(default=None, alias="derivedFrom")
+    body_site: CodeableConcept | None = Field(default=None, alias="bodySite")
+    components: list[Component] | None = Field(default=None, alias="component")
