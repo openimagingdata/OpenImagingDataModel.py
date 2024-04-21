@@ -1,3 +1,4 @@
+from functools import cache
 from typing import Literal, Union
 
 from pydantic import BaseModel
@@ -49,6 +50,14 @@ class ValueSet(BaseModel):
 
 class ValueSetElement(BaseElement):
     value_set: ValueSet
+
+    @cache  # noqa: B019
+    def get_value(self, val: str) -> ValueSetValue:
+        """Get a ValueSetValue by code or value or name."""
+        for v in self.value_set.values:
+            if val in set(v.code, v.value, v.name):
+                return v
+        raise ValueError(f"Value '{val}' not found in ValueSet")
 
 
 # This corresponds to the floatElementSchema class in the cdElement.ts file

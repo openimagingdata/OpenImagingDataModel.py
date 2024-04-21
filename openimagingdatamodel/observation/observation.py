@@ -1,4 +1,4 @@
-from typing import Any, Literal, Mapping
+from typing import Any, Literal, Mapping, TypeAlias
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -10,9 +10,10 @@ class Identifier(BaseModel):
 
 
 class Coding(BaseModel):
-    """COding with system and code.
+    """Coding with system and code.
     Note that the FHIR spec has all fields optional, but we require system and code."""
 
+    model_config = ConfigDict(populate_by_name=True)
     system: str  # TODO: Use URI type
     code: str
     version: str | None = None
@@ -20,7 +21,13 @@ class Coding(BaseModel):
     user_selected: bool | None = Field(default=None, alias="userSelected")
 
 
+class Code(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
+    codings: list[Coding] = Field(alias="coding")
+
+
 class CodeableConcept(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
     codings: list[Coding] | None = Field(default=None, alias="coding")
     text: str | None = None
 
@@ -31,6 +38,7 @@ StatusValue = Literal[
 
 
 class Reference(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
     reference: str
     type: str | None = None  # TODO: Use URI type and limit to the FHIR reference types
     identifier: Identifier | None = None
@@ -38,27 +46,31 @@ class Reference(BaseModel):
 
 
 class CodeableConceptComponent(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
     code: CodeableConcept
     value_codeable_concept: CodeableConcept = Field(alias="valueCodeableConcept")
 
 
 class StringComponent(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
     code: CodeableConcept
     value_string: str = Field(alias="valueString")
 
 
 class IntegerComponent(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
     code: CodeableConcept
     value_integer: int = Field(alias="valueInteger")
 
 
 class BooleanComponent(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
     code: CodeableConcept
     value_boolean: bool = Field(alias="valueBoolean")
 
 
 # This is a union of all possible component types
-Component = CodeableConceptComponent | StringComponent | IntegerComponent | BooleanComponent
+Component: TypeAlias = CodeableConceptComponent | StringComponent | IntegerComponent | BooleanComponent
 
 
 class Observation(BaseModel):
@@ -71,9 +83,10 @@ class Observation(BaseModel):
     resourceType: Literal["Observation"] = "Observation"
     id_: str = Field(alias="id")
     identifiers: list[Identifier] | None = Field(default=None, alias="identifier")
+    code: Code | None = None
     status: StatusValue
     subject: Reference | None = None
     focus: list[Mapping[str, Any]] | None = None
-    derived_from: list[Reference] | None = Field(default=None, alias="derivedFrom")
     body_site: CodeableConcept | None = Field(default=None, alias="bodySite")
-    components: list[Component] | None = Field(default=None, alias="component")
+    derived_from: list[Reference] | None = Field(default=None, alias="derivedFrom")
+    components: list[Component] = Field(default_factory=list, alias="component")
