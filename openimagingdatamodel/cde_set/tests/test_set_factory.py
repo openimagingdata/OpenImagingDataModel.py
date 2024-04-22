@@ -1,7 +1,9 @@
 import re
+from typing import Any, Final
 
 import pytest
 from openimagingdatamodel.cde_set.element import BooleanElement, FloatElement, IntegerElement, ValueSetElement
+from openimagingdatamodel.cde_set.finding_model import FindingModel
 from openimagingdatamodel.cde_set.set import CDESet
 from openimagingdatamodel.cde_set.set_factory import SetFactory
 
@@ -21,6 +23,8 @@ def test_create_set():
     cde_set = SetFactory.create_set(name)
     assert isinstance(cde_set, CDESet)
     assert cde_set.name == name
+    assert re.match(SET_ELEMENT_ID_REGEX, cde_set.id)
+    assert len(cde_set.elements) == 0
 
 
 def test_default_element_metadata():
@@ -84,7 +88,8 @@ def test_create_presence_element():
     element = SetFactory.create_presence_element(finding_name)
     assert isinstance(element, ValueSetElement)
     assert re.match(SET_ELEMENT_ID_REGEX, element.id)
-    assert element.name == f"Presence of {finding_name}"
+    assert element.name == finding_name
+    assert element.definition == f"Presence of {finding_name}"
     assert element.value_set.min_cardinality == 1
     assert element.value_set.max_cardinality == 1
     assert len(element.value_set.values) == 4
@@ -93,8 +98,90 @@ def test_create_presence_element():
     assert first_value.code == f"{element.id}.0"
 
 
-# def test_create_set_from_finding_model():
-#     model = FindingModel()
-#     cde_set = SetFactory.create_set_from_finding_model(model)
-#     assert isinstance(cde_set, CDESet)
-#     assert cde_set.name == model.name
+def test_create_set_with_presence_element():
+    finding_name = "Test Finding"
+    description = "Description of the test finding"
+    cde_set = SetFactory.create_set(finding_name, description=description, add_presence_element=True)
+    assert isinstance(cde_set, CDESet)
+    assert cde_set.name == finding_name
+    assert re.match(SET_ELEMENT_ID_REGEX, cde_set.id)
+    assert cde_set.description == description
+    assert len(cde_set.elements) == 1
+    presence_element = cde_set.elements[0]
+    assert presence_element.name == f"Presence of {finding_name}"
+    assert re.match(SET_ELEMENT_ID_REGEX, presence_element.id)
+    assert presence_element.value_set.min_cardinality == 1
+    assert len(presence_element.value_set.values) == 4
+    first_value = presence_element.value_set.values[0]
+    assert first_value.name == "Absent"
+    assert first_value.code == f"{presence_element.id}.0"
+
+
+# Create a fixture loading a JSON file with a finding model
+
+FINDING_MODEL_DATA: Final[dict[str, str | list[Any]]] = {
+    "finding_name": "Test Finding",
+    "description": "Description of the test finding",
+    "attributes": [
+        {
+            "name": "Size",
+            "type": "numeric",
+            "minimum": 0,
+            "maximum": 10,
+            "unit": "cm",
+        },
+        {
+            "name": "Shape",
+            "type": "choice",
+            "values": [
+                {"name": "Round", "description": "The shape is round"},
+                {"name": "Oval", "description": "The shape is oval"},
+                {"name": "Irregular", "description": "The shape is irregular"},
+            ],
+        },
+        {
+            "name": "Presence",
+            "type": "choice",
+            "values": [
+                {"name": "Absent", "description": "The feature is not present"},
+                {"name": "Present", "description": "The feature is present"},
+                {"name": "Unknown", "description": "It is unknown whether the feature is present"},
+                {"name": "Indeterminate", "description": "It is indeterminate whether the feature is present"},
+            ],
+        },
+    ],
+}
+
+
+@pytest.fixture
+def finding_model() -> FindingModel:
+    return FindingModel.model_validate(FINDING_MODEL_DATA)
+
+
+def test_create_set_from_finding_model(finding_model):
+    cde_set = SetFactory.create_set_from_finding_model(finding_model)
+    assert isinstance(cde_set, CDESet)
+    assert cde_set.name == finding_model.finding_name
+    assert re.match(SET_ELEMENT_ID_REGEX, cde_set.id)
+    assert cde_set.description == finding_model.description
+    assert len(cde_set.elements) == 3
+    size_element = cde_set.elements[0]
+    assert size_element.name == "Size"
+    assert isinstance(size_element, FloatElement)
+    assert size_element.float_value.min == 0
+    assert size_element.float_value.max == 10
+    assert size_element.float_value.unit == "cm"
+    shape_element = cde_set.elements[1]
+    assert shape_element.name == "Shape"
+    assert isinstance(shape_element, ValueSetElement)
+    assert shape_element.value_set.min_cardinality == 1
+    assert len(shape_element.value_set.values) == 3
+    presence_element = cde_set.elements[2]
+    assert presence_element.name == "Presence"
+    assert isinstance(presence_element, ValueSetElement)
+    assert presence_element.value_set.min_cardinality == 1
+    assert len(presence_element.value_set.values) == 4
+    first_value = presence_element.value_set.values[0]
+    assert first_value.code == f"{presence_element.id}.0"
+    assert first_value.name == "Absent"
+    assert first_value.definition == "The feature is not present"

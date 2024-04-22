@@ -16,10 +16,12 @@ class SetFactory:
         return "".join(random.choices("0123456789", k=4))
 
     @staticmethod
-    def create_set(name: str, add_presence_element: bool = False) -> CDESet:
+    def create_set(name: str, /, description: str | None = None, add_presence_element: bool = False) -> CDESet:
         """Return a default required CDE Set metadata."""
 
-        assert name, "Name is required for a CDE Set"
+        if not name:
+            raise ValueError("Name is required for a CDE Set")
+
         random_digits = SetFactory.random_digits()
         today = date.today().strftime("%Y-%m-%d")
         version = Version(number=1, date=today)
@@ -28,7 +30,7 @@ class SetFactory:
         set = CDESet(
             id=f"TO_BE_DETERMINED{random_digits}",
             name=name,
-            description=f"Description for {name}",
+            description=(description or f"Description for {name}"),
             schema_version="1.0.0",
             set_version=version,
             status=status,
@@ -43,7 +45,10 @@ class SetFactory:
     @staticmethod
     def default_element_metadata(name) -> dict[str, str | dict | list]:
         """Return a default required CDE Element metadata."""
-        assert name, "Name is required for a CDE Element"
+
+        if not name:
+            raise ValueError("Name is required for a CDE Element")
+
         today = date.today().strftime("%Y-%m-%d")
         random_digits = SetFactory.random_digits()
 

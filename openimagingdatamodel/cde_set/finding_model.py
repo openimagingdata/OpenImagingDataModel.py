@@ -25,7 +25,7 @@ class ChoiceAttribute(BaseModel):
     name: str
     description: str | None = None
     type: Literal[AttributeType.CHOICE] = AttributeType.CHOICE
-    values: Annotated[list[ChoiceValue], Field(..., min_items=2)]
+    values: Annotated[list[ChoiceValue], Field(..., min_length=2)]
     required: bool = Field(
         False, description="Whether the attribute is used every time a radiologist describes the finding"
     )
@@ -70,7 +70,7 @@ class FindingModel(BaseModel):
         list[Attribute],
         Field(
             ...,
-            min_items=1,
+            min_length=1,
             title="Attributes",
             description="The attributes a radiologist would use to characterize a particular finding in a radiology report",  # noqa: E501
         ),
