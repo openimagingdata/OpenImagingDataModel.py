@@ -3,6 +3,8 @@
 import random
 from datetime import date
 
+from caseswitcher import to_snake
+
 from openimagingdatamodel.cde_set.finding_model import FindingModel
 
 from .common import Event, Status, Version
@@ -151,6 +153,11 @@ class SetFactory:
             if "name" not in out_value:
                 raise ValueError("Value must have a name")
             out_value["code"] = f"{element_id}.{ind}"
+            if "description" in out_value:
+                out_value["definition"] = out_value["description"]
+                del out_value["description"]
+            if "value" not in out_value:
+                out_value["value"] = to_snake(out_value["name"])
             return out_value
 
         values = [check_and_fix_value(value, i) for i, value in enumerate(values)]

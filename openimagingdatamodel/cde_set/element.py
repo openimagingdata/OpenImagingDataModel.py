@@ -1,6 +1,6 @@
 from typing import Literal, Union
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from .common import (
     Contributors,
@@ -16,8 +16,8 @@ from .common import (
 
 
 class BaseElement(BaseModel):
-    id: str  # TODO: Add regex for ID
-    parent_set: str | None = None  # TODO: add formatting for a Set ID
+    id: str = Field(pattern="^(RDE|TO_BE_DETERMINED)\d+")
+    parent_set: str | None = Field(default=None, pattern="^(RDES|TO_BE_DETERMINED)\d+")
     name: str
     definition: str | None = None
     question: str | None = None
@@ -33,7 +33,7 @@ class BaseElement(BaseModel):
 
 
 class ValueSetValue(BaseModel):
-    code: str  # TODO: Add regex for code
+    code: str = Field(pattern="^(RDE|TO_BE_DETERMINED)\d+\.\d+")
     value: str | None = None
     name: str
     definition: str | None = None

@@ -7,8 +7,6 @@ from openimagingdatamodel.cde_set.finding_model import FindingModel
 from openimagingdatamodel.cde_set.set import CDESet
 from openimagingdatamodel.cde_set.set_factory import SetFactory
 
-PYTEST_VERSION = pytest.__version__
-
 SET_ELEMENT_ID_REGEX = r"TO_BE_DETERMINED\d{4}"
 
 
@@ -83,12 +81,37 @@ def test_create_value_set_element():
     assert first_value.code == f"{element.id}.0"
 
 
+def test_create_value_set_element_with_dict_values():
+    name = "Test Value Set Element"
+    values = [
+        {"name": "Value 1", "description": "Description of value 1"},
+        {"name": "Value 2", "description": "Description of value 2"},
+        {"name": "Value 3", "description": "Description of value 3"},
+    ]
+    element = SetFactory.create_value_set_element(name, values, definition="Definition", question="Question")
+    assert isinstance(element, ValueSetElement)
+    # Assert that the element ID has the expected format
+    assert re.match(SET_ELEMENT_ID_REGEX, element.id)
+    assert element.name == name
+    assert element.definition == "Definition"
+    assert element.question == "Question"
+    assert element.value_set.min_cardinality == 1
+    assert element.value_set.max_cardinality == 1
+    assert len(element.value_set.values) == 3
+    first_value = element.value_set.values[0]
+    assert first_value.name == "Value 1"
+    assert first_value.definition == "Description of value 1"
+    # Assert that the value code is in the expected format
+    assert first_value.code == f"{element.id}.0"
+    assert first_value.value == "value_1"
+
+
 def test_create_presence_element():
     finding_name = "Test Finding"
     element = SetFactory.create_presence_element(finding_name)
     assert isinstance(element, ValueSetElement)
     assert re.match(SET_ELEMENT_ID_REGEX, element.id)
-    assert element.name == finding_name
+    assert element.name == f"Presence of {finding_name}"
     assert element.definition == f"Presence of {finding_name}"
     assert element.value_set.min_cardinality == 1
     assert element.value_set.max_cardinality == 1
