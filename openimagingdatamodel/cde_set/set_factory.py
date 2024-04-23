@@ -3,6 +3,8 @@
 import random
 from datetime import date
 
+from caseswitcher import to_snake
+
 from openimagingdatamodel.cde_set.finding_model import FindingModel
 
 from .common import Event, Status, Version
@@ -16,10 +18,12 @@ class SetFactory:
         return "".join(random.choices("0123456789", k=4))
 
     @staticmethod
-    def create_set(name: str, add_presence_element: bool = False) -> CDESet:
+    def create_set(name: str, /, description: str | None = None, add_presence_element: bool = False) -> CDESet:
         """Return a default required CDE Set metadata."""
 
-        assert name, "Name is required for a CDE Set"
+        if not name:
+            raise ValueError("Name is required for a CDE Set")
+
         random_digits = SetFactory.random_digits()
         today = date.today().strftime("%Y-%m-%d")
         version = Version(number=1, date=today)
@@ -28,7 +32,7 @@ class SetFactory:
         set = CDESet(
             id=f"TO_BE_DETERMINED{random_digits}",
             name=name,
-            description=f"Description for {name}",
+            description=(description or f"Description for {name}"),
             schema_version="1.0.0",
             set_version=version,
             status=status,
@@ -43,7 +47,10 @@ class SetFactory:
     @staticmethod
     def default_element_metadata(name) -> dict[str, str | dict | list]:
         """Return a default required CDE Element metadata."""
-        assert name, "Name is required for a CDE Element"
+
+        if not name:
+            raise ValueError("Name is required for a CDE Element")
+
         today = date.today().strftime("%Y-%m-%d")
         random_digits = SetFactory.random_digits()
 
@@ -146,6 +153,11 @@ class SetFactory:
             if "name" not in out_value:
                 raise ValueError("Value must have a name")
             out_value["code"] = f"{element_id}.{ind}"
+            if "description" in out_value:
+                out_value["definition"] = out_value["description"]
+                del out_value["description"]
+            if "value" not in out_value:
+                out_value["value"] = to_snake(out_value["name"])
             return out_value
 
         values = [check_and_fix_value(value, i) for i, value in enumerate(values)]
