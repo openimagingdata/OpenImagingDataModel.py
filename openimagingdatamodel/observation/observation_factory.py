@@ -34,9 +34,9 @@ ComponentValueMap: TypeAlias = Mapping[str, ComponentValue]
 
 class ObservationFactory:
     @classmethod
-    def generate_observation_id(cls) -> str:
+    def generate_observation_id(cls, cde_set: CDESet) -> str:
         """Create a unique observation ID."""
-        finding_name = to_snake(cls.cde_set.name)
+        finding_name = to_snake(cde_set.name)
         return f"{finding_name}_{generate_nanoid(size=10)}"
 
     DEFAULT_IDENTIFIER_SYSTEM: Final[str] = "urn:dicom:uid"
@@ -58,14 +58,14 @@ class ObservationFactory:
         """
 
         identifier = identifier or "urn:oid:2.25." + str(uuid.uuid4().int)
-        return Identifier.model_parse(system=system, value=identifier)
+        return Identifier(system=system, value=identifier)
 
     RADELEMENT_URL: Final[str] = "https://www.radelement.org"
 
     @classmethod
     def create_cde_set_code(cls, cde_set: CDESet) -> Code:
         """Use a CDESet to create a Code for the `code` element of an Observation."""
-        return Code.model_parse(
+        return Code(
             codings=[
                 {
                     "system": cls.RADELEMENT_URL,
@@ -77,7 +77,7 @@ class ObservationFactory:
 
     @classmethod
     def element_to_code(cls, element) -> CodeableConcept:
-        return CodeableConcept.model_parse(
+        return CodeableConcept(
             codings=[
                 {
                     "system": cls.RADELEMENT_URL,
@@ -92,7 +92,7 @@ class ObservationFactory:
         """Wrap a ValueSetElement value in a CodeableConceptComponent."""
         el_value: ValueSetValue = element.get_value(value)
         element_code = cls.element_to_code(element)
-        return CodeableConceptComponent.model_parse(
+        return CodeableConceptComponent(
             code=element_code,
             value_codeable_concept=CodeableConcept.model_parse(
                 codings=[
@@ -113,21 +113,21 @@ class ObservationFactory:
             if not isinstance(value, str):
                 raise ValueError(f"Value must be a string for ValueSetElement {element.id}")
             value_codeable_concept: CodeableConcept = cls.wrap_value_set_value(element, value)
-            return CodeableConceptComponent.model_parse(code=code, value_codeable_concept=value_codeable_concept)
+            return CodeableConceptComponent(code=code, value_codeable_concept=value_codeable_concept)
         if isinstance(element, BooleanElement):
             if not isinstance(value, (bool, float, int)):
                 raise ValueError(f"Value must be a boolean or number for BooleanElement {element.id}")
-            return BooleanComponent.model_parse(code=code, value_boolean=bool(value))
+            return BooleanComponent(code=code, value_boolean=bool(value))
         if isinstance(element, FloatElement):
             value = float(value)
             if not isinstance(value, float):
                 raise ValueError(f"Value must be a number for FloatElement {element.id}")
-            return StringComponent.model_parse(code=code, value_string=str(value))
+            return StringComponent(code=code, value_string=str(value))
         if isinstance(element, IntegerElement):
             value = int(value)
             if not isinstance(value, int):
                 raise ValueError(f"Value must be an integer for IntegerElement {element.id}")
-            return IntegerComponent.model_parse(code=code, value_integer=value)
+            return IntegerComponent(code=code, value_integer=value)
 
     DEFAULT_STATUS: Final[StatusValue] = "preliminary"
 
@@ -158,7 +158,7 @@ class ObservationFactory:
             body_site: The body_site of the observation.
             component_values: A mapping of CDE names or IDs to values.
         """
-        id = id or cls.generate_observation_id()
+        id = id or cls.generate_observation_id(cde_set)
         if not isinstance(identifier, Identifier):
             identifier = cls.generate_observation_identifier(identifier)
         code: Code = cls.create_cde_set_code(cde_set)

@@ -4,12 +4,18 @@ import random
 from datetime import date
 
 from caseswitcher import to_snake
+from pydantic import BaseModel
 
 from openimagingdatamodel.cde_set.finding_model import FindingModel
 
 from .common import Event, Status, Version
 from .element import BooleanElement, FloatElement, FloatValue, IntegerElement, IntegerValue, ValueSet, ValueSetElement
 from .set import CDESet
+
+
+class SetIdMapping(BaseModel):
+    set_id: str
+    element_ids: dict[str, str]
 
 
 class SetFactory:
@@ -222,3 +228,14 @@ class SetFactory:
                 new_el.definition = element.description
             set.elements.append(new_el)
         return set
+
+    @staticmethod
+    def update_set_ids_from_mapping(set: CDESet, mapping: SetIdMapping | dict[str, str | dict[str, str]]) -> None:
+        if not isinstance(mapping, SetIdMapping):
+            mapping = SetIdMapping.model_validate(mapping)
+        set.id = mapping.set_id
+        for element in set.elements:
+            element.id = mapping.element_ids[element.name]
+            if isinstance(element, ValueSetElement):
+                for i in range(0, len(element.value_set.values)):
+                    element.value_set.values[i].code = f"{element.id}.{i}"
