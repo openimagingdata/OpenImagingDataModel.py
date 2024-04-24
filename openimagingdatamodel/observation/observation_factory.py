@@ -88,22 +88,19 @@ class ObservationFactory:
         )
 
     @classmethod
-    def wrap_value_set_value(cls, element: ValueSetElement, value: str) -> CodeableConceptComponent:
+    def wrap_value_set_value(cls, element: ValueSetElement, value: str) -> CodeableConcept:
         """Wrap a ValueSetElement value in a CodeableConceptComponent."""
         el_value: ValueSetValue = element.get_value(value)
-        element_code = cls.element_to_code(element)
-        return CodeableConceptComponent(
-            code=element_code,
-            value_codeable_concept=CodeableConcept.model_parse(
-                codings=[
-                    {
-                        "system": cls.RADELEMENT_URL,
-                        "code": el_value.code,
-                        "display": el_value.name,
-                    }
-                ]
-            ),
-        )
+        out_value = CodeableConcept.model_validate({
+            "codings": [
+                {
+                    "system": cls.RADELEMENT_URL,
+                    "code": el_value.code,
+                    "display": el_value.name,
+                }
+            ]
+        })
+        return out_value
 
     @classmethod
     def create_component(cls, element: CDEElement, value: ComponentValue) -> Component:

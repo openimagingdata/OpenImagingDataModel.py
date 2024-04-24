@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from functools import cache
-
 from pydantic import BaseModel, Field, HttpUrl
 
 from .common import (  # noqa: TCH001
@@ -39,10 +37,14 @@ class CDESet(BaseModel):
     elements: list[CDEElement] = Field(default_factory=list)  # TODO: Require at least one element
     references: list[Reference] | None = None
 
-    @cache  # noqa: B019
     def get_element(self, element: str) -> CDEElement:
         """Get a component CDEElement by name or ID."""
-        for e in self.elements:
-            if e.name == element or e.id == element:
-                return e
+        element = element.casefold()
+        if not hasattr(self, "_element_index"):
+            self._element_index = {}
+            for el in self.elements:
+                self._element_index[el.id.casefold()] = el
+                self._element_index[el.name.casefold()] = el
+        if element in self._element_index:
+            return self._element_index[element]
         raise ValueError(f"Element '{element}' not found in CDE Set '{self.id}' ({self.name})")
