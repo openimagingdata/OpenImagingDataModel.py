@@ -71,7 +71,7 @@ ignore = [
 [tool.ruff.format]
 preview = true
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 order-by-type = true
 relative-imports-order = "closest-to-furthest"
 extra-standard-library = ["typing"]
@@ -88,3 +88,5 @@ mypy = "mypy"
 ruff_lint = "ruff check"
 ruff_format = "ruff format"
 lint = ["ruff_lint", "mypy", "ruff_format"]
+test = "pytest"
+check = ["lint", "test"]

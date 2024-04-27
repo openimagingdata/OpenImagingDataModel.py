@@ -16,9 +16,9 @@ from openimagingdatamodel.cde_set.element import (
 
 from .observation import (
     BooleanComponent,
-    Code,
     CodeableConcept,
     CodeableConceptComponent,
+    Coding,
     Component,
     Identifier,
     IntegerComponent,
@@ -63,29 +63,16 @@ class ObservationFactory:
     RADELEMENT_URL: Final[str] = "https://www.radelement.org"
 
     @classmethod
-    def create_cde_set_code(cls, cde_set: CDESet) -> Code:
+    def create_cde_set_code(cls, cde_set: CDESet) -> CodeableConcept:
         """Use a CDESet to create a Code for the `code` element of an Observation."""
-        return Code(
-            codings=[
-                {
-                    "system": cls.RADELEMENT_URL,
-                    "code": cde_set.id,
-                    "display": cde_set.name,
-                }
-            ]
-        )
+        coding = Coding(system=cls.RADELEMENT_URL, code=cde_set.id, display=cde_set.name)
+        return CodeableConcept(coding=[coding])
 
     @classmethod
     def element_to_code(cls, element) -> CodeableConcept:
-        return CodeableConcept(
-            codings=[
-                {
-                    "system": cls.RADELEMENT_URL,
-                    "code": element.id,
-                    "display": element.name,
-                }
-            ]
-        )
+        """Convert a CDEElement to a CodeableConceptComponent."""
+        coding = Coding(system=cls.RADELEMENT_URL, code=element.id, display=element.name)
+        return CodeableConcept(coding=[coding])
 
     @classmethod
     def wrap_value_set_value(cls, element: ValueSetElement, value: str) -> CodeableConcept:
@@ -110,21 +97,21 @@ class ObservationFactory:
             if not isinstance(value, str):
                 raise ValueError(f"Value must be a string for ValueSetElement {element.id}")
             value_codeable_concept: CodeableConcept = cls.wrap_value_set_value(element, value)
-            return CodeableConceptComponent(code=code, value_codeable_concept=value_codeable_concept)
+            return CodeableConceptComponent(code=code, value_codeable_concept=value_codeable_concept)  # type: ignore
         if isinstance(element, BooleanElement):
             if not isinstance(value, (bool, float, int)):
                 raise ValueError(f"Value must be a boolean or number for BooleanElement {element.id}")
-            return BooleanComponent(code=code, value_boolean=bool(value))
+            return BooleanComponent(code=code, value_boolean=bool(value))  # type: ignore
         if isinstance(element, FloatElement):
             value = float(value)
             if not isinstance(value, float):
                 raise ValueError(f"Value must be a number for FloatElement {element.id}")
-            return StringComponent(code=code, value_string=str(value))
+            return StringComponent(code=code, value_string=str(value))  # type: ignore
         if isinstance(element, IntegerElement):
             value = int(value)
             if not isinstance(value, int):
                 raise ValueError(f"Value must be an integer for IntegerElement {element.id}")
-            return IntegerComponent(code=code, value_integer=value)
+            return IntegerComponent(code=code, value_integer=value)  # type: ignore
 
     DEFAULT_STATUS: Final[StatusValue] = "preliminary"
 
@@ -158,8 +145,8 @@ class ObservationFactory:
         id = id or cls.generate_observation_id(cde_set)
         if not isinstance(identifier, Identifier):
             identifier = cls.generate_observation_identifier(identifier)
-        code: Code = cls.create_cde_set_code(cde_set)
-        other_kwargs = {}
+        code: CodeableConcept = cls.create_cde_set_code(cde_set)
+        other_kwargs: dict[str, Any] = {}
         if subject:
             other_kwargs["subject"] = subject
         if focus:
@@ -173,4 +160,4 @@ class ObservationFactory:
                 cls.create_component(cde_set.get_element(el_name), value) for el_name, value in component_values.items()
             ]
             other_kwargs["components"] = components
-        return Observation(id=id, identifiers=[identifier], code=code, status=status, **other_kwargs)
+        return Observation(id=id, identifiers=[identifier], code=code, status=status, **other_kwargs)  # type: ignore

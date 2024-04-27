@@ -21,14 +21,9 @@ class Coding(BaseModel):
     user_selected: bool | None = Field(default=None, alias="userSelected")
 
 
-class Code(BaseModel):
-    model_config = ConfigDict(populate_by_name=True)
-    codings: list[Coding] = Field(alias="coding")
-
-
 class CodeableConcept(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
-    codings: list[Coding] | None = Field(default=None, alias="coding")
+    codings: list[Coding] = Field(alias="coding", min_length=1)
     text: str | None = None
 
 
@@ -83,10 +78,20 @@ class Observation(BaseModel):
     resourceType: Literal["Observation"] = "Observation"
     id_: str = Field(alias="id")
     identifiers: list[Identifier] | None = Field(default=None, alias="identifier")
-    code: Code | None = None
+    code: CodeableConcept | None = None
     status: StatusValue
     subject: Reference | None = None
     focus: list[Mapping[str, Any]] | None = None
     body_site: CodeableConcept | None = Field(default=None, alias="bodySite")
     derived_from: list[Reference] | None = Field(default=None, alias="derivedFrom")
     components: list[Component] = Field(default_factory=list, alias="component")
+
+    def add_code_str(self, code: str, system: str, display: str | None = None) -> None:
+        coding = Coding(system=system, code=code, display=display)
+        self.add_coding(coding)
+
+    def add_coding(self, coding: Coding) -> None:
+        if self.code is None:
+            self.code = CodeableConcept(coding=[coding])
+        else:
+            self.code.codings.append(coding)

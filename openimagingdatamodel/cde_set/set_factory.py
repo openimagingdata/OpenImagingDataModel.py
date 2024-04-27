@@ -2,7 +2,7 @@
 
 import random
 from datetime import date
-from typing import Any, Mapping, Sequence
+from typing import Any
 
 from caseswitcher import to_snake
 from pydantic import BaseModel, ValidationError
@@ -15,9 +15,9 @@ from .element import BooleanElement, FloatElement, FloatValue, IntegerElement, I
 from .set import CDESet
 
 
-class SetIdMapping(BaseModel):
+class SetIddict(BaseModel):
     set_id: str
-    element_ids: Mapping[str, str]
+    element_ids: dict[str, str]
 
 
 class SetFactory:
@@ -53,7 +53,7 @@ class SetFactory:
         return set
 
     @staticmethod
-    def default_element_metadata(name) -> Mapping[str, str | Mapping[str, Any] | Sequence[Any]]:
+    def default_element_metadata(name) -> dict[str, str | dict[str, Any] | list[Any]]:
         """Return a default required CDE Element metadata."""
 
         if not name:
@@ -90,7 +90,7 @@ class SetFactory:
         boilerplate = SetFactory.default_element_metadata(name)
         boilerplate["id"] = element_id
 
-        integer_value_args: Mapping[str, str | int] = {}
+        integer_value_args: dict[str, str | int] = {}
         if min is not None:
             integer_value_args["min"] = min
         if max is not None:
@@ -99,7 +99,7 @@ class SetFactory:
             integer_value_args["step"] = step
         if unit is not None:
             integer_value_args["unit"] = unit
-        return IntegerElement(**boilerplate, integer_value=IntegerValue(**integer_value_args))
+        return IntegerElement(**boilerplate, integer_value=IntegerValue(**integer_value_args))  # type: ignore
 
     @staticmethod
     def create_float_element(
@@ -115,7 +115,7 @@ class SetFactory:
         boilerplate = SetFactory.default_element_metadata(name)
         boilerplate["id"] = element_id
 
-        float_value_args = {}
+        float_value_args: dict[str, str | float] = {}
         if min is not None:
             float_value_args["min"] = min
         if max is not None:
@@ -124,7 +124,7 @@ class SetFactory:
             float_value_args["step"] = step
         if unit is not None:
             float_value_args["unit"] = unit
-        return FloatElement(**boilerplate, float_value=FloatValue(**float_value_args))
+        return FloatElement(**boilerplate, float_value=FloatValue(**float_value_args))  # type: ignore
 
     @staticmethod
     def create_boolean_element(name: str) -> BooleanElement:
@@ -132,13 +132,12 @@ class SetFactory:
         element_id = "TO_BE_DETERMINED" + SetFactory.random_digits()
         boilerplate = SetFactory.default_element_metadata(name)
         boilerplate["id"] = element_id
-
-        return BooleanElement(**boilerplate, boolean_value="boolean")
+        return BooleanElement(**boilerplate, boolean_value="boolean")  # type: ignore
 
     @staticmethod
     def create_value_set_element(
         name: str,
-        values: Sequence[Mapping[str, str] | str],
+        values: list[dict[str, str] | str],
         /,
         definition: str | None = None,
         question: str | None = None,
@@ -156,8 +155,8 @@ class SetFactory:
 
         assert values and len(values) >= 2, "Value set must have at least two values"
 
-        def check_and_fix_value(value: Mapping[str, str] | str, ind: int) -> Mapping[str, str]:
-            out_value = value.copy() if isinstance(value, Mapping) else {"name": value}
+        def check_and_fix_value(value: dict[str, str] | str, ind: int) -> dict[str, str]:
+            out_value = value.copy() if isinstance(value, dict) else {"name": value}
             if "name" not in out_value:
                 raise ValueError("Value must have a name")
             out_value["code"] = f"{element_id}.{ind}"
@@ -176,7 +175,7 @@ class SetFactory:
             "values": values,
         })
 
-        return ValueSetElement(**boilerplate, value_set=value_set)
+        return ValueSetElement(**boilerplate, value_set=value_set)  # type: ignore
 
     @staticmethod
     def create_presence_element(
@@ -190,7 +189,7 @@ class SetFactory:
         if not question:
             question = f"Is the {finding_name} present?" if finding_name else "Is the feature present?"
 
-        values = [
+        values: list[dict[str, str] | str] = [
             {
                 "value": "absent",
                 "name": "Absent",
@@ -220,13 +219,14 @@ class SetFactory:
             raise e
         set.description = model.description
         for element in model.attributes:
-            if element.type == "choice":
-                values = [value.model_dump() for value in element.values]
+            new_el: FloatElement | ValueSetElement
+            if isinstance(element, finding_model.ChoiceAttribute):
+                values: list[dict[str, str] | str] = [value.model_dump() for value in element.values]
                 new_el = SetFactory.create_value_set_element(element.name, values)
                 for el_value, att_value in zip(new_el.value_set.values, values):
-                    if description := att_value.get("description"):
+                    if isinstance(att_value, dict) and (description := att_value.get("description")):
                         el_value.definition = description
-            if element.type == "numeric":
+            if isinstance(element, finding_model.NumericAttribute):
                 new_el = SetFactory.create_float_element(
                     element.name, min=element.minimum, max=element.maximum, unit=element.unit
                 )
@@ -236,12 +236,12 @@ class SetFactory:
         return set
 
     @staticmethod
-    def update_set_ids_from_mapping(set: CDESet, mapping: SetIdMapping | Mapping[str, str | Mapping[str, str]]) -> None:
-        if not isinstance(mapping, SetIdMapping):
-            mapping = SetIdMapping.model_validate(mapping)
-        set.id = mapping.set_id
+    def update_set_ids_from_dict(set: CDESet, dict: SetIddict | dict[str, str | dict[str, str]]) -> None:
+        if not isinstance(dict, SetIddict):
+            dict = SetIddict.model_validate(dict)
+        set.id = dict.set_id
         for element in set.elements:
-            element.id = mapping.element_ids[element.name]
+            element.id = dict.element_ids[element.name]
             if isinstance(element, ValueSetElement):
                 for i in range(0, len(element.value_set.values)):
                     element.value_set.values[i].code = f"{element.id}.{i}"

@@ -9,7 +9,6 @@ from openimagingdatamodel.cde_set.element import (
 from openimagingdatamodel.cde_set.set_factory import SetFactory
 from openimagingdatamodel.observation.observation import (
     BooleanComponent,
-    Code,
     CodeableConcept,
     CodeableConceptComponent,
     Identifier,
@@ -35,13 +34,13 @@ def float_element() -> FloatElement:
 
 @pytest.fixture
 def integer_element() -> IntegerElement:
-    el = SetFactory.create_float_element("count", min=-0)
+    el = SetFactory.create_integer_element("count", min=-0)
     return el
 
 
 @pytest.fixture
 def value_set_element() -> ValueSetElement:
-    values = ["mild", "moderate", "severe", "indeterminate"]
+    values: list[dict[str, str] | str] = ["mild", "moderate", "severe", "indeterminate"]
     el = SetFactory.create_value_set_element("severity", values)
     return el
 
@@ -66,7 +65,7 @@ class TestObservationFactory:
 
     def test_create_cde_set_code(self, cde_set: CDESet):
         code = ObservationFactory.create_cde_set_code(cde_set)
-        assert isinstance(code, Code)
+        assert isinstance(code, CodeableConcept)
         assert len(code.codings) > 0
         assert code.codings[0].code == cde_set.id
 
@@ -101,7 +100,7 @@ class TestObservationFactory:
         assert observation.id_
         assert observation.status
 
-    def test_create_observation_with_component_values(self, cde_set):
+    def test_create_observation_with_component_values(self, cde_set) -> None:
         component_values: ComponentValueMap = {
             "has feature": False,
             "density": 123.3,

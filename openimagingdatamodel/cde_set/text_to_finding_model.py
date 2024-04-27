@@ -50,7 +50,7 @@ async def text_to_finding_model(expert_text: str) -> FindingModel:
     client = from_openai(openai)
     response = await client.chat.completions.create(
         model="gpt-3.5-turbo",
-        messages=PROMPT
+        messages=PROMPT  # type: ignore
         + [
             {
                 "role": "user",
