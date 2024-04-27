@@ -2,10 +2,12 @@
 
 import random
 from datetime import date
+from typing import Any, Mapping, Sequence
 
 from caseswitcher import to_snake
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
+from openimagingdatamodel.cde_set import finding_model
 from openimagingdatamodel.cde_set.finding_model import FindingModel
 
 from .common import Event, Status, Version
@@ -15,7 +17,7 @@ from .set import CDESet
 
 class SetIdMapping(BaseModel):
     set_id: str
-    element_ids: dict[str, str]
+    element_ids: Mapping[str, str]
 
 
 class SetFactory:
@@ -51,7 +53,7 @@ class SetFactory:
         return set
 
     @staticmethod
-    def default_element_metadata(name) -> dict[str, str | dict | list]:
+    def default_element_metadata(name) -> Mapping[str, str | Mapping[str, Any] | Sequence[Any]]:
         """Return a default required CDE Element metadata."""
 
         if not name:
@@ -88,7 +90,7 @@ class SetFactory:
         boilerplate = SetFactory.default_element_metadata(name)
         boilerplate["id"] = element_id
 
-        integer_value_args = {}
+        integer_value_args: Mapping[str, str | int] = {}
         if min is not None:
             integer_value_args["min"] = min
         if max is not None:
@@ -136,7 +138,7 @@ class SetFactory:
     @staticmethod
     def create_value_set_element(
         name: str,
-        values: list[dict[str, str] | str],
+        values: Sequence[Mapping[str, str] | str],
         /,
         definition: str | None = None,
         question: str | None = None,
@@ -154,8 +156,8 @@ class SetFactory:
 
         assert values and len(values) >= 2, "Value set must have at least two values"
 
-        def check_and_fix_value(value: dict[str, str] | str, ind: int) -> dict[str, str]:
-            out_value = value.copy() if isinstance(value, dict) else {"name": value}
+        def check_and_fix_value(value: Mapping[str, str] | str, ind: int) -> Mapping[str, str]:
+            out_value = value.copy() if isinstance(value, Mapping) else {"name": value}
             if "name" not in out_value:
                 raise ValueError("Value must have a name")
             out_value["code"] = f"{element_id}.{ind}"
@@ -211,7 +213,11 @@ class SetFactory:
 
     @staticmethod
     def create_set_from_finding_model(model: FindingModel) -> CDESet:
-        set: CDESet = SetFactory.create_set(model.finding_name)
+        try:
+            set: CDESet = SetFactory.create_set(model.finding_name)
+        except ValidationError as e:
+            print(f"Error creating set from model {finding_model}: {e}")
+            raise e
         set.description = model.description
         for element in model.attributes:
             if element.type == "choice":
@@ -230,7 +236,7 @@ class SetFactory:
         return set
 
     @staticmethod
-    def update_set_ids_from_mapping(set: CDESet, mapping: SetIdMapping | dict[str, str | dict[str, str]]) -> None:
+    def update_set_ids_from_mapping(set: CDESet, mapping: SetIdMapping | Mapping[str, str | Mapping[str, str]]) -> None:
         if not isinstance(mapping, SetIdMapping):
             mapping = SetIdMapping.model_validate(mapping)
         set.id = mapping.set_id
