@@ -22,9 +22,19 @@ class SnomedCTConceptRepo:
         concept = await self.collection.find_one({"conceptId": concept_id})
         return SnomedCTConcept.model_validate(concept)
 
-    # TODO: Implement the following methods
     # - Get count of all concepts
+    async def get_snomedct_count(self):
+        snomed_ct_count = await self.collection.count_documents({})
+        return snomed_ct_count
+
     # - Do a basic text search (need index on preferredTerm field)
+    async def get_snomedct_results(self, search_term: str) -> list[SnomedCTConcept]:
+        self.collection.create_index([('preferredTerm', 'text')])
+        raw_results = await self.collection.find({'$text': {'$search': search_term}})
+        return [SnomedCTSearchResult.model_validate(result) for result in raw_results]
+
+
+    # TODO: Implement the following methods
     # - Use Atlas full-text search to do a text search
 
     async def get_search_results(self, search_term: str, count: int = 50) -> list[SnomedCTConcept]:
