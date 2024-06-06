@@ -1,3 +1,5 @@
+from typing import Any, Mapping
+
 from motor.motor_asyncio import AsyncIOMotorCollection
 from pydantic import BaseModel, ConfigDict
 from pydantic.alias_generators import to_camel
@@ -27,18 +29,8 @@ class SnomedCTConceptRepo:
         snomed_ct_count = await self.collection.count_documents({})
         return snomed_ct_count
 
-    # - Do a basic text search (need index on preferredTerm field)
-    async def get_snomedct_results(self, search_term: str) -> list[SnomedCTConcept]:
-        self.collection.create_index([('preferredTerm', 'text')])
-        raw_results = await self.collection.find({'$text': {'$search': search_term}})
-        return [SnomedCTSearchResult.model_validate(result) for result in raw_results]
-
-
-    # TODO: Implement the following methods
-    # - Use Atlas full-text search to do a text search
-
-    async def get_search_results(self, search_term: str, count: int = 50) -> list[SnomedCTConcept]:
-        pipeline = [
+    async def get_search_results(self, search_term: str, count: int = 50) -> list[SnomedCTSearchResult]:
+        pipeline: list[Mapping[str, Any]] = [
             {"$search": {"index": "defaultText", "text": {"query": search_term, "path": {"wildcard": "*"}}}},
             {"$limit": count},
             {
