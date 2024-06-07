@@ -27,6 +27,7 @@ class SnomedCTConcept(BaseModel):
     concept_id: str
     effective_date: date
     modules: list[SnomedCTModule]
+    embedding: list[float] | None = None
     language_code: str
     preferred_term: str
     terms: list[str]
