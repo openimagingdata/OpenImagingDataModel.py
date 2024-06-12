@@ -1,5 +1,5 @@
-from openai import AsyncOpenAI, CreateEmbeddingResponse, OpenAI
-
+from openai import AsyncOpenAI, OpenAI
+from openai.types import CreateEmbeddingResponse
 from .snomedct_concept import SnomedCTConcept
 
 DEFAULT_DIMENSIONS = 1536
@@ -19,12 +19,22 @@ class EmbeddingCreator(AbstractEmbeddingCreator):
         self.client = client
 
     def create_embedding_for_snomedctconcept(
-        self, concept: SnomedCTConcept, /, model=DEFAULT_MODEL, dimensions: int = DEFAULT_DIMENSIONS
-    ):
+        self, concept: SnomedCTConcept, /, model: str = DEFAULT_MODEL, dimensions: int = DEFAULT_DIMENSIONS
+    ) -> list[float]:
         text = self.get_text_for_embedding(concept)
         response = self.client.embeddings.create(input=[text], model=model, dimensions=dimensions)
         return self.get_embedding_vector_from_response(response)
-
+    
+    def create_embedding_for_snomedctconcepts(
+        self, concepts: list[SnomedCTConcept], /, model: str =DEFAULT_MODEL, dimensions: int = DEFAULT_DIMENSIONS      
+    ) -> list[list[float]]:
+        embedding_vectors = []
+        for concept in concepts:
+            text = self.get_text_for_embedding(concept)
+            response = self.client.embeddings.create(input=[text], model=model, dimensions=dimensions)
+            embedding_vectors.append(self.get_embedding_vector_from_response(response))
+        return embedding_vectors
+        
 
 class AsyncEmbeddingCreator(AbstractEmbeddingCreator):
     def __init__(self, client: AsyncOpenAI):
@@ -32,7 +42,17 @@ class AsyncEmbeddingCreator(AbstractEmbeddingCreator):
 
     async def create_embedding_for_snomedctconcept(
         self, concept: SnomedCTConcept, /, model=DEFAULT_MODEL, dimensions: int = DEFAULT_DIMENSIONS
-    ):
+    ) -> list[float]:
         text = self.get_text_for_embedding(concept)
         response = await self.client.embeddings.create(input=[text], model=model, dimensions=dimensions)
         return self.get_embedding_vector_from_response(response)
+
+    async def create_embedding_for_snomedctconcepts(
+        self, concepts: list[SnomedCTConcept], /, model=DEFAULT_MODEL, dimensions: int = DEFAULT_DIMENSIONS
+    ) -> list[list[float]]:
+        embedding_vectors = []
+        for concept in concepts:
+            text = self.get_text_for_embedding(concept)
+            response = await self.client.embeddings.create(input=[text], model=model, dimensions=dimensions)
+            embedding_vectors.append(self.get_embedding_vector_from_response(response))
+        return embedding_vectors
