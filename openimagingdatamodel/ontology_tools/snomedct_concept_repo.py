@@ -46,13 +46,14 @@ class SnomedCTConceptRepo:
         raw_results = await self.collection.aggregate(pipeline).to_list(count)
         return [SnomedCTSearchResult.model_validate(result) for result in raw_results]
 
-    async def update_concept(self, concept: SnomedCTConcept) -> SnomedCTConcept:
+    async def update_concept(self, concept: SnomedCTConcept, embedded_vector) -> int:
         # Update the concept embedding vectore in the database
-        snomed_ct = await self.collection.update_one(
+        updated_result = await self.collection.update_one(
             {'conceptId': concept.concept_id},
-            {'$set': {'embedding_vector': concept.embedding_vector}}
+            {'$set': {'embedding_vector': embedded_vector}}
         )
-        return SnomedCTConcept.model_validate(concept)
+
+        return updated_result.modified_count
     
     # - Write vectors back to the database for a batch of concepts
     # - Define a vector index
