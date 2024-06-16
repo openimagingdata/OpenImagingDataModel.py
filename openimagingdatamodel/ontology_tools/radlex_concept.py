@@ -24,6 +24,15 @@ class RadLexConcept(BaseModel):
     parent: str | None = None
     definition: str | None = None
     radlex_properties: RadLexProperties | None = None
+    embedding_vector: list[float] | None = None
+
+    def text_for_embedding(self) -> str:
+        out = self.preferred_label
+        if self.definition:
+            out += f": {self.definition}"
+        if self.synonyms:
+            out += f" (synonyms: {'; '.join(self.synonyms)})"
+        return out
 
     # Field validator for radlex property dictionary keys
     @field_validator("radlex_properties", mode="before")
