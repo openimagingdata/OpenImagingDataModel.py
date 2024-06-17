@@ -1,0 +1,505 @@
+{
+  "id": "RDES195",
+  "name": "Pulmonary Nodule",
+  "description": "Pulmonary Nodule",
+  "set_version": {
+    "number": 1,
+    "date": "2024-04-23"
+  },
+  "schema_version": "1.0.0",
+  "status": {
+    "date": "2024-04-23",
+    "name": "Proposed"
+  },
+  "index_codes": [],
+  "history": [
+    {
+      "date": "2024-04-23",
+      "status": {
+        "date": "2024-04-23",
+        "name": "Proposed"
+      }
+    }
+  ],
+  "specialties": [],
+  "elements": [
+    {
+      "id": "RDE1301",
+      "name": "Composition",
+      "element_version": {
+        "number": 1,
+        "date": "2024-04-23"
+      },
+      "schema_version": "1.0.0",
+      "status": {
+        "date": "2024-04-23",
+        "name": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "RDE1301.0",
+            "value": "solid",
+            "name": "solid"
+          },
+          {
+            "code": "RDE1301.1",
+            "value": "ground_glass",
+            "name": "ground glass"
+          },
+          {
+            "code": "RDE1301.2",
+            "value": "part_solid",
+            "name": "part-solid"
+          },
+          {
+            "code": "RDE1301.3",
+            "value": "fat_density",
+            "name": "fat density"
+          },
+          {
+            "code": "RDE1301.4",
+            "value": "calcification",
+            "name": "calcification"
+          },
+          {
+            "code": "RDE1301.5",
+            "value": "cavitation",
+            "name": "cavitation"
+          },
+          {
+            "code": "RDE1301.6",
+            "value": "cystic_lucencies",
+            "name": "cystic lucencies"
+          },
+          {
+            "code": "RDE1301.7",
+            "value": "air_bronchograms",
+            "name": "air bronchograms"
+          },
+          {
+            "code": "RDE1301.8",
+            "value": "indeterminate",
+            "name": "indeterminate"
+          },
+          {
+            "code": "RDE1301.9",
+            "value": "unknown",
+            "name": "unknown"
+          }
+        ]
+      }
+    },
+    {
+      "id": "RDE1302",
+      "name": "Size",
+      "definition": "Average diameter in mm",
+      "element_version": {
+        "number": 1,
+        "date": "2024-04-23"
+      },
+      "schema_version": "1.0.0",
+      "status": {
+        "date": "2024-04-23",
+        "name": "Proposed"
+      },
+      "float_value": {
+        "min": 2.0,
+        "unit": "mm"
+      }
+    },
+    {
+      "id": "RDE1303",
+      "name": "Solid component size",
+      "element_version": {
+        "number": 1,
+        "date": "2024-04-23"
+      },
+      "schema_version": "1.0.0",
+      "status": {
+        "date": "2024-04-23",
+        "name": "Proposed"
+      },
+      "float_value": {
+        "min": 2.0,
+        "unit": "mm"
+      }
+    },
+    {
+      "id": "RDE1304",
+      "name": "Location",
+      "element_version": {
+        "number": 1,
+        "date": "2024-04-23"
+      },
+      "schema_version": "1.0.0",
+      "status": {
+        "date": "2024-04-23",
+        "name": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "RDE1304.0",
+            "value": "indeterminate",
+            "name": "indeterminate"
+          },
+          {
+            "code": "RDE1304.1",
+            "value": "left_lung",
+            "name": "left lung"
+          },
+          {
+            "code": "RDE1304.2",
+            "value": "left_upper_lobe",
+            "name": "left upper lobe"
+          },
+          {
+            "code": "RDE1304.3",
+            "value": "lingula",
+            "name": "lingula"
+          },
+          {
+            "code": "RDE1304.4",
+            "value": "left_lower_lobe",
+            "name": "left lower lobe"
+          },
+          {
+            "code": "RDE1304.5",
+            "value": "right_lung",
+            "name": "right lung"
+          },
+          {
+            "code": "RDE1304.6",
+            "value": "right_upper_lobe",
+            "name": "right upper lobe"
+          },
+          {
+            "code": "RDE1304.7",
+            "value": "middle_lobe",
+            "name": "middle lobe"
+          },
+          {
+            "code": "RDE1304.8",
+            "value": "right_lower_lobe",
+            "name": "right lower lobe"
+          },
+          {
+            "code": "RDE1304.9",
+            "value": "unknown",
+            "name": "unknown"
+          }
+        ]
+      }
+    },
+    {
+      "id": "RDE1305",
+      "name": "Morphology",
+      "element_version": {
+        "number": 1,
+        "date": "2024-04-23"
+      },
+      "schema_version": "1.0.0",
+      "status": {
+        "date": "2024-04-23",
+        "name": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "RDE1305.0",
+            "value": "smooth",
+            "name": "smooth"
+          },
+          {
+            "code": "RDE1305.1",
+            "value": "lobulated",
+            "name": "lobulated"
+          },
+          {
+            "code": "RDE1305.2",
+            "value": "ill_defined",
+            "name": "Ill-defined"
+          },
+          {
+            "code": "RDE1305.3",
+            "value": "spiculated",
+            "name": "spiculated"
+          },
+          {
+            "code": "RDE1305.4",
+            "value": "perifissural",
+            "name": "perifissural"
+          },
+          {
+            "code": "RDE1305.5",
+            "value": "indeterminate",
+            "name": "indeterminate"
+          },
+          {
+            "code": "RDE1305.6",
+            "value": "unknown",
+            "name": "unknown"
+          }
+        ]
+      }
+    },
+    {
+      "id": "RDE1306",
+      "name": "Plurality",
+      "element_version": {
+        "number": 1,
+        "date": "2024-04-23"
+      },
+      "schema_version": "1.0.0",
+      "status": {
+        "date": "2024-04-23",
+        "name": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "RDE1306.0",
+            "value": "single",
+            "name": "single"
+          },
+          {
+            "code": "RDE1306.1",
+            "value": "multiple",
+            "name": "multiple"
+          }
+        ]
+      }
+    },
+    {
+      "id": "RDE1307",
+      "name": "Microcystic component",
+      "element_version": {
+        "number": 1,
+        "date": "2024-04-23"
+      },
+      "schema_version": "1.0.0",
+      "status": {
+        "date": "2024-04-23",
+        "name": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "RDE1307.0",
+            "value": "present",
+            "name": "present"
+          },
+          {
+            "code": "RDE1307.1",
+            "value": "absent",
+            "name": "absent"
+          },
+          {
+            "code": "RDE1307.2",
+            "value": "indeterminate",
+            "name": "indeterminate"
+          },
+          {
+            "code": "RDE1307.3",
+            "value": "unknown",
+            "name": "unknown"
+          }
+        ]
+      }
+    },
+    {
+      "id": "RDE1705",
+      "name": "Volume",
+      "element_version": {
+        "number": 1,
+        "date": "2024-04-23"
+      },
+      "schema_version": "1.0.0",
+      "status": {
+        "date": "2024-04-23",
+        "name": "Proposed"
+      },
+      "float_value": {
+        "min": 1.0,
+        "max": 150000.0,
+        "unit": "mm3"
+      }
+    },
+    {
+      "id": "RDE1706",
+      "name": "Change from priors",
+      "element_version": {
+        "number": 1,
+        "date": "2024-04-23"
+      },
+      "schema_version": "1.0.0",
+      "status": {
+        "date": "2024-04-23",
+        "name": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "RDE1706.0",
+            "value": "no_priors",
+            "name": "no priors"
+          },
+          {
+            "code": "RDE1706.1",
+            "value": "unchanged_for_less_than_6_months",
+            "name": "unchanged for less than 6 months"
+          },
+          {
+            "code": "RDE1706.2",
+            "value": "unchanged_for_6_12_months",
+            "name": "unchanged for 6-12 months"
+          },
+          {
+            "code": "RDE1706.3",
+            "value": "unchanged_for_12_24_months",
+            "name": "unchanged for 12-24 months"
+          },
+          {
+            "code": "RDE1706.4",
+            "value": "unchanged_for_more_than_24_months",
+            "name": "unchanged for more than 24 months"
+          },
+          {
+            "code": "RDE1706.5",
+            "value": "larger_since_prior",
+            "name": "larger since prior"
+          },
+          {
+            "code": "RDE1706.6",
+            "value": "smaller_since_prior",
+            "name": "smaller since prior"
+          }
+        ]
+      }
+    },
+    {
+      "id": "RDE1707",
+      "name": "Suspicious appearance",
+      "element_version": {
+        "number": 1,
+        "date": "2024-04-23"
+      },
+      "schema_version": "1.0.0",
+      "status": {
+        "date": "2024-04-23",
+        "name": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "RDE1707.0",
+            "value": "yes",
+            "name": "yes"
+          },
+          {
+            "code": "RDE1707.1",
+            "value": "no",
+            "name": "no"
+          },
+          {
+            "code": "RDE1707.2",
+            "value": "indeterminate",
+            "name": "indeterminate"
+          }
+        ]
+      }
+    },
+    {
+      "id": "RDE1708",
+      "name": "Min density",
+      "definition": "Minimum - 1000, max +1000",
+      "element_version": {
+        "number": 1,
+        "date": "2024-04-23"
+      },
+      "schema_version": "1.0.0",
+      "status": {
+        "date": "2024-04-23",
+        "name": "Proposed"
+      },
+      "float_value": {
+        "min": -1000.0,
+        "max": 1000.0,
+        "unit": "HU"
+      }
+    },
+    {
+      "id": "RDE1709",
+      "name": "Max density",
+      "definition": "Minimum - 1000, max +1000",
+      "element_version": {
+        "number": 1,
+        "date": "2024-04-23"
+      },
+      "schema_version": "1.0.0",
+      "status": {
+        "date": "2024-04-23",
+        "name": "Proposed"
+      },
+      "float_value": {
+        "min": -1000.0,
+        "max": 1000.0,
+        "unit": "HU"
+      }
+    },
+    {
+      "id": "RDE1717",
+      "name": "Presence",
+      "element_version": {
+        "number": 1,
+        "date": "2024-04-23"
+      },
+      "schema_version": "1.0.0",
+      "status": {
+        "date": "2024-04-23",
+        "name": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "RDE1717.0",
+            "value": "absent",
+            "name": "absent"
+          },
+          {
+            "code": "RDE1717.1",
+            "value": "present",
+            "name": "present"
+          },
+          {
+            "code": "RDE1717.2",
+            "value": "unknown",
+            "name": "unknown"
+          },
+          {
+            "code": "RDE1717.3",
+            "value": "indeterminate",
+            "name": "indeterminate"
+          }
+        ]
+      }
+    }
+  ]
+}

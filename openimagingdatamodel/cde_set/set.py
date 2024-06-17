@@ -36,3 +36,15 @@ class CDESet(BaseModel):
     specialties: list[Specialty] = Field(default_factory=list)
     elements: list[CDEElement] = Field(default_factory=list)  # TODO: Require at least one element
     references: list[Reference] | None = None
+
+    def get_element(self, element: str) -> CDEElement:
+        """Get a component CDEElement by name or ID."""
+        element = element.casefold()
+        if not hasattr(self, "_element_index"):
+            self._element_index = {}
+            for el in self.elements:
+                self._element_index[el.id.casefold()] = el
+                self._element_index[el.name.casefold()] = el
+        if element in self._element_index:
+            return self._element_index[element]
+        raise ValueError(f"Element '{element}' not found in CDE Set '{self.id}' ({self.name})")

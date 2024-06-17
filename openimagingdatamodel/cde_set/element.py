@@ -1,6 +1,6 @@
 from typing import Literal, Union
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from .common import (
     Contributors,
@@ -16,8 +16,8 @@ from .common import (
 
 
 class BaseElement(BaseModel):
-    id: str
-    parent_set: str | None = None  # TODO: add formatting for a Set ID
+    id: str = Field(pattern="^(RDE|TO_BE_DETERMINED)\d+")
+    parent_set: str | None = Field(default=None, pattern="^(RDES|TO_BE_DETERMINED)\d+")
     name: str
     definition: str | None = None
     question: str | None = None
@@ -33,7 +33,7 @@ class BaseElement(BaseModel):
 
 
 class ValueSetValue(BaseModel):
-    code: str  # TODO: Add regex for code
+    code: str = Field(pattern="^(RDE|TO_BE_DETERMINED)\d+\.\d+")
     value: str | None = None
     name: str
     definition: str | None = None
@@ -49,6 +49,18 @@ class ValueSet(BaseModel):
 
 class ValueSetElement(BaseElement):
     value_set: ValueSet
+
+    def get_value(self, val: str) -> ValueSetValue:
+        """Get a ValueSetValue by code or value or name."""
+        if not hasattr(self, "_value_index"):
+            self._value_index = {}
+            for v in self.value_set.values:
+                self._value_index[v.code.casefold()] = v
+                self._value_index[v.value.casefold()] = v
+                self._value_index[v.name.casefold()] = v
+        if val.casefold() in self._value_index:
+            return self._value_index[val.casefold()]
+        raise ValueError(f"Value '{v}' not found in ValueSet")
 
 
 # This corresponds to the floatElementSchema class in the cdElement.ts file

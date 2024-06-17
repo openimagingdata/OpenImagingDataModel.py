@@ -91,7 +91,7 @@ class Reference(BaseModel):
 
 
 class IndexCode(BaseModel):
-    system: Literal["RADLEX", "SNOMED", "LOINC", "ACRCOMMON"] | None = None
+    system: Literal["RADLEX", "SNOMEDCT", "LOINC", "ACRCOMMON"] | None = None
     code: str | None = None
     display: str | None = None
     url: HttpUrl | None = None

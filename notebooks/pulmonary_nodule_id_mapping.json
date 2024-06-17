@@ -1,0 +1,18 @@
+{
+  "set_id": "RDES195",
+  "element_ids": {
+    "Composition": "RDE1301",
+    "Size": "RDE1302",
+    "Solid component size": "RDE1303",
+    "Location": "RDE1304",
+    "Morphology": "RDE1305",
+    "Plurality": "RDE1306",
+    "Microcystic component": "RDE1307",
+    "Volume": "RDE1705",
+    "Change from priors": "RDE1706",
+    "Suspicious appearance": "RDE1707",
+    "Min density": "RDE1708",
+    "Max density": "RDE1709",
+    "Presence": "RDE1717"
+  }
+}

@@ -1,0 +1,244 @@
+{
+  "finding_name": "Pulmonary Nodule",
+  "description": "Pulmonary Nodule",
+  "attributes": [
+    {
+      "name": "Composition",
+      "type": "choice",
+      "values": [
+        {
+          "name": "solid"
+        },
+        {
+          "name": "ground glass"
+        },
+        {
+          "name": "part-solid"
+        },
+        {
+          "name": "fat density"
+        },
+        {
+          "name": "calcification"
+        },
+        {
+          "name": "cavitation"
+        },
+        {
+          "name": "cystic lucencies"
+        },
+        {
+          "name": "air bronchograms"
+        },
+        {
+          "name": "indeterminate"
+        },
+        {
+          "name": "unknown"
+        }
+      ],
+      "required": false
+    },
+    {
+      "name": "Size",
+      "description": "Average diameter in mm",
+      "type": "numeric",
+      "minimum": 2,
+      "unit": "mm",
+      "required": false
+    },
+    {
+      "name": "Solid component size",
+      "type": "numeric",
+      "minimum": 2,
+      "unit": "mm",
+      "required": false
+    },
+    {
+      "name": "Location",
+      "type": "choice",
+      "values": [
+        {
+          "name": "indeterminate"
+        },
+        {
+          "name": "left lung"
+        },
+        {
+          "name": "left upper lobe"
+        },
+        {
+          "name": "lingula"
+        },
+        {
+          "name": "left lower lobe"
+        },
+        {
+          "name": "right lung"
+        },
+        {
+          "name": "right upper lobe"
+        },
+        {
+          "name": "middle lobe"
+        },
+        {
+          "name": "right lower lobe"
+        },
+        {
+          "name": "unknown"
+        }
+      ],
+      "required": false
+    },
+    {
+      "name": "Morphology",
+      "type": "choice",
+      "values": [
+        {
+          "name": "smooth"
+        },
+        {
+          "name": "lobulated"
+        },
+        {
+          "name": "Ill-defined"
+        },
+        {
+          "name": "spiculated"
+        },
+        {
+          "name": "perifissural"
+        },
+        {
+          "name": "indeterminate"
+        },
+        {
+          "name": "unknown"
+        }
+      ],
+      "required": false
+    },
+    {
+      "name": "Plurality",
+      "type": "choice",
+      "values": [
+        {
+          "name": "single"
+        },
+        {
+          "name": "multiple"
+        }
+      ],
+      "required": false
+    },
+    {
+      "name": "Microcystic component",
+      "type": "choice",
+      "values": [
+        {
+          "name": "present"
+        },
+        {
+          "name": "absent"
+        },
+        {
+          "name": "indeterminate"
+        },
+        {
+          "name": "unknown"
+        }
+      ],
+      "required": false
+    },
+    {
+      "name": "Volume",
+      "type": "numeric",
+      "minimum": 1,
+      "maximum": 150000,
+      "unit": "mm3",
+      "required": false
+    },
+    {
+      "name": "Change from priors",
+      "type": "choice",
+      "values": [
+        {
+          "name": "no priors"
+        },
+        {
+          "name": "unchanged for less than 6 months"
+        },
+        {
+          "name": "unchanged for 6-12 months"
+        },
+        {
+          "name": "unchanged for 12-24 months"
+        },
+        {
+          "name": "unchanged for more than 24 months"
+        },
+        {
+          "name": "larger since prior"
+        },
+        {
+          "name": "smaller since prior"
+        }
+      ],
+      "required": false
+    },
+    {
+      "name": "Suspicious appearance",
+      "type": "choice",
+      "values": [
+        {
+          "name": "yes"
+        },
+        {
+          "name": "no"
+        },
+        {
+          "name": "indeterminate"
+        }
+      ],
+      "required": false
+    },
+    {
+      "name": "Min density",
+      "description": "Minimum - 1000, max +1000",
+      "type": "numeric",
+      "minimum": -1000,
+      "maximum": 1000,
+      "unit": "HU",
+      "required": false
+    },
+    {
+      "name": "Max density",
+      "description": "Minimum - 1000, max +1000",
+      "type": "numeric",
+      "minimum": -1000,
+      "maximum": 1000,
+      "unit": "HU",
+      "required": false
+    },
+    {
+      "name": "Presence",
+      "type": "choice",
+      "values": [
+        {
+          "name": "absent"
+        },
+        {
+          "name": "present"
+        },
+        {
+          "name": "unknown"
+        },
+        {
+          "name": "indeterminate"
+        }
+      ],
+      "required": false
+    }
+  ]
+}
