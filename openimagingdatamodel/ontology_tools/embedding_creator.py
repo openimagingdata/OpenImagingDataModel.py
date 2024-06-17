@@ -56,6 +56,12 @@ class EmbeddingCreator(AbstractEmbeddingCreator):
         response = self.client.embeddings.create(input=texts, model=model, dimensions=dimensions)
         return self.get_multiple_embedding_vectors_from_response(response)
 
+    def create_embedding_for_text(
+        self, text: str, /, model: str = DEFAULT_MODEL, dimensions: int = DEFAULT_DIMENSIONS
+    ) -> list[float]:
+        response = self.client.embeddings.create(input=[text], model=model, dimensions=dimensions)
+        return self.get_embedding_vector_from_response(response)
+
 
 class AsyncEmbeddingCreator(AbstractEmbeddingCreator):
     def __init__(self, client: AsyncOpenAI):
@@ -74,3 +80,9 @@ class AsyncEmbeddingCreator(AbstractEmbeddingCreator):
         texts = self.get_multiple_texts_for_embedding(concepts)
         response = await self.client.embeddings.create(input=texts, model=model, dimensions=dimensions)
         return self.get_multiple_embedding_vectors_from_response(response)
+
+    async def create_embedding_for_text(
+        self, text: str, /, model=DEFAULT_MODEL, dimensions: int = DEFAULT_DIMENSIONS
+    ) -> list[float]:
+        response = await self.client.embeddings.create(input=text, model=model, dimensions=dimensions)
+        return self.get_embedding_vector_from_response(response)

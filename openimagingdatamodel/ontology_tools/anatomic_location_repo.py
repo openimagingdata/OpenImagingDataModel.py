@@ -1,4 +1,4 @@
-from typing import Any, Mapping
+from typing import Any, Mapping, Protocol
 
 from motor.motor_asyncio import AsyncIOMotorCollection
 from pymongo.collection import Collection as PyMongoCollection
@@ -7,6 +7,16 @@ from pymongo.results import BulkWriteResult, UpdateResult
 
 from .anatomic_location import AnatomicLocation
 from .search_result import SearchResult
+
+DEFAULT_COUNT_TO_CANDIDATES_RATIO = 15
+
+
+class QueryEmbedder(Protocol):
+    def create_embedding_for_text(self, text: str, /, model: str, dimensions: int) -> list[float]: ...
+
+
+class AsyncQueryEmbedder(Protocol):
+    async def create_embedding_for_text(self, text: str, /, model: str, dimensions: int) -> list[float]: ...
 
 
 class BaseAnatomicLocationRepo:
@@ -24,6 +34,28 @@ class BaseAnatomicLocationRepo:
                     "code": "$_id",
                     "display": "$description",
                     "score": {"$meta": "searchScore"},
+                }
+            },
+        ]
+
+    def _vector_search_pipeline(self, query_embedding: list[float], count: int) -> list[Mapping[str, Any]]:
+        return [
+            {
+                "$vectorSearch": {
+                    "index": "defaultVector",
+                    "path": "embedding_vector",
+                    "queryVector": query_embedding,
+                    "numCandidates": count * DEFAULT_COUNT_TO_CANDIDATES_RATIO,
+                    "limit": count,
+                }
+            },
+            {
+                "$project": {
+                    "_id": 0,
+                    "system": "ANTOMICLOCATIONS",
+                    "code": "$_id",
+                    "display": "$description",
+                    "score": {"$meta": "vectorSearchScore"},
                 }
             },
         ]
@@ -70,10 +102,11 @@ class BaseAnatomicLocationRepo:
 
 
 class AsyncAnatomicLocationRepo(BaseAnatomicLocationRepo):
-    def __init__(self, collection: AsyncIOMotorCollection):
+    def __init__(self, collection: AsyncIOMotorCollection, query_embedder: AsyncQueryEmbedder | None = None):
         if not isinstance(collection, AsyncIOMotorCollection):
             raise ValueError("AsyncIOMotorCollection is required")
         self.collection = collection
+        self.query_embedder = query_embedder
 
     async def get_concept(self, concept_id: str) -> AnatomicLocation:
         raw_result = await self.collection.find_one({"_id": concept_id})
@@ -115,12 +148,22 @@ class AsyncAnatomicLocationRepo(BaseAnatomicLocationRepo):
         result = await self.collection.bulk_write(update_commands)
         return self._manage_bulk_write_result(result, concepts, vectors)
 
+    async def vector_search(self, search_term: str, count: int) -> list[SearchResult]:
+        if self.query_embedder is None:
+            raise ValueError("Need to initialize repo with an object with create_embedding_for_text() method.")
+        query_embedding = await self.query_embedder.create_embedding_for_text(search_term)
+        raw_results = await self.collection.aggregate(self._vector_search_pipeline(query_embedding, count)).to_list(
+            count
+        )
+        return self._process_text_search_results(raw_results)
+
 
 class AnatomicLocationRepo(BaseAnatomicLocationRepo):
-    def __init__(self, collection: PyMongoCollection):
+    def __init__(self, collection: PyMongoCollection, query_embedder: QueryEmbedder | None = None):
         if not isinstance(collection, PyMongoCollection):
             raise ValueError("PyMongoCollection is required")
         self.collection = collection
+        self.query_embedder = query_embedder
 
     def get_concept(self, concept_id: str) -> AnatomicLocation:
         raw_result = self.collection.find_one({"_id": concept_id})
@@ -159,3 +202,10 @@ class AnatomicLocationRepo(BaseAnatomicLocationRepo):
         update_commands = self._update_commands_to_write_embedding_vectors(concepts, vectors)
         result = self.collection.bulk_write(update_commands)
         return self._manage_bulk_write_result(result, concepts, vectors)
+
+    def vector_search(self, search_term: str, count: int) -> list[SearchResult]:
+        if self.query_embedder is None:
+            raise ValueError("Need to initialize repo with an object with create_embedding_for_text() method.")
+        query_embedding = self.query_embedder.create_embedding_for_text(search_term)
+        raw_results = self.collection.aggregate(self._vector_search_pipeline(query_embedding, count))
+        return self._process_text_search_results(raw_results)
