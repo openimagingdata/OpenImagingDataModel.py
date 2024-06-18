@@ -2,7 +2,8 @@ from typing import Any, Mapping
 
 from motor.motor_asyncio import AsyncIOMotorCollection
 from pymongo.collection import Collection as PyMongoCollection
-from pymongo.results import UpdateResult
+from pymongo.collection import UpdateOne
+from pymongo.results import BulkWriteResult, UpdateResult
 
 from .search_result import SearchResult
 from .snomedct_concept import SnomedCTConcept
@@ -50,6 +51,22 @@ class AbstractSnomedCTConceptRepo:
             return True
         return False
 
+    def _update_commands_to_write_embedding_vectors(
+        self, concepts: list[SnomedCTConcept], vectors: list[list[float]]
+    ) -> list[dict]:
+        return [
+            UpdateOne({"_id": concept.concept_id}, {"$set": {"embedding_vector": vector}})
+            for concept, vector in zip(concepts, vectors)
+        ]
+
+    def _manage_bulk_write_result(
+        self, result: BulkWriteResult, concepts: list[SnomedCTConcept], vectors: list[list[float]]
+    ) -> bool:
+        if result.modified_count == len(concepts):
+            for concept, vector in zip(concepts, vectors):
+                concept.embedding_vector = vector
+            return True
+        return False
 
 class AsyncSnomedCTConceptRepo(AbstractSnomedCTConceptRepo):
     def __init__(self, collection: AsyncIOMotorCollection):
@@ -86,6 +103,11 @@ class AsyncSnomedCTConceptRepo(AbstractSnomedCTConceptRepo):
         args = self._embedding_vector_update_args(concept, vector)
         result = await self.collection.update_one(*args)
         return self._manage_vector_write_update_result(result, concept, vector)
+    
+    async def bulk_write_embedding_vectors(self, concepts: list[SnomedCTConcept], vectors: list[list[float]]) -> bool:
+        update_commands = self._update_commands_to_write_embedding_vectors(concepts, vectors)
+        result = await self.collection.bulk_write(update_commands)
+        return self._manage_bulk_write_result(result, concepts, vectors)
 
 
 class SnomedCTConceptRepo(AbstractSnomedCTConceptRepo):
@@ -122,6 +144,11 @@ class SnomedCTConceptRepo(AbstractSnomedCTConceptRepo):
         args = self._embedding_vector_update_args(concept, vector)
         result = self.collection.update_one(*args)
         return self._manage_vector_write_update_result(result, concept, vector)
+    
+    def bulk_write_embedding_vectors(self, concepts: list[SnomedCTConcept], vectors: list[list[float]]) -> bool:
+        update_commands = self._update_commands_to_write_embedding_vectors(concepts, vectors)
+        result = self.collection.bulk_write(update_commands)
+        return self._manage_bulk_write_result(result, concepts, vectors)
 
     # - Write vectors back to the database for a batch of concepts
     # - Define a vector index
