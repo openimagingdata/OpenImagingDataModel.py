@@ -1,9 +1,12 @@
 import re
-from typing import Annotated, Literal
+from typing import Annotated, ClassVar, Literal
 
 from annotated_types import MinLen
 from pydantic import BaseModel, BeforeValidator, ConfigDict, Field
 from pydantic.alias_generators import to_camel
+
+from .concept import Code as CodedConcept
+from .concept import Concept
 
 
 def check_anatomic_location_id(v: str):
@@ -62,14 +65,15 @@ class Link(BaseModel):
     url: str = Field(pattern=r"^https?://")
 
 
-class AnatomicLocation(BaseModel):
+class AnatomicLocation(Concept):
     model_config = ConfigDict(
         alias_generator=to_camel,
         populate_by_name=True,
         validate_assignment=True,
     )
 
-    id: AnatomicLocationId = Field(alias="_id")
+    SYSTEM_NAME: ClassVar[str] = "ANATOMICLOCATIONS"
+
     acr_common_id: NumericString | None = None
     snomed_id: CompoundNumericString | None = None
     snomed_display: NonEmptyString | None = None
@@ -87,7 +91,6 @@ class AnatomicLocation(BaseModel):
     sex_specific: Literal["Male", "Female"] | None = None
     codes: Annotated[list[Code], MinLen(1)] | None = None
     links: Annotated[list[Link], MinLen(1)] | None = None
-    embedding_vector: list[float] | None = None
 
     def text_for_embedding(self) -> str:
         out = self.description
@@ -96,3 +99,6 @@ class AnatomicLocation(BaseModel):
         if self.synonyms:
             out += f" (synonyms: {'; '.join(self.synonyms)})"
         return out
+
+    def to_system_code_display(self) -> CodedConcept:
+        return CodedConcept(self.SYSTEM_NAME, self.id, self.description)

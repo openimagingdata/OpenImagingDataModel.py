@@ -8,3 +8,6 @@ class SearchResult(BaseModel):
     code: str
     display: str
     score: float
+
+    def print(self):
+        print(self.system, self.code, self.display, self.score)

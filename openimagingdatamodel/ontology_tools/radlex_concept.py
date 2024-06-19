@@ -1,15 +1,19 @@
-from typing import Sequence
+from typing import ClassVar, Sequence
 
 import caseswitcher
-from pydantic import BaseModel, ConfigDict, Field, field_serializer, field_validator
+from pydantic import ConfigDict, field_serializer, field_validator
 from pydantic.alias_generators import to_camel
+
+from .concept import Code, Concept
 
 # Define RadLexProperties dictionary to account for "http://radlex" field
 RadLexProperties = dict[str, str | Sequence[str]]
 
 
 # ConfigDict for RadLex Properties
-class RadLexConcept(BaseModel):
+class RadLexConcept(Concept):
+    SYSTEM_NAME: ClassVar[str] = "RADLEX"
+
     model_config = ConfigDict(
         populate_by_name=True,
         coerce_numbers_to_str=True,
@@ -18,13 +22,11 @@ class RadLexConcept(BaseModel):
     )
 
     # Define the new document format and fields
-    id: str = Field(alias="_id")
     preferred_label: str
     synonyms: list[str] | None = None
     parent: str | None = None
     definition: str | None = None
     radlex_properties: RadLexProperties | None = None
-    embedding_vector: list[float] | None = None
 
     def text_for_embedding(self) -> str:
         out = self.preferred_label
@@ -50,5 +52,5 @@ class RadLexConcept(BaseModel):
         out_props = {caseswitcher.to_camel(k): v for k, v in in_props.items()}
         return out_props
 
-
-# class RadLexConceptRepo(db)
+    def to_system_code_display(self) -> Code:
+        return Code(system=self.SYSTEM_NAME, code=self.id, display=self.preferred_label)
