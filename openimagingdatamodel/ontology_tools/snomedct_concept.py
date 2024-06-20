@@ -62,4 +62,4 @@ class SnomedCTConcept(Concept):
             return combined_text
 
     def to_system_code_display(self) -> Code:
-        return Code(system="SNOMED-CT", code=self.concept_id, display=self.preferred_term)
+        return Code(system="SNOMED-CT", code=self.id, display=self.preferred_term)

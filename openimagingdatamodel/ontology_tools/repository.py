@@ -285,7 +285,7 @@ class AsyncRadlexConceptRepository(AsyncRepository[RadLexConcept]):
 
 
 class SnomedCTConceptRepository(Repository[SnomedCTConcept]):
-    CODE_FIELD: ClassVar[str] = "concept_id"
+    CODE_FIELD: ClassVar[str] = "_id"
     DISPLAY_FIELD: ClassVar[str] = "preferredTerm"
     EMBEDDING_VECTOR_FIELD: ClassVar[str] = "embedding_vector"
     TEXT_SEARCH_INDEX_NAME: ClassVar[str] = "defaultText"
@@ -296,7 +296,7 @@ class SnomedCTConceptRepository(Repository[SnomedCTConcept]):
 
 
 class AsyncSnomedCTConceptRepository(AsyncRepository[SnomedCTConcept]):
-    CODE_FIELD: ClassVar[str] = "concept_id"
+    CODE_FIELD: ClassVar[str] = "_id"
     DISPLAY_FIELD: ClassVar[str] = "preferredTerm"
     EMBEDDING_VECTOR_FIELD: ClassVar[str] = "embedding_vector"
     TEXT_SEARCH_INDEX_NAME: ClassVar[str] = "defaultText"
@@ -468,6 +468,54 @@ if __name__ == "__main__":
         # for search_result in search_results:
         #     search_result.print()
 
+    def snomedct_concept_searches():
+        repo = SnomedCTConceptRepository(get_sync_collection("snomedct"))
+        # embedding_creator = get_embedding_creator()
+        print(repo.get_count())
+
+        concept = repo.get_concept("9775002")
+        concept.print()
+
+        concepts = repo.get_concepts(["9775002", "100143006"])
+        for concept in concepts:
+            concept.print()
+
+        random_concept = repo.get_random_concepts(1)
+        random_concept.print()
+
+        search_results = repo.text_search("CATTLEMASTER", 5)
+        for search_result in search_results:
+            search_result.print()
+
+        # query_vector = embedding_creator.create_embedding_for_text("brain")
+        # search_results = repo.vector_search(query_vector, 5)
+        # for search_result in search_results:
+        #     search_result.print()
+
+    async def async_snomedct_concept_searches():
+        async_repo = AsyncSnomedCTConceptRepository(get_async_collection("snomedct"))
+        # async_embedding_creator = get_async_embedding_creator()
+        print(await async_repo.get_count())
+
+        concept = await async_repo.get_concept("9775002")
+        concept.print()
+
+        concepts = await async_repo.get_concepts(["9775002", "100143006"])
+        for concept in concepts:
+            concept.print()
+
+        random_concept = await async_repo.get_random_concepts(1)
+        random_concept.print()
+
+        search_results = await async_repo.text_search("CATTLEMASTER", 5)
+        for search_result in search_results:
+            search_result.print()
+
+        # query_vector = await async_embedding_creator.create_embedding_for_text("brain")
+        # search_results = await async_repo.vector_search(query_vector, 5)
+        # for search_result in search_results:
+        #     search_result.print()
+
     def radlex_generate_embeddings():
         collection = get_sync_collection("radlex")
         repo = RadlexConceptRepository(collection)
@@ -513,8 +561,56 @@ if __name__ == "__main__":
         ]
         await asyncio.gather(*tasks)
 
+    def snomed_generate_embeddings():
+        collection = get_sync_collection("snomedct")
+        repo = SnomedCTConceptRepository(collection)
+        embedding_creator = get_embedding_creator()
+        concepts = repo.get_unembedded_concepts(400)
+        texts = [concept.text_for_embedding() for concept in concepts]
+        token_count = embedding_creator.get_token_count_for_texts(texts)
+        print(f"{token_count=}")
+        vectors = embedding_creator.create_embeddings_for_concepts(concepts)
+        print(f"{len(vectors)=}")
+        if all(len(v) == 1536 for v in vectors):
+            print("All vectors have correct length")
+        else:
+            raise ValueError("Not all vectors have correct length")
+
+        if repo.write_embedding_vectors(concepts, vectors):
+            print("Successfully wrote vectors")
+    
+    async def async_snomed_generate_embeddings():
+        collection = get_async_collection("snomedct")
+        repo = AsyncSnomedCTConceptRepository(collection)
+        embedding_creator = get_async_embedding_creator()
+
+        concepts = await repo.get_unembedded_concepts(4000)
+        batch_size = 400
+
+        async def do_embedding(batch_number: int, concepts: list[SnomedCTConcept]):
+            texts = [concept.text_for_embedding() for concept in concepts]
+            token_count = embedding_creator.get_token_count_for_texts(texts)
+            print(f"Task {batch_number=}: {token_count=}")
+            vectors = await embedding_creator.create_embeddings_for_concepts(concepts)
+            print(f"Task {batch_number=}: {len(vectors)=}")
+            if all(len(v) == 1536 for v in vectors):
+                print(f"Task {batch_number=}: All vectors have correct length")
+            else:
+                raise ValueError(f"Task {batch_number=}: Not all vectors have correct length")
+
+            if await repo.write_embedding_vectors(concepts, vectors):
+                print(f"Task {batch_number=}: Successfully wrote vectors")
+        
+        tasks = [
+            do_embedding(i // batch_size, concepts[i : i + batch_size]) for i in range(0, len(concepts), batch_size)
+        ]
+        await asyncio.gather(*tasks)
+
     # radlex_generate_embeddings()
-    asyncio.run(async_radlex_generate_embeddings())
+    #asyncio.run(async_radlex_generate_embeddings())
+
+    #snomed_generate_embeddings()
+    #asyncio.run(async_snomed_generate_embeddings())
 
     # sync_anatomic_location_check()
     # asyncio.run(async_anatomic_location_check())
@@ -526,3 +622,5 @@ if __name__ == "__main__":
     # asyncio.run(async_snomedct_concept_check())
     # radlex_concept_searches()
     # asyncio.run(async_radlex_concept_searches())
+    # snomedct_concept_searches()
+    # asyncio.run(async_snomedct_concept_searches())
