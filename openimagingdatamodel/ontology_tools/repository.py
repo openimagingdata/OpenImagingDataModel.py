@@ -1,4 +1,3 @@
-from pprint import pprint as pp  # noqa: F401
 from typing import Any, ClassVar, Generic, Mapping, TypeVar
 
 from motor.motor_asyncio import AsyncIOMotorCollection
@@ -151,7 +150,6 @@ class Repository(Generic[TConcept]):
             search_term,
             count,
         )
-        pp(pipeline)
         raw_results = self.collection.aggregate(pipeline)
         return search_results_from_raw_results(raw_results)
 
@@ -578,7 +576,7 @@ if __name__ == "__main__":
 
         if repo.write_embedding_vectors(concepts, vectors):
             print("Successfully wrote vectors")
-    
+
     async def async_snomed_generate_embeddings():
         collection = get_async_collection("snomedct")
         repo = AsyncSnomedCTConceptRepository(collection)
@@ -600,17 +598,17 @@ if __name__ == "__main__":
 
             if await repo.write_embedding_vectors(concepts, vectors):
                 print(f"Task {batch_number=}: Successfully wrote vectors")
-        
+
         tasks = [
             do_embedding(i // batch_size, concepts[i : i + batch_size]) for i in range(0, len(concepts), batch_size)
         ]
         await asyncio.gather(*tasks)
 
     # radlex_generate_embeddings()
-    #asyncio.run(async_radlex_generate_embeddings())
+    # asyncio.run(async_radlex_generate_embeddings())
 
-    #snomed_generate_embeddings()
-    #asyncio.run(async_snomed_generate_embeddings())
+    # snomed_generate_embeddings()
+    # asyncio.run(async_snomed_generate_embeddings())
 
     # sync_anatomic_location_check()
     # asyncio.run(async_anatomic_location_check())
