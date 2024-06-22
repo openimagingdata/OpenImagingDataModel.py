@@ -26,7 +26,7 @@ def args_for_unembedded(embedding_vector_field: str) -> Mapping[str, Any]:
     return {embedding_vector_field: {"$exists": False}}
 
 
-def args_for_sample(count: int) -> Mapping[str, Any]:
+def args_for_sample(count: int) -> list[Mapping[str, Any]]:
     return [{"$sample": {"size": count}}]
 
 
@@ -83,7 +83,7 @@ def vector_search_pipeline(
 
 
 def concepts_from_raw_results(concept_class: TConcept, raw_results: Any) -> list[TConcept]:
-    return [concept_class.model_validate(raw_result) for raw_result in raw_results]
+    return [concept_class.model_validate(raw_result) for raw_result in raw_results] # type: ignore
 
 
 def search_results_from_raw_results(raw_results: Any) -> list[SearchResult]:
@@ -92,7 +92,7 @@ def search_results_from_raw_results(raw_results: Any) -> list[SearchResult]:
 
 def update_commands_to_write_embedding_vectors(
     embedding_vector_field: str, concepts: list[Concept], vectors: list[list[float]]
-) -> list[dict]:
+) -> list[UpdateOne]:
     return [
         UpdateOne({"_id": concept.id}, {"$set": {embedding_vector_field: vector}})
         for concept, vector in zip(concepts, vectors)
@@ -125,7 +125,7 @@ class Repository(Generic[TConcept]):
     def get_concept(self, concept_id: str) -> TConcept:
         args = args_for_find_one(self.CODE_FIELD, concept_id)
         raw_return = self.collection.find_one(args)
-        return self.concept_class.model_validate(raw_return)
+        return self.concept_class.model_validate(raw_return) # type: ignore
 
     def get_concepts(self, concept_ids: list[str]) -> list[TConcept]:
         args = args_for_multiple_ids(self.CODE_FIELD, concept_ids)
@@ -190,7 +190,7 @@ class AsyncRepository(Generic[TConcept]):
     async def get_concept(self, concept_id: str) -> TConcept:
         args = args_for_find_one(self.CODE_FIELD, concept_id)
         raw_return = await self.collection.find_one(args)
-        return self.concept_class.model_validate(raw_return)
+        return self.concept_class.model_validate(raw_return) # type: ignore
 
     async def get_concepts(self, concept_ids: list[str]) -> list[TConcept]:
         args = args_for_multiple_ids(self.CODE_FIELD, concept_ids)
@@ -238,7 +238,7 @@ class AsyncRepository(Generic[TConcept]):
         return manage_bulk_write_result(result, concepts, vectors)
 
 
-class AnatomicLocationRepository(Repository[AnatomicLocation]):
+class AnatomicLocationRepository(Repository[AnatomicLocation]): # type: ignore
     CODE_FIELD: ClassVar[str] = "_id"
     DISPLAY_FIELD: ClassVar[str] = "description"
     EMBEDDING_VECTOR_FIELD: ClassVar[str] = "embedding_vector"
@@ -246,10 +246,10 @@ class AnatomicLocationRepository(Repository[AnatomicLocation]):
     VECTOR_SEARCH_INDEX_NAME: ClassVar[str] = "defaultVector"
 
     def __init__(self, collection: PyMongoCollection):
-        super().__init__(AnatomicLocation, collection)
+        super().__init__(AnatomicLocation, collection) # type: ignore
 
 
-class AsyncAnatomicLocationRepository(AsyncRepository[AnatomicLocation]):
+class AsyncAnatomicLocationRepository(AsyncRepository[AnatomicLocation]): # type: ignore
     CODE_FIELD: ClassVar[str] = "_id"
     DISPLAY_FIELD: ClassVar[str] = "description"
     EMBEDDING_VECTOR_FIELD: ClassVar[str] = "embedding_vector"
@@ -257,10 +257,10 @@ class AsyncAnatomicLocationRepository(AsyncRepository[AnatomicLocation]):
     VECTOR_SEARCH_INDEX_NAME: ClassVar[str] = "defaultVector"
 
     def __init__(self, collection: AsyncIOMotorCollection):
-        super().__init__(AnatomicLocation, collection)
+        super().__init__(AnatomicLocation, collection) # type: ignore
 
 
-class RadlexConceptRepository(Repository[RadLexConcept]):
+class RadlexConceptRepository(Repository[RadLexConcept]): # type: ignore
     CODE_FIELD: ClassVar[str] = "_id"
     DISPLAY_FIELD: ClassVar[str] = "preferredLabel"
     EMBEDDING_VECTOR_FIELD: ClassVar[str] = "embedding_vector"
@@ -268,10 +268,10 @@ class RadlexConceptRepository(Repository[RadLexConcept]):
     VECTOR_SEARCH_INDEX_NAME: ClassVar[str] = "defaultVector"
 
     def __init__(self, collection: PyMongoCollection):
-        super().__init__(RadLexConcept, collection)
+        super().__init__(RadLexConcept, collection) # type: ignore
 
 
-class AsyncRadlexConceptRepository(AsyncRepository[RadLexConcept]):
+class AsyncRadlexConceptRepository(AsyncRepository[RadLexConcept]): # type: ignore
     CODE_FIELD: ClassVar[str] = "_id"
     DISPLAY_FIELD: ClassVar[str] = "preferredLabel"
     EMBEDDING_VECTOR_FIELD: ClassVar[str] = "embedding_vector"
@@ -279,10 +279,10 @@ class AsyncRadlexConceptRepository(AsyncRepository[RadLexConcept]):
     VECTOR_SEARCH_INDEX_NAME: ClassVar[str] = "defaultVector"
 
     def __init__(self, collection: AsyncIOMotorCollection):
-        super().__init__(RadLexConcept, collection)
+        super().__init__(RadLexConcept, collection) # type: ignore
 
 
-class SnomedCTConceptRepository(Repository[SnomedCTConcept]):
+class SnomedCTConceptRepository(Repository[SnomedCTConcept]): # type: ignore
     CODE_FIELD: ClassVar[str] = "_id"
     DISPLAY_FIELD: ClassVar[str] = "preferredTerm"
     EMBEDDING_VECTOR_FIELD: ClassVar[str] = "embedding_vector"
@@ -290,10 +290,10 @@ class SnomedCTConceptRepository(Repository[SnomedCTConcept]):
     VECTOR_SEARCH_INDEX_NAME: ClassVar[str] = "defaultVector"
 
     def __init__(self, collection: PyMongoCollection):
-        super().__init__(SnomedCTConcept, collection)
+        super().__init__(SnomedCTConcept, collection) # type: ignore
 
 
-class AsyncSnomedCTConceptRepository(AsyncRepository[SnomedCTConcept]):
+class AsyncSnomedCTConceptRepository(AsyncRepository[SnomedCTConcept]): # type: ignore
     CODE_FIELD: ClassVar[str] = "_id"
     DISPLAY_FIELD: ClassVar[str] = "preferredTerm"
     EMBEDDING_VECTOR_FIELD: ClassVar[str] = "embedding_vector"
@@ -301,7 +301,7 @@ class AsyncSnomedCTConceptRepository(AsyncRepository[SnomedCTConcept]):
     VECTOR_SEARCH_INDEX_NAME: ClassVar[str] = "defaultVector"
 
     def __init__(self, collection: AsyncIOMotorCollection):
-        super().__init__(SnomedCTConcept, collection)
+        super().__init__(SnomedCTConcept, collection) # type: ignore
 
 
 if __name__ == "__main__":
