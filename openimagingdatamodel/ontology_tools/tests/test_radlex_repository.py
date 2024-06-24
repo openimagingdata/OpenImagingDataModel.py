@@ -1,14 +1,18 @@
 import os
 from pathlib import Path
-import pytest
+import pytest, pytest_asyncio
 from pymongo import MongoClient
+from openai import OpenAI, AsyncOpenAI
 from dotenv import dotenv_values
 from motor.motor_asyncio import AsyncIOMotorClient
-import pytest_asyncio
 
 from openimagingdatamodel.ontology_tools.repository import (
     RadlexConceptRepository,
     AsyncRadlexConceptRepository
+)
+from openimagingdatamodel.ontology_tools.embedding_creator import (
+    EmbeddingCreator, 
+    AsyncEmbeddingCreator,
 )
 
 # Load environment variables
@@ -65,8 +69,28 @@ def test_async_repository_get_concepts(mongo_client, concept_ids, expected_lengt
     assert len(concepts) == expected_length, "The number of concepts retrieved should match the expected length"
 
 
+@pytest.mark.parametrize("count", [2, 5])  # Example values
+def test_repository_get_random_concepts(mongo_client, count):
+    db = mongo_client["ontologies"]
+    collection = db["radlex"]
+    repo = RadlexConceptRepository(collection)
+    concepts = repo.get_random_concepts(count)
+    assert len(concepts) == count, "The number of concepts retrieved should match the expected length"
+
+@pytest.mark.parametrize("concept_id", ["RID56"])
+def test_get_text_for_embedding(mongo_client, concept_id):
+    db = mongo_client["ontologies"]
+    collection = db["radlex"]
+    repo = RadlexConceptRepository(collection)
+    concept = repo.get_concept(concept_id)
+    embedding_creator = EmbeddingCreator(OpenAI())
+    text = embedding_creator.get_text_for_embedding(concept)
+    assert isinstance(text, str), "The text must be a string"
+    assert text == concept.text_for_embedding().replace("\n", " "), "The text must match the concept's text for embedding"
+
+
 # Test AsyncRadlexConceptRepository class methods
-# Parametrized test for get_count method
+
 @pytest.mark.asyncio
 @pytest.mark.parametrize("expected", [0, 1, 100])  # Example values
 async def test_async_repository_get_count(async_mongo_client, expected):
@@ -77,7 +101,7 @@ async def test_async_repository_get_count(async_mongo_client, expected):
     assert isinstance(count, int), "The count must be an integer"
     assert count > expected, f"The count must be greater than {expected}"
 
-# Parametrized test for get_concept method
+
 @pytest.mark.asyncio
 @pytest.mark.parametrize("concept_id, expected", [
     ("RID56", True),
@@ -104,3 +128,25 @@ async def test_async_repository_get_concepts(async_mongo_client, concept_ids, ex
     repo = AsyncRadlexConceptRepository(collection)
     concepts = await repo.get_concepts(concept_ids)
     assert len(concepts) == expected_length, "The number of concepts retrieved should match the expected length"
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("count", [2, 5])  # Example values
+async def test_async_repository_get_random_concepts(async_mongo_client, count):
+    db = async_mongo_client["ontologies"]
+    collection = db["radlex"]
+    repo = AsyncRadlexConceptRepository(collection)
+    concepts = await repo.get_random_concepts(count)
+    assert len(concepts) == count, "The number of concepts retrieved should match the expected length"
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("concept_id", ["RID56"])
+async def test_async_get_text_for_embedding(async_mongo_client, concept_id):
+    db = async_mongo_client["ontologies"]
+    collection = db["radlex"]
+    repo = AsyncRadlexConceptRepository(collection)
+    concept = await repo.get_concept(concept_id)
+    embedding_creator = AsyncEmbeddingCreator(AsyncOpenAI())
+    text = embedding_creator.get_text_for_embedding(concept)
+    assert isinstance(text, str), "The text must be a string"
+    assert text == concept.text_for_embedding().replace("\n", " "), "The text must match the concept's text for embedding"
