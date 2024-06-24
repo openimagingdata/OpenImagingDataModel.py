@@ -1,5 +1,8 @@
+import os
+from pathlib import Path
 import pytest
 from pymongo import MongoClient
+from dotenv import dotenv_values
 from motor.motor_asyncio import AsyncIOMotorClient
 import pytest_asyncio
 
@@ -8,17 +11,25 @@ from openimagingdatamodel.ontology_tools.repository import (
     AsyncAnatomicLocationRepository
 )
 
+# Load environment variables
+# Get the absolute path of the current file
+current_file_path = Path(__file__).resolve()
+root_dir = current_file_path.parent.parent.parent.parent 
+env_path = os.path.join(root_dir, ".env")
+config = dotenv_values(env_path)
+
 # Test AnatomicLocationRepository class methods
 def test_repository_get_count():
-    client = MongoClient()
+    client = MongoClient(config["ATLAS_DSN"])
     db = client["ontologies"]
     collection = db["anatomic_locations"]
     repo = AnatomicLocationRepository(collection)
     count = repo.get_count()
     assert isinstance(count, int)
+    assert count > 0
 
 def test_repository_get_concept():
-    client = MongoClient()
+    client = MongoClient(config["ATLAS_DSN"])
     db = client["ontologies"]
     collection = db["anatomic_locations"]
     repo = AnatomicLocationRepository(collection)
@@ -26,7 +37,7 @@ def test_repository_get_concept():
     assert concept is not None
 
 def test_repository_get_concepts():
-    client = MongoClient()
+    client = MongoClient(config["ATLAS_DSN"])
     db = client["ontologies"]
     collection = db["anatomic_locations"]
     repo = AnatomicLocationRepository(collection)
@@ -37,16 +48,17 @@ def test_repository_get_concepts():
 # Test AsyncAnatomicLocationsRepository class methods
 @pytest.mark.asyncio
 async def test_async_repository_get_count():
-    client = AsyncIOMotorClient()
+    client = AsyncIOMotorClient(config["ATLAS_DSN"])
     db = client["ontologies"]
     collection = db["anatomic_locations"]
     repo = AsyncAnatomicLocationRepository(collection)
     count = await repo.get_count()
     assert isinstance(count, int)
+    assert count > 0
 
 @pytest.mark.asyncio
 async def test_async_repository_get_concept():
-    client = AsyncIOMotorClient()
+    client = AsyncIOMotorClient(config["ATLAS_DSN"])
     db = client["ontologies"]
     collection = db["anatomic_locations"]
     repo = AsyncAnatomicLocationRepository(collection)
@@ -55,7 +67,7 @@ async def test_async_repository_get_concept():
 
 @pytest.mark.asyncio
 async def test_async_repository_get_concepts():
-    client = AsyncIOMotorClient()
+    client = AsyncIOMotorClient(config["ATLAS_DSN"])
     db = client["ontologies"]
     collection = db["anatomic_locations"]
     repo = AsyncAnatomicLocationRepository(collection)
