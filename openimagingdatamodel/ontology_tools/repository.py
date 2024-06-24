@@ -1,3 +1,4 @@
+from copy import deepcopy
 from typing import Any, ClassVar, Generic, Mapping, TypeVar
 
 from motor.motor_asyncio import AsyncIOMotorCollection
@@ -82,8 +83,39 @@ def vector_search_pipeline(
     ]
 
 
+SEMANTIC_TAGS = [
+    "disorder",
+    "procedure",
+    "finding",
+    "body structure",
+    "qualifier value",
+    "observable entity",
+    "context-dependent category",
+    "morphologic abnormality",
+    "regime/therapy",
+    "assessment scale",
+    "function",
+    "attribute",
+    "tumor staging",
+    "biological function",
+    "contextual qualifier",
+]
+
+
+def add_semantic_tags_filter_to_vector_search(
+    pipeline: list[Mapping[str, Any]], semantic_tags: list[str] = SEMANTIC_TAGS
+) -> list[Mapping[str, Any]]:
+    assert len(pipeline) >= 2 and "$vectorSearch" in pipeline[0]
+    # Copy the pipeline to avoid modifying the original
+    new_pipeline = deepcopy(pipeline)
+    # Add a filter stage to the pipeline
+    vector_search_obj = new_pipeline[0]["$vectorSearch"]
+    vector_search_obj["filter"] = {"semanticTags": {"$in": semantic_tags}}
+    return new_pipeline
+
+
 def concepts_from_raw_results(concept_class: TConcept, raw_results: Any) -> list[TConcept]:
-    return [concept_class.model_validate(raw_result) for raw_result in raw_results] # type: ignore
+    return [concept_class.model_validate(raw_result) for raw_result in raw_results]  # type: ignore
 
 
 def search_results_from_raw_results(raw_results: Any) -> list[SearchResult]:
@@ -125,7 +157,7 @@ class Repository(Generic[TConcept]):
     def get_concept(self, concept_id: str) -> TConcept:
         args = args_for_find_one(self.CODE_FIELD, concept_id)
         raw_return = self.collection.find_one(args)
-        return self.concept_class.model_validate(raw_return) # type: ignore
+        return self.concept_class.model_validate(raw_return)  # type: ignore
 
     def get_concepts(self, concept_ids: list[str]) -> list[TConcept]:
         args = args_for_multiple_ids(self.CODE_FIELD, concept_ids)
@@ -190,7 +222,7 @@ class AsyncRepository(Generic[TConcept]):
     async def get_concept(self, concept_id: str) -> TConcept:
         args = args_for_find_one(self.CODE_FIELD, concept_id)
         raw_return = await self.collection.find_one(args)
-        return self.concept_class.model_validate(raw_return) # type: ignore
+        return self.concept_class.model_validate(raw_return)  # type: ignore
 
     async def get_concepts(self, concept_ids: list[str]) -> list[TConcept]:
         args = args_for_multiple_ids(self.CODE_FIELD, concept_ids)
@@ -238,7 +270,7 @@ class AsyncRepository(Generic[TConcept]):
         return manage_bulk_write_result(result, concepts, vectors)
 
 
-class AnatomicLocationRepository(Repository[AnatomicLocation]): # type: ignore
+class AnatomicLocationRepository(Repository[AnatomicLocation]):  # type: ignore
     CODE_FIELD: ClassVar[str] = "_id"
     DISPLAY_FIELD: ClassVar[str] = "description"
     EMBEDDING_VECTOR_FIELD: ClassVar[str] = "embedding_vector"
@@ -246,10 +278,10 @@ class AnatomicLocationRepository(Repository[AnatomicLocation]): # type: ignore
     VECTOR_SEARCH_INDEX_NAME: ClassVar[str] = "defaultVector"
 
     def __init__(self, collection: PyMongoCollection):
-        super().__init__(AnatomicLocation, collection) # type: ignore
+        super().__init__(AnatomicLocation, collection)  # type: ignore
 
 
-class AsyncAnatomicLocationRepository(AsyncRepository[AnatomicLocation]): # type: ignore
+class AsyncAnatomicLocationRepository(AsyncRepository[AnatomicLocation]):  # type: ignore
     CODE_FIELD: ClassVar[str] = "_id"
     DISPLAY_FIELD: ClassVar[str] = "description"
     EMBEDDING_VECTOR_FIELD: ClassVar[str] = "embedding_vector"
@@ -257,10 +289,10 @@ class AsyncAnatomicLocationRepository(AsyncRepository[AnatomicLocation]): # type
     VECTOR_SEARCH_INDEX_NAME: ClassVar[str] = "defaultVector"
 
     def __init__(self, collection: AsyncIOMotorCollection):
-        super().__init__(AnatomicLocation, collection) # type: ignore
+        super().__init__(AnatomicLocation, collection)  # type: ignore
 
 
-class RadlexConceptRepository(Repository[RadLexConcept]): # type: ignore
+class RadlexConceptRepository(Repository[RadLexConcept]):  # type: ignore
     CODE_FIELD: ClassVar[str] = "_id"
     DISPLAY_FIELD: ClassVar[str] = "preferredLabel"
     EMBEDDING_VECTOR_FIELD: ClassVar[str] = "embedding_vector"
@@ -268,10 +300,10 @@ class RadlexConceptRepository(Repository[RadLexConcept]): # type: ignore
     VECTOR_SEARCH_INDEX_NAME: ClassVar[str] = "defaultVector"
 
     def __init__(self, collection: PyMongoCollection):
-        super().__init__(RadLexConcept, collection) # type: ignore
+        super().__init__(RadLexConcept, collection)  # type: ignore
 
 
-class AsyncRadlexConceptRepository(AsyncRepository[RadLexConcept]): # type: ignore
+class AsyncRadlexConceptRepository(AsyncRepository[RadLexConcept]):  # type: ignore
     CODE_FIELD: ClassVar[str] = "_id"
     DISPLAY_FIELD: ClassVar[str] = "preferredLabel"
     EMBEDDING_VECTOR_FIELD: ClassVar[str] = "embedding_vector"
@@ -279,10 +311,10 @@ class AsyncRadlexConceptRepository(AsyncRepository[RadLexConcept]): # type: igno
     VECTOR_SEARCH_INDEX_NAME: ClassVar[str] = "defaultVector"
 
     def __init__(self, collection: AsyncIOMotorCollection):
-        super().__init__(RadLexConcept, collection) # type: ignore
+        super().__init__(RadLexConcept, collection)  # type: ignore
 
 
-class SnomedCTConceptRepository(Repository[SnomedCTConcept]): # type: ignore
+class SnomedCTConceptRepository(Repository[SnomedCTConcept]):  # type: ignore
     CODE_FIELD: ClassVar[str] = "_id"
     DISPLAY_FIELD: ClassVar[str] = "preferredTerm"
     EMBEDDING_VECTOR_FIELD: ClassVar[str] = "embedding_vector"
@@ -290,10 +322,24 @@ class SnomedCTConceptRepository(Repository[SnomedCTConcept]): # type: ignore
     VECTOR_SEARCH_INDEX_NAME: ClassVar[str] = "defaultVector"
 
     def __init__(self, collection: PyMongoCollection):
-        super().__init__(SnomedCTConcept, collection) # type: ignore
+        super().__init__(SnomedCTConcept, collection)  # type: ignore
+
+    def vector_search(self, query_embedding: list[float], count: int) -> list[SearchResult]:
+        pipeline = vector_search_pipeline(
+            self.VECTOR_SEARCH_INDEX_NAME,
+            self.EMBEDDING_VECTOR_FIELD,
+            self.CODE_FIELD,
+            self.concept_class.SYSTEM_NAME,
+            self.DISPLAY_FIELD,
+            query_embedding,
+            count,
+        )
+        pipeline = add_semantic_tags_filter_to_vector_search(pipeline)
+        raw_results = self.collection.aggregate(pipeline)
+        return search_results_from_raw_results(raw_results)
 
 
-class AsyncSnomedCTConceptRepository(AsyncRepository[SnomedCTConcept]): # type: ignore
+class AsyncSnomedCTConceptRepository(AsyncRepository[SnomedCTConcept]):  # type: ignore
     CODE_FIELD: ClassVar[str] = "_id"
     DISPLAY_FIELD: ClassVar[str] = "preferredTerm"
     EMBEDDING_VECTOR_FIELD: ClassVar[str] = "embedding_vector"
@@ -301,8 +347,21 @@ class AsyncSnomedCTConceptRepository(AsyncRepository[SnomedCTConcept]): # type: 
     VECTOR_SEARCH_INDEX_NAME: ClassVar[str] = "defaultVector"
 
     def __init__(self, collection: AsyncIOMotorCollection):
-        super().__init__(SnomedCTConcept, collection) # type: ignore
+        super().__init__(SnomedCTConcept, collection)  # type: ignore
 
+    async def vector_search(self, query_embedding: list[float], count: int) -> list[SearchResult]:
+        pipeline = vector_search_pipeline(
+            self.VECTOR_SEARCH_INDEX_NAME,
+            self.EMBEDDING_VECTOR_FIELD,
+            self.CODE_FIELD,
+            self.concept_class.SYSTEM_NAME,
+            self.DISPLAY_FIELD,
+            query_embedding,
+            count,
+        )
+        pipeline = add_semantic_tags_filter_to_vector_search(pipeline)
+        raw_results = await self.collection.aggregate(pipeline).to_list(count)
+        return search_results_from_raw_results(raw_results)
 
 if __name__ == "__main__":
     import asyncio  # noqa: F401
