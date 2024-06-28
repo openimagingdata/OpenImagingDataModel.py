@@ -152,7 +152,7 @@ class Repository(Generic[TConcept]):
         self.collection: PyMongoCollection = collection
 
     def get_count(self) -> int:
-        return self.collection.count_documents({})
+        return self.collection.estimated_document_count()
 
     def get_concept(self, concept_id: str) -> TConcept:
         args = args_for_find_one(self.CODE_FIELD, concept_id)
@@ -217,12 +217,12 @@ class AsyncRepository(Generic[TConcept]):
         self.collection: AsyncIOMotorCollection = collection
 
     async def get_count(self) -> int:
-        return await self.collection.count_documents({})
+        return await self.collection.estimated_document_count()
 
     async def get_concept(self, concept_id: str) -> TConcept:
         args = args_for_find_one(self.CODE_FIELD, concept_id)
         raw_return = await self.collection.find_one(args)
-        return self.concept_class.model_validate(raw_return)  # type: ignore
+        return self.concept_class.model_validate(raw_return) if raw_return else None  # type: ignore
 
     async def get_concepts(self, concept_ids: list[str]) -> list[TConcept]:
         args = args_for_multiple_ids(self.CODE_FIELD, concept_ids)
@@ -363,6 +363,7 @@ class AsyncSnomedCTConceptRepository(AsyncRepository[SnomedCTConcept]):  # type:
         raw_results = await self.collection.aggregate(pipeline).to_list(count)
         return search_results_from_raw_results(raw_results)
 
+
 if __name__ == "__main__":
     import asyncio  # noqa: F401
 
@@ -380,7 +381,7 @@ if __name__ == "__main__":
         return client[db_name][collection_name]
 
     def get_async_collection(collection_name: str) -> AsyncIOMotorCollection:
-        client = AsyncIOMotorClient(config["ATLAS_DSN"])
+        client: AsyncIOMotorClient = AsyncIOMotorClient(config["ATLAS_DSN"])
         return client[db_name][collection_name]
 
     def get_embedding_creator() -> EmbeddingCreator:
