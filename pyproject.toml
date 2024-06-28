@@ -24,6 +24,11 @@ pytest-asyncio = "^0.23.7"
 poethepoet = "^0.25.1"
 mypy = "^1.9.0"
 jupyter = "^1.0.0"
+watchdog = "^4.0.1"
+
+
+[tool.poetry.group.frontend.dependencies]
+streamlit = "^1.36.0"
 
 [build-system]
 requires = ["poetry-core"]
