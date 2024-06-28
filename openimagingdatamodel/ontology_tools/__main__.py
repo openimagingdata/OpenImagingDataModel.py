@@ -4,7 +4,7 @@ import time
 from pprint import pprint
 
 from .config import Config
-from .search import SEARCH_TYPES, async_search  #, search
+from .search import SEARCH_TYPES, async_search  # , search
 
 
 def embed(*args):
@@ -34,9 +34,7 @@ def embed(*args):
         batch_time = time.time() - start_time
         if result:
             progress = f"{i + 1} - {i + batch_size} / {total_concepts}"
-            print(
-                f"Successfully embedded {len(batch)} concepts ({progress}; {batch_time:.2f}s)."
-            )
+            print(f"Successfully embedded {len(batch)} concepts ({progress}; {batch_time:.2f}s).")
         else:
             print("Error: Failed to write embedding vectors.")
             sys.exit(1)

@@ -48,6 +48,7 @@ def search_one(
         results.extend(text_results)
     return results
 
+
 async def async_search_one(
     repo: repository.AsyncRepository,
     search_type: str,
@@ -58,7 +59,7 @@ async def async_search_one(
 ) -> list[SearchResult]:
     assert embedder is not None or search_type not in ["vector", "all"], "Embedder required for vector search."
     match search_type:
-        case "all": 
+        case "all":
             query_vector = embedder.create_embedding_for_text(query)
             vector_task = repo.vector_search(query_vector, count)
             text_task = repo.text_search(query, count)
@@ -76,6 +77,7 @@ async def async_search_one(
             return normalize_results(text_results) if normalize else text_results
         case _:
             raise ValueError(f"Invalid search type: {search_type}")
+
 
 def search(
     config: Config, ontology: str, search_type: str, query: str, count: int = 25, normalize: bool = True
@@ -101,6 +103,7 @@ def search(
     if normalize:
         results = normalize_results(results)
     return results
+
 
 async def async_search(
     config: Config, ontology: str, search_type: str, query: str, count: int = 25, normalize: bool = True
