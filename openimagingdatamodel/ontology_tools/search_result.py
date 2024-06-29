@@ -11,3 +11,6 @@ class SearchResult(BaseModel):
 
     def print(self):
         print(self.system, self.code, self.display, self.score)
+    
+    def short_string(self):
+        return f"{self.system} {self.code} {self.display} {self.score:.2f}"
