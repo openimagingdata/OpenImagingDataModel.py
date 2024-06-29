@@ -1,6 +1,8 @@
 import pandas as pd
 import streamlit as st
 from openimagingdatamodel.ontology_tools.config import Config
+from openimagingdatamodel.ontology_tools.search import llm_filter_results
+from openimagingdatamodel.ontology_tools.search_result import SearchResult
 
 st.set_page_config(page_title="OpenImagingDataModel", page_icon=":brain:")
 
@@ -62,34 +64,57 @@ with st.form("search_form"):
     use_anatomic_locations = col1.checkbox("Anatomic Locations") 
     use_radlex = col2.checkbox("RadLex")
     use_snomedct = col3.checkbox("SNOMED-CT")
-    col1, col2 = st.columns([3, 1])
+    col1, col2, col3 = st.columns([3, 1, 1])
     count = col1.select_slider("Results/ontology", options=[5, 10, 15, 20])
-    submitted = col2.form_submit_button("Search")
+    do_filter = col2.toggle("Filter results", False)
+    submitted = col3.form_submit_button("Search")
 
 status_box = st.empty()
+filtered_box = st.container()
 table_box = st.empty()
 if submitted:
     count = int(count) # type: ignore
     table_box.empty()
     concept_table: list[list] = []
     query_vector = config.embedder.create_embedding_for_text(query)
+    raw_results: list[SearchResult] = []
     if use_radlex:
         with status_box.status("Searching RadLex", ) as status:
             text_results  = radlex_repo.text_search(query, count)
             vector_results = radlex_repo.vector_search(query_vector, count)
+        status_box.empty()
         concept_table = tabulate_search_results(text_results, vector_results, concept_table)
+        raw_results.extend(text_results)
+        raw_results.extend(vector_results)
         table_box.table(concept_table)
     if use_anatomic_locations:
         with status_box.status("Searching Anatomic Locations", ) as status:
             text_results  = anatomic_locations_repo.text_search(query, count)
             vector_results = anatomic_locations_repo.vector_search(query_vector, count)
-        concept_table = tabulate_search_results(text_results, vector_results, concept_table)
         status_box.empty()
+        concept_table = tabulate_search_results(text_results, vector_results, concept_table)
+        raw_results.extend(text_results)
+        raw_results.extend(vector_results)
         table_box.table(concept_table)
     if use_snomedct:
         with status_box.status("Searching SNOMED CT", ) as status:
             text_results  = snomedct_repo.text_search(query, count)
             vector_results = snomedct_repo.vector_search(query_vector, count)
-        concept_table = tabulate_search_results(text_results, vector_results, concept_table)
         status_box.empty()
+        concept_table = tabulate_search_results(text_results, vector_results, concept_table)
+        raw_results.extend(text_results)
+        raw_results.extend(vector_results)
         table_box.table(concept_table)
+    
+    if do_filter and raw_results:
+        with status_box.status("Filtering results") as status:
+            filtered_results, related_results = llm_filter_results(config.llm, raw_results, query)
+        status_box.empty()
+    
+        filtered_box.markdown("### Matched Results")
+        filtered_box.dataframe(pd.DataFrame(filtered_results))
+        filtered_box.markdown("### Related Results")
+        filtered_box.dataframe(pd.DataFrame(related_results))
+        filtered_box.markdown("### Raw Results")
+    
+        
