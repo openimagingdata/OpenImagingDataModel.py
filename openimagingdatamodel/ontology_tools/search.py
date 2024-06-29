@@ -1,4 +1,9 @@
 import asyncio
+from typing import Literal
+
+import instructor
+from openai import OpenAI
+from pydantic import BaseModel
 
 from . import repository
 from .config import Config
@@ -129,3 +134,46 @@ async def async_search(
     if normalize:
         results = normalize_results(results)
     return results
+
+
+class SelectedResult(BaseModel):
+    system: Literal["SNOMEDCT", "RADLEX", "ANATOMICLOCATIONS"]
+    code: str
+    display: str
+
+
+def llm_filter_results(
+    llm: OpenAI, results: list[SearchResult], query: str
+) -> tuple[list[dict[str, str]], list[dict[str, str]]]:
+    query = query.strip()
+
+    instructor_llm = instructor.from_openai(llm)
+
+    prompt = f"Filter the following results based whether these are actual matches for the query: '{query}'\n\n"
+    for result in results:
+        prompt += f"{result.short_string()}\n"
+
+    system_message = {
+        "role": "system",
+        "content": "You are an expert in medical terminology who can determine which codes from standard"
+        + " ontologies are identical or related to a given query.",
+    }
+
+    filtered_results = instructor_llm.chat.completions.create(
+        model="gpt-4o",
+        response_model=list[SelectedResult],
+        messages=[system_message, {"role": "user", "content": prompt}],  # type: ignore
+    )
+
+    prompt = f"Filter the following results based whether these are not matches, but rather concepts related to the query: '{query}'\n\n"
+    for result in results:
+        prompt += f"{result.short_string()}\n"
+
+    related_results = instructor_llm.chat.completions.create(
+        model="gpt-4o",
+        response_model=list[SelectedResult],
+        messages=[system_message, {"role": "user", "content": prompt}],  # type: ignore
+    )
+
+    return ([result.model_dump() for result in filtered_results], 
+        [result.model_dump() for result in related_results])
