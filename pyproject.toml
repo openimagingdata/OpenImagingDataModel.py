@@ -1,18 +1,21 @@
-[tool.poetry]
+[project]
 name = "openimagingdatamodel"
 version = "0.1.0"
 description = "Representation of data context for imaging informatics"
-authors = ["Your Name <you@example.com>"]
+authors = [
+    {name = "Tarik Alkasab", email = "talkasab@mgh.harvard.edu"},
+    {name = "Kyle Macri", email = "kmacri@bu.edu"}
+]
 license = "MIT"
 readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "^3.11"
-pydantic = "^2.7.0"
-nanoid = "^2.0.0"
-case-switcher = "^1.3.13"
-instructor = "^1.2.2"
-python-dotenv = "^1.0.1"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.9.2",
+    "nanoid>=2.0.0",
+    "case-switcher>=1.3.13",
+    "instructor>=1.6.3",
+    "python-dotenv>=1.0.1"
+]
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.3.7"
@@ -22,8 +25,16 @@ mypy = "^1.9.0"
 jupyter = "^1.0.0"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "mypy>=1.13.0",
+    "pytest>=8.3.3",
+    "ruff>=0.7.3",
+    "jupyter>=1.1.1", 
+]
 
 [tool.ruff]
 src = ["openimagingdatamodel"]
@@ -83,10 +94,10 @@ files = ["openimagingdatamodel"]
 ignore_missing_imports = true
 strict_optional = false
 
-[tool.poe.tasks]
-mypy = "mypy"
-ruff_lint = "ruff check"
-ruff_format = "ruff format"
-lint = ["ruff_lint", "mypy", "ruff_format"]
-test = "pytest"
-check = ["lint", "test"]
+# [tool.poe.tasks]
+# mypy = "mypy"
+# ruff_lint = "ruff check"
+# ruff_format = "ruff format"
+# lint = ["ruff_lint", "mypy", "ruff_format"]
+# test = "pytest"
+# check = ["lint", "test"]
