@@ -17,13 +17,6 @@ dependencies = [
     "python-dotenv>=1.0.1"
 ]
 
-[tool.poetry.group.dev.dependencies]
-ruff = "^0.3.7"
-pytest = "^8.1.1"
-poethepoet = "^0.25.1"
-mypy = "^1.9.0"
-jupyter = "^1.0.0"
-
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
@@ -32,7 +25,7 @@ build-backend = "hatchling.build"
 dev = [
     "mypy>=1.13.0",
     "pytest>=8.3.3",
-    "ruff>=0.7.3",
+    "ruff>=0.8.0",
     "jupyter>=1.1.1", 
 ]
 
@@ -93,11 +86,3 @@ known-first-party = []
 files = ["openimagingdatamodel"]
 ignore_missing_imports = true
 strict_optional = false
-
-# [tool.poe.tasks]
-# mypy = "mypy"
-# ruff_lint = "ruff check"
-# ruff_format = "ruff format"
-# lint = ["ruff_lint", "mypy", "ruff_format"]
-# test = "pytest"
-# check = ["lint", "test"]

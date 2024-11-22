@@ -1,0 +1,24 @@
+version: "3"
+
+tasks:
+  mypy:
+    cmds:
+      - mypy openimagingdatamodel
+  ruff_lint:
+    cmds:
+      - ruff check openimagingdatamodel
+  ruff_format:
+    cmds:
+      - ruff format openimagingdatamodel
+  lint:
+    cmds:
+      - task ruff_lint
+      - task mypy
+      - task ruff_format
+  test:
+    cmds:
+      - pytest
+  check:
+    cmds:
+      - task lint
+      - task test

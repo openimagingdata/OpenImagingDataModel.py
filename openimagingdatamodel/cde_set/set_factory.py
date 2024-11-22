@@ -223,7 +223,7 @@ class SetFactory:
             if isinstance(element, finding_model.ChoiceAttribute):
                 values: list[dict[str, str] | str] = [value.model_dump() for value in element.values]
                 new_el = SetFactory.create_value_set_element(element.name, values)
-                for el_value, att_value in zip(new_el.value_set.values, values):
+                for el_value, att_value in zip(new_el.value_set.values, values, strict=True):
                     if isinstance(att_value, dict) and (description := att_value.get("description")):
                         el_value.definition = description
             if isinstance(element, finding_model.NumericAttribute):
