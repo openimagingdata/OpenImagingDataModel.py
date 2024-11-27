@@ -1,6 +1,9 @@
 version: "3"
 
 tasks:
+  build:
+    cmds:
+      - hatch env create
   mypy:
     cmds:
       - mypy openimagingdatamodel

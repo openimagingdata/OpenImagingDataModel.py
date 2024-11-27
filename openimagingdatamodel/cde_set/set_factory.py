@@ -41,10 +41,9 @@ class SetFactory:
             id=f"TO_BE_DETERMINED{random_digits}",
             name=name,
             description=(description or f"Description for {name}"),
-            schema_version="1.0.0",
             set_version=version,
-            status=status,
-            history=history,
+            schema_version="1.0.0",
+            current_status=status,
             index_codes=[],
             specialties=[],
         )
@@ -70,7 +69,7 @@ class SetFactory:
                 "date": today,
             },
             "schema_version": "1.0.0",
-            "status": {
+            "current_status": {
                 "date": today,
                 "name": "Proposed",
             },

@@ -12,6 +12,8 @@ from .common import (
     Specialty,
     Status,
     Version,
+    Modality,
+    BodyPart,
 )
 
 
@@ -23,13 +25,15 @@ class BaseElement(BaseModel):
     question: str | None = None
     element_version: Version
     schema_version: SchemaVersion
-    status: Status
+    current_status: Status
     index_codes: list[IndexCode] | None = None
+    body_parts: list[BodyPart] | None = None
+    modalities: list[Modality] | None = None
     contributors: Contributors | None = None
     history: list[Event] | None = None
     specialties: list[Specialty] | None = None
+    images: list[Image] | None = None
     references: list[Reference] | None = None
-    source: str | None = None
 
 
 class ValueSetValue(BaseModel):

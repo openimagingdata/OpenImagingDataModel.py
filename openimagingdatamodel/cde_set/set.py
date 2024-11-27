@@ -14,6 +14,8 @@ from .common import (  # noqa: TCH001
     Specialty,
     Status,
     Version,
+    Modality,
+    Image
 )
 from .element import CDEElement  # noqa: TCH001
 
@@ -27,15 +29,18 @@ class CDESet(BaseModel):
     description: str = Field(..., max_length=100, description="Must be 100 or fewer characters long")
     set_version: Version
     schema_version: SchemaVersion
-    status: Status
+    current_status: Status
+    status_history: list[Status] | None = None
     url: HttpUrl | None = None
     index_codes: list[IndexCode] = Field(default_factory=list)
     body_parts: list[BodyPart] | None = None
     contributors: Contributors | None = None
-    history: list[Event] = Field(default_factory=list)
     specialties: list[Specialty] = Field(default_factory=list)
+    modalities: list[Modality] | None = None
     elements: list[CDEElement] = Field(default_factory=list)  # TODO: Require at least one element
+    images: list[Image] | None = None
     references: list[Reference] | None = None
+
 
     def get_element(self, element: str) -> CDEElement:
         """Get a component CDEElement by name or ID."""
