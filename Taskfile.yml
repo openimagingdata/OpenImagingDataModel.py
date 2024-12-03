@@ -3,6 +3,7 @@ version: "3"
 tasks:
   build:
     cmds:
+      - pip install -e ".[dev]"
       - hatch env create
   mypy:
     cmds:
@@ -20,7 +21,7 @@ tasks:
       - task ruff_format
   test:
     cmds:
-      - pytest
+      - PYTHONPATH=. pytest
   check:
     cmds:
       - task lint
