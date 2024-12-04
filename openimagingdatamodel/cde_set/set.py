@@ -19,12 +19,11 @@ from .common import (  # noqa: TCH001
 )
 from .element import CDEElement  # noqa: TCH001
 
-
 # https://github.com/RSNA/ACR-RSNA-CDEs/blob/master/cde.schema.json
 class CDESet(BaseModel):
     """Represents a CDE Set with its component Elements."""
 
-    id: str = Field(..., pattern="^(RDES|TO_BE_DETERMINED)\d+", description="Must be a valid ID")
+    id: str = Field(..., pattern=r"^(RDES|TO_BE_DETERMINED)\d+", description="Must be a valid ID")
     name: str = Field(..., max_length=50, description="Must be 50 or fewer characters long")
     description: str = Field(..., max_length=100, description="Must be 100 or fewer characters long")
     set_version: Version

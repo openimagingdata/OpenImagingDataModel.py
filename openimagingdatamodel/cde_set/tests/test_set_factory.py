@@ -23,6 +23,7 @@ def test_create_set():
     assert cde_set.name == name
     assert re.match(SET_ELEMENT_ID_REGEX, cde_set.id)
     assert len(cde_set.elements) == 0
+    assert cde_set.schema_version == "1.0.0"
 
 
 def test_default_element_metadata():
@@ -30,6 +31,10 @@ def test_default_element_metadata():
     metadata = SetFactory.default_element_metadata(name)
     assert isinstance(metadata, dict)
     assert metadata["name"] == name
+    assert "number" in metadata["element_version"]
+    assert "date" in metadata["element_version"]
+    assert "date" in metadata["current_status"]
+    assert metadata["current_status"]["status"] == "Proposed"
 
 
 def test_create_integer_element():
