@@ -101,28 +101,18 @@ class BodyPart(BaseModel):
     name: str
     index_codes: list[IndexCode] | None = None
 
+
 class Modality(BaseModel):
     code: Literal["CT", "FL", "MR", "MG", "NM", "PET", "US", "XR"] = Field(
-        ...,
-        description="Definition for specifying an applicable modality using DICOM modality codes"
+        ..., description="Definition for specifying an applicable modality using DICOM modality codes"
     )
-
-class Image(BaseModel): 
-    url: HttpUrl 
-    height: int | None = None
-    width: int | None = None
-    captions: str | None = None
-    rights: str | None = None
-    contributors: Contributors | None = None
-    references: list[Reference] | None = None
-
 
 
 class Image(BaseModel):
     url: HttpUrl
     height: int | None = None
     width: int | None = None
-    caption: str | None = None
+    captions: str | None = None
     rights: str | None = None
     contributors: Contributors | None = None
     references: list[Reference] | None = None

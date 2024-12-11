@@ -7,17 +7,17 @@ from pydantic import BaseModel, Field, HttpUrl
 from .common import (  # noqa: TCH001
     BodyPart,
     Contributors,
-    Event,
+    Image,
     IndexCode,
+    Modality,
     Reference,
     SchemaVersion,
     Specialty,
     Status,
     Version,
-    Modality,
-    Image
 )
 from .element import CDEElement  # noqa: TCH001
+
 
 # https://github.com/RSNA/ACR-RSNA-CDEs/blob/master/cde.schema.json
 class CDESet(BaseModel):
@@ -39,7 +39,6 @@ class CDESet(BaseModel):
     elements: list[CDEElement] = Field(default_factory=list)  # TODO: Require at least one element
     images: list[Image] | None = None
     references: list[Reference] | None = None
-
 
     def get_element(self, element: str) -> CDEElement:
         """Get a component CDEElement by name or ID."""

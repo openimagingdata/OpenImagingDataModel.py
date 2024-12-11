@@ -10,7 +10,7 @@ from pydantic import BaseModel, ValidationError
 from openimagingdatamodel.cde_set import finding_model
 from openimagingdatamodel.cde_set.finding_model import FindingModel
 
-from .common import Event, Status, Version
+from .common import Status, Version
 from .element import BooleanElement, FloatElement, FloatValue, IntegerElement, IntegerValue, ValueSet, ValueSetElement
 from .set import CDESet
 
@@ -36,7 +36,6 @@ class SetFactory:
         today = date.today().strftime("%Y-%m-%d")
         version = Version(number=1, date=today)
         status = Status(date=today, status="Proposed")
-        history = [Event(date=today, status=status)]
         set = CDESet(
             id=f"TO_BE_DETERMINED{random_digits}",
             name=name,

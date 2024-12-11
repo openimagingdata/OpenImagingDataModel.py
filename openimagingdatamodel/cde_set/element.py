@@ -3,23 +3,23 @@ from typing import Literal, Union
 from pydantic import BaseModel, Field
 
 from .common import (
+    BodyPart,
     Contributors,
     Event,
     Image,
     IndexCode,
+    Modality,
     Reference,
     SchemaVersion,
     Specialty,
     Status,
     Version,
-    Modality,
-    BodyPart,
 )
 
 
 class BaseElement(BaseModel):
-    id: str = Field(pattern="^(RDE|TO_BE_DETERMINED)\d+")
-    parent_set: str | None = Field(default=None, pattern="^(RDES|TO_BE_DETERMINED)\d+")
+    id: str = Field(pattern=r"^(RDE|TO_BE_DETERMINED)\d+")
+    parent_set: str | None = Field(default=None, pattern=r"^(RDES|TO_BE_DETERMINED)\d+")
     name: str
     definition: str | None = None
     question: str | None = None
@@ -37,7 +37,7 @@ class BaseElement(BaseModel):
 
 
 class ValueSetValue(BaseModel):
-    code: str = Field(pattern="^(RDE|TO_BE_DETERMINED)\d+\.\d+")
+    code: str = Field(pattern=r"^(RDE|TO_BE_DETERMINED)\d+\.\d+")
     value: str | None = None
     name: str
     definition: str | None = None
