@@ -1,11 +1,12 @@
 import re
 from typing import Any, Final
-
+import json
 import pytest  # type: ignore
 from openimagingdatamodel.cde_set.element import BooleanElement, FloatElement, IntegerElement, ValueSetElement
 from openimagingdatamodel.cde_set.finding_model import FindingModel
 from openimagingdatamodel.cde_set.set import CDESet
 from openimagingdatamodel.cde_set.set_factory import SetFactory
+
 
 SET_ELEMENT_ID_REGEX = r"TO_BE_DETERMINED\d{4}"
 
@@ -214,4 +215,8 @@ def test_create_set_from_finding_model(finding_model):
     assert first_value.name == "Absent"
     assert first_value.definition == "The feature is not present"
 
-print("Hello")
+def generate_json_schema():
+    cdeSetschema = CDESet.model_json_schema()
+    print(json.dumps(cdeSetschema, indent = 2))
+          
+generate_json_schema()

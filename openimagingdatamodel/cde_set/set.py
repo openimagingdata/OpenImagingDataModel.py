@@ -17,7 +17,6 @@ from .common import (  # noqa: TCH001
     Specialty,
     Status,
     Version,
-    element_set_schema_metadata
 )
 from .element import CDEElement  # noqa: TCH001
 
@@ -43,9 +42,12 @@ class CDESet(BaseModel):
     elements: list[CDEElement] = Field(default_factory=list, description = "When authoring (e.g., PUT/POST), published elements can be referenced (element_ref_id). GET requests return full element definitions")
     images: list[Image] = Field(default_factory=list)
     references: list[Reference] = Field(default_factory=list)
-
+    
     model_config = ConfigDict(
-        json_schema_extra=element_set_schema_metadata
+        json_schema_extra={
+            "$id": "https://github.com/ACR-RSNA-CDEs/blob/v1.0.0/cde.schema.json",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+        }
     )
 
     def get_element(self, element: str) -> CDEElement:
