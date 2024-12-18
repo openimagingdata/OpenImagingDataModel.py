@@ -213,3 +213,5 @@ def test_create_set_from_finding_model(finding_model):
     assert first_value.code == f"{presence_element.id}.0"
     assert first_value.name == "Absent"
     assert first_value.definition == "The feature is not present"
+
+print("Hello")

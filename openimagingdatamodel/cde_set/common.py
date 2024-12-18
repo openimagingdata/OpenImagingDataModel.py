@@ -1,6 +1,7 @@
 from typing import Annotated, Literal
 
 from pydantic import BaseModel, Field, HttpUrl
+from pydantic.json import JsonDict
 
 
 # Change Specialty to Specialties
@@ -116,3 +117,51 @@ class Image(BaseModel):
     rights: str | None = None
     contributors: Contributors | None = None
     references: list[Reference] | None = None
+
+element_set_schema_metadata: JsonDict  = {
+"$schema": "http://json-schema.org/draft-07/schema#",
+"$ref": "#/definitions/element_set",
+"$id": "https://github.com/ACR-RSNA-CDEs/blob/v1.0.0/cde.schema.json",
+"definitions": {
+    "element_set": {
+        "type": "object",
+        "additionalProperties": False,
+        "patternProperties": {
+            "^\\$": {
+                "description": "Any property starting with $ is reserved for notations and extensions",
+                "tsType": "any"
+            }
+        },
+        "properties": {
+            "id": {
+                "anyOf": [
+                    {
+                        "type": "string",
+                        "pattern": "^RDES\\d+",
+                        "examples": [
+                            "RDES42",
+                            "RDES1042"
+                        ]
+                    },
+                    {
+                        "type": "string",
+                        "pattern": "TO_BE_DETERMINED\\d+",
+                        "examples": [
+                            "TO_BE_DETERMINED123"
+                        ],
+                        "description": "The TO_BE_DETERMINED123 pattern is used for author convenience and tracking during the authoring process. Upon submission to the radelement archive a set number will be assigned and used for all further references overwriting this value"
+                    }
+                ]
+            },
+            "name": {
+                "type": "string",
+                "description": "Set names should follow conventions listed here: https://rsna.github.io/ACR-RSNA-CDEs/reference/set/"
+            },
+            "description": {
+                "type": "string",
+                "description": "CDE Set description including the expected clinical use case. Plain text, or XHTML div are acceptable"
+            }
+        }
+    }
+}
+}
