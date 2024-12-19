@@ -26,6 +26,13 @@ from .element import CDEElement  # noqa: TCH001
 class CDESet(BaseModel):
     """Represents a CDE Set with its component Elements."""
 
+    model_config = ConfigDict(
+        json_schema_extra={
+            "$id": "https://github.com/ACR-RSNA-CDEs/blob/v1.0.0/cde.schema.json",
+            "$schema": "http://json-schema.org/draft-07/schema#",
+        }
+    )
+
     id: str = Field(..., pattern=r"^(RDES|TO_BE_DETERMINED)\d+", description = "Must be a valid ID", examples = ["RDES42", "RDES1042"])
     name: str = Field(...,  max_length=50, description="Set names should follow conventions listed here: https://rsna.github.io/ACR-RSNA-CDEs/reference/set/", examples = ["CAR/DS Adrenal Nodule"])
     description: str = Field(..., max_length=100, description="Must be 100 or fewer characters long")
@@ -43,13 +50,6 @@ class CDESet(BaseModel):
     images: list[Image] = Field(default_factory=list)
     references: list[Reference] = Field(default_factory=list)
     
-    model_config = ConfigDict(
-        json_schema_extra={
-            "$id": "https://github.com/ACR-RSNA-CDEs/blob/v1.0.0/cde.schema.json",
-            "$schema": "http://json-schema.org/draft-07/schema#",
-        }
-    )
-
     def get_element(self, element: str) -> CDEElement:
         """Get a component CDEElement by name or ID."""
         element = element.casefold()
