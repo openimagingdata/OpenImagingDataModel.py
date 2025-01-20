@@ -1,7 +1,7 @@
 import re
 from typing import Any, Final
 
-import pytest
+import pytest  # type: ignore
 from openimagingdatamodel.cde_set.element import BooleanElement, FloatElement, IntegerElement, ValueSetElement
 from openimagingdatamodel.cde_set.finding_model import FindingModel
 from openimagingdatamodel.cde_set.set import CDESet
