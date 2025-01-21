@@ -48,4 +48,15 @@ results = radlex.(
 #   0.8999999761581421),
 #   ...
 # ]
+
+# With reranker
+from lancedb.rerankers import OpenaiReranker
+
+reranker = OpenaiReranker(model_name="o1-mini")
+results = radlex.(
+    radlex.search("posterior cruciate ligament tear", query_type="hybrid", vector_column_name="vector")
+    .rerank(reranker)
+    .to_list()
+)
+# Takes a few seconds for OpenAI call...
 ```
