@@ -1,6 +1,6 @@
 from typing import Annotated, Literal
 
-from pydantic import BaseModel, Field, HttpUrl
+from pydantic import BaseModel, Field, HttpUrl, BeforeValidator
 from typing import Dict, Any
 
 
@@ -64,7 +64,7 @@ class Organization(BaseModel):
     url: HttpUrl | None = None
     abbreviation: str | None = None
     comment: str | None = None
-    role: Literal["author", "sponsor", "translator", "reviewer", "contributor"] | None = None
+    role: Literal["Author", "Sponsor", "Translator", "Reviewer", "Contributor"] | None = None
 
 
 class Person(BaseModel):
@@ -87,7 +87,7 @@ class Reference(BaseModel):
         description="Required - Provide a bibliographic citation, including all the author names (no et Al)"
     )
     doi_uri: str | None = None  # TODO: Add refex for doi uri
-    pubmed_id: str | None = None  # TODO: Add refex for pubmed id
+    pubmed_id: Annotated[str, BeforeValidator(lambda value: str(value) if isinstance(value, int) else value)]
     url: HttpUrl | None = None
 
 
@@ -100,7 +100,7 @@ class IndexCode(BaseModel):
 
 class BodyPart(BaseModel):
     name: str
-    index_codes: list[IndexCode] | None = None
+    index_codes: IndexCode | None = None
 
 
 class Modality(BaseModel):

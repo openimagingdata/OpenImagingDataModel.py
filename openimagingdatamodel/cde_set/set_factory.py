@@ -43,7 +43,7 @@ class SetFactory:
             set_version=version,
             schema_version="1.0.0",
             current_status=status,
-            index_codes=[],
+            elements=[],
             specialties=[],
         )
         if add_presence_element:

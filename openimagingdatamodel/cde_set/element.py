@@ -16,7 +16,7 @@ from .common import (
     Version,
 )
 
-
+#"required": ["id", "name", "element_version", "current_status", "schema_version"],
 class BaseElement(BaseModel):
     id: str = Field(pattern=r"^(RDE|TO_BE_DETERMINED)\d+")
     parent_set: str | None = Field(default=None, pattern=r"^(RDES|TO_BE_DETERMINED)\d+")
@@ -26,14 +26,14 @@ class BaseElement(BaseModel):
     element_version: Version
     schema_version: SchemaVersion
     current_status: Status
-    index_codes: list[IndexCode] | None = None
-    body_parts: list[BodyPart] | None = None
-    modalities: list[Modality] | None = None
+    index_codes: list[IndexCode] = Field(default_factory=list)
+    body_parts: list[BodyPart] = Field(default_factory=list)
+    modalities: list[Modality] = Field(default_factory=list)
     contributors: Contributors | None = None
-    history: list[Event] | None = None
-    specialties: list[Specialty] | None = None
-    images: list[Image] | None = None
-    references: list[Reference] | None = None
+    history: list[Event] = Field(default_factory=list)
+    specialties: list[Specialty] = Field(default_factory=list)
+    images: list[Image] = Field(default_factory=list)
+    references: list[Reference] = Field(default_factory=list)
 
 
 class ValueSetValue(BaseModel):

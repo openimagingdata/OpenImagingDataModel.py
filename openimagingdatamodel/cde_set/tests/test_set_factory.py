@@ -24,7 +24,7 @@ def test_create_set():
     assert cde_set.name == name
     assert re.match(SET_ELEMENT_ID_REGEX, cde_set.id)
     assert len(cde_set.elements) == 0
-    assert cde_set.schema_version == "1.0.0"
+    assert cde_set.schema_version == "1.1.0"
 
 
 def test_default_element_metadata():
@@ -219,4 +219,4 @@ def generate_json_schema():
     cdeSetschema = CDESet.model_json_schema()
     print(json.dumps(cdeSetschema, indent = 2))
           
-generate_json_schema()
+#generate_json_schema()

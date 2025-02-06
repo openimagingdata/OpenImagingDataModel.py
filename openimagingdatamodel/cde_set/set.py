@@ -32,7 +32,7 @@ class CDESet(BaseModel):
             "$schema": "http://json-schema.org/draft-07/schema#",
         }
     )
-
+    # "required": ["id", "name", "description", "set_version", "current_status", "elements", "specialties", "schema_version"]
     id: str = Field(..., pattern=r"^(RDES|TO_BE_DETERMINED)\d+", description = "Must be a valid ID", examples = ["RDES42", "RDES1042"])
     name: str = Field(...,  max_length=50, description="Set names should follow conventions listed here: https://rsna.github.io/ACR-RSNA-CDEs/reference/set/", examples = ["CAR/DS Adrenal Nodule"])
     description: str = Field(..., max_length=100, description="Must be 100 or fewer characters long")
@@ -44,9 +44,9 @@ class CDESet(BaseModel):
     index_codes: list[IndexCode] = Field(default_factory=list)
     body_parts: list[BodyPart] = Field(default_factory=list)
     contributors: Contributors = Field(default = None)   
-    specialties: list[Specialty] = Field(default_factory=list)
+    specialties: List[Specialty] = Field(default_factory=list)
     modalities: list[Modality] = Field(default_factory = list)
-    elements: list[CDEElement] = Field(default_factory=list, description = "When authoring (e.g., PUT/POST), published elements can be referenced (element_ref_id). GET requests return full element definitions")
+    elements: list[CDEElement] = Field(..., description = "When authoring (e.g., PUT/POST), published elements can be referenced (element_ref_id). GET requests return full element definitions")
     images: list[Image] = Field(default_factory=list)
     references: list[Reference] = Field(default_factory=list)
     

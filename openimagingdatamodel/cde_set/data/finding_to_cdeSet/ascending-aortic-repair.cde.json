@@ -1,0 +1,263 @@
+{
+  "id": "TO_BE_DETERMINED5899",
+  "name": "ascending aortic repair",
+  "description": "Repair of the ascending aorta",
+  "set_version": {
+    "number": 1,
+    "date": "2025-02-06"
+  },
+  "schema_version": "1.0.0",
+  "current_status": {
+    "date": "2025-02-06",
+    "status": "Proposed"
+  },
+  "specialties": [
+    {
+      "abbreviation": "CH",
+      "name": "Chest"
+    }
+  ],
+  "elements": [
+    {
+      "id": "TO_BE_DETERMINED9988",
+      "name": "Presence",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED9988.0",
+            "value": "present",
+            "name": "Present",
+            "definition": "None"
+          },
+          {
+            "code": "TO_BE_DETERMINED9988.1",
+            "value": "absent",
+            "name": "Absent",
+            "definition": "None"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED4975",
+      "name": "Type of Repair",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED4975.0",
+            "value": "graft",
+            "name": "Graft",
+            "definition": "None"
+          },
+          {
+            "code": "TO_BE_DETERMINED4975.1",
+            "value": "stent",
+            "name": "Stent",
+            "definition": "None"
+          },
+          {
+            "code": "TO_BE_DETERMINED4975.2",
+            "value": "valve_replacement",
+            "name": "Valve replacement",
+            "definition": "None"
+          },
+          {
+            "code": "TO_BE_DETERMINED4975.3",
+            "value": "valve_sparing",
+            "name": "Valve-sparing",
+            "definition": "None"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED5524",
+      "name": "Condition Treated",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED5524.0",
+            "value": "aneurysm",
+            "name": "Aneurysm",
+            "definition": "None"
+          },
+          {
+            "code": "TO_BE_DETERMINED5524.1",
+            "value": "dissection",
+            "name": "Dissection",
+            "definition": "None"
+          },
+          {
+            "code": "TO_BE_DETERMINED5524.2",
+            "value": "both",
+            "name": "Both",
+            "definition": "None"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED9357",
+      "name": "Location of Repair",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED9357.0",
+            "value": "ascending_aorta",
+            "name": "Ascending aorta",
+            "definition": "None"
+          },
+          {
+            "code": "TO_BE_DETERMINED9357.1",
+            "value": "aortic_root",
+            "name": "Aortic root",
+            "definition": "None"
+          },
+          {
+            "code": "TO_BE_DETERMINED9357.2",
+            "value": "aortic_arch",
+            "name": "Aortic arch",
+            "definition": "None"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED7158",
+      "name": "Aortic Dilation",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED7158.0",
+            "value": "present",
+            "name": "Present",
+            "definition": "None"
+          },
+          {
+            "code": "TO_BE_DETERMINED7158.1",
+            "value": "absent",
+            "name": "Absent",
+            "definition": "None"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED5965",
+      "name": "Residual Dissection",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED5965.0",
+            "value": "present",
+            "name": "Present",
+            "definition": "None"
+          },
+          {
+            "code": "TO_BE_DETERMINED5965.1",
+            "value": "absent",
+            "name": "Absent",
+            "definition": "None"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED2199",
+      "name": "Pericardial Effusion",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED2199.0",
+            "value": "present",
+            "name": "Present",
+            "definition": "None"
+          },
+          {
+            "code": "TO_BE_DETERMINED2199.1",
+            "value": "absent",
+            "name": "Absent",
+            "definition": "None"
+          }
+        ]
+      }
+    }
+  ]
+}

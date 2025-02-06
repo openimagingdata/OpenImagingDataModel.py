@@ -1,0 +1,232 @@
+{
+  "id": "TO_BE_DETERMINED8163",
+  "name": "Bochdalek Hernia",
+  "description": "Bochdalek Hernia is a congenital diaphragmatic hernia that allows abdominal contents to herniate into the chest cavity through a defect in the diaphragm.",
+  "set_version": {
+    "number": 1,
+    "date": "2025-02-06"
+  },
+  "schema_version": "1.0.0",
+  "current_status": {
+    "date": "2025-02-06",
+    "status": "Proposed"
+  },
+  "specialties": [
+    {
+      "abbreviation": "CH",
+      "name": "Chest"
+    }
+  ],
+  "elements": [
+    {
+      "id": "TO_BE_DETERMINED1876",
+      "name": "Presence of Bochdalek Hernia",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED1876.0",
+            "value": "yes",
+            "name": "Yes",
+            "definition": "None"
+          },
+          {
+            "code": "TO_BE_DETERMINED1876.1",
+            "value": "no",
+            "name": "No",
+            "definition": "None"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED1829",
+      "name": "Side",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED1829.0",
+            "value": "left",
+            "name": "Left",
+            "definition": "None"
+          },
+          {
+            "code": "TO_BE_DETERMINED1829.1",
+            "value": "right",
+            "name": "Right",
+            "definition": "None"
+          },
+          {
+            "code": "TO_BE_DETERMINED1829.2",
+            "value": "bilateral",
+            "name": "Bilateral",
+            "definition": "None"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED0242",
+      "name": "Size",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED0242.0",
+            "value": "small",
+            "name": "Small",
+            "definition": "None"
+          },
+          {
+            "code": "TO_BE_DETERMINED0242.1",
+            "value": "medium",
+            "name": "Medium",
+            "definition": "None"
+          },
+          {
+            "code": "TO_BE_DETERMINED0242.2",
+            "value": "large",
+            "name": "Large",
+            "definition": "None"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED3227",
+      "name": "Contents",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED3227.0",
+            "value": "fat",
+            "name": "Fat",
+            "definition": "None"
+          },
+          {
+            "code": "TO_BE_DETERMINED3227.1",
+            "value": "bowel",
+            "name": "Bowel",
+            "definition": "None"
+          },
+          {
+            "code": "TO_BE_DETERMINED3227.2",
+            "value": "both",
+            "name": "Both",
+            "definition": "None"
+          },
+          {
+            "code": "TO_BE_DETERMINED3227.3",
+            "value": "other",
+            "name": "Other",
+            "definition": "None"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED6634",
+      "name": "Pulmonary Hypoplasia",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED6634.0",
+            "value": "present",
+            "name": "Present",
+            "definition": "None"
+          },
+          {
+            "code": "TO_BE_DETERMINED6634.1",
+            "value": "absent",
+            "name": "Absent",
+            "definition": "None"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED9252",
+      "name": "Other Diaphragmatic Hernias",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED9252.0",
+            "value": "present",
+            "name": "Present",
+            "definition": "None"
+          },
+          {
+            "code": "TO_BE_DETERMINED9252.1",
+            "value": "absent",
+            "name": "Absent",
+            "definition": "None"
+          }
+        ]
+      }
+    }
+  ]
+}

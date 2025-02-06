@@ -1,0 +1,483 @@
+{
+  "id": "TO_BE_DETERMINED0065",
+  "name": "breast mass",
+  "description": "A mass observed in the breast.",
+  "set_version": {
+    "number": 1,
+    "date": "2025-02-06"
+  },
+  "schema_version": "1.0.0",
+  "current_status": {
+    "date": "2025-02-06",
+    "status": "Proposed"
+  },
+  "specialties": [
+    {
+      "abbreviation": "CH",
+      "name": "Chest"
+    }
+  ],
+  "elements": [
+    {
+      "id": "TO_BE_DETERMINED8393",
+      "name": "Presence of Breast Mass",
+      "definition": "Presence of breast mass in the breast.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED8393.0",
+            "value": "present",
+            "name": "Present",
+            "definition": "A breast mass is present."
+          },
+          {
+            "code": "TO_BE_DETERMINED8393.1",
+            "value": "absent",
+            "name": "Absent",
+            "definition": "No breast mass is present."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED7555",
+      "name": "Status",
+      "definition": "Status of the breast mass.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED7555.0",
+            "value": "new",
+            "name": "New",
+            "definition": "A newly identified breast mass."
+          },
+          {
+            "code": "TO_BE_DETERMINED7555.1",
+            "value": "unchanged",
+            "name": "Unchanged",
+            "definition": "A breast mass that has not changed in size or appearance."
+          },
+          {
+            "code": "TO_BE_DETERMINED7555.2",
+            "value": "enlarging",
+            "name": "Enlarging",
+            "definition": "A breast mass that is increasing in size or appearance."
+          },
+          {
+            "code": "TO_BE_DETERMINED7555.3",
+            "value": "decreased",
+            "name": "Decreased",
+            "definition": "A breast mass that is decreasing in size or appearance."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED3442",
+      "name": "Location",
+      "definition": "Location of the breast mass.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED3442.0",
+            "value": "right_breast",
+            "name": "Right breast",
+            "definition": "The breast mass is located in the right breast."
+          },
+          {
+            "code": "TO_BE_DETERMINED3442.1",
+            "value": "left_breast",
+            "name": "Left breast",
+            "definition": "The breast mass is located in the left breast."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED3582",
+      "name": "Quadrant",
+      "definition": "Quadrant of the breast mass.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED3582.0",
+            "value": "upper_outer",
+            "name": "Upper outer",
+            "definition": "The breast mass is located in the upper outer quadrant."
+          },
+          {
+            "code": "TO_BE_DETERMINED3582.1",
+            "value": "upper_inner",
+            "name": "Upper inner",
+            "definition": "The breast mass is located in the upper inner quadrant."
+          },
+          {
+            "code": "TO_BE_DETERMINED3582.2",
+            "value": "lower_outer",
+            "name": "Lower outer",
+            "definition": "The breast mass is located in the lower outer quadrant."
+          },
+          {
+            "code": "TO_BE_DETERMINED3582.3",
+            "value": "lower_inner",
+            "name": "Lower inner",
+            "definition": "The breast mass is located in the lower inner quadrant."
+          },
+          {
+            "code": "TO_BE_DETERMINED3582.4",
+            "value": "central",
+            "name": "Central",
+            "definition": "The breast mass is located in the central quadrant."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED3311",
+      "name": "Size",
+      "definition": "Size of the breast mass.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "float_value": {
+        "unit": "cm"
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED6830",
+      "name": "Shape",
+      "definition": "Shape of the breast mass.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED6830.0",
+            "value": "round",
+            "name": "Round",
+            "definition": "The breast mass has a round shape."
+          },
+          {
+            "code": "TO_BE_DETERMINED6830.1",
+            "value": "oval",
+            "name": "Oval",
+            "definition": "The breast mass has an oval shape."
+          },
+          {
+            "code": "TO_BE_DETERMINED6830.2",
+            "value": "irregular",
+            "name": "Irregular",
+            "definition": "The breast mass has an irregular shape."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED9604",
+      "name": "Margin",
+      "definition": "Margin of the breast mass.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED9604.0",
+            "value": "circumscribed",
+            "name": "Circumscribed",
+            "definition": "The margin of the breast mass is circumscribed."
+          },
+          {
+            "code": "TO_BE_DETERMINED9604.1",
+            "value": "indistinct",
+            "name": "Indistinct",
+            "definition": "The margin of the breast mass is indistinct."
+          },
+          {
+            "code": "TO_BE_DETERMINED9604.2",
+            "value": "spiculated",
+            "name": "Spiculated",
+            "definition": "The margin of the breast mass is spiculated."
+          },
+          {
+            "code": "TO_BE_DETERMINED9604.3",
+            "value": "microlobulated",
+            "name": "Microlobulated",
+            "definition": "The margin of the breast mass is microlobulated."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED6637",
+      "name": "Density",
+      "definition": "Density of the breast mass.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED6637.0",
+            "value": "low",
+            "name": "Low",
+            "definition": "The density of the breast mass is low."
+          },
+          {
+            "code": "TO_BE_DETERMINED6637.1",
+            "value": "iso",
+            "name": "Iso",
+            "definition": "The density of the breast mass is iso."
+          },
+          {
+            "code": "TO_BE_DETERMINED6637.2",
+            "value": "high",
+            "name": "High",
+            "definition": "The density of the breast mass is high."
+          },
+          {
+            "code": "TO_BE_DETERMINED6637.3",
+            "value": "fat_containing",
+            "name": "Fat-containing",
+            "definition": "The density of the breast mass is fat-containing."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED3128",
+      "name": "Enhancement",
+      "definition": "Enhancement of the breast mass.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED3128.0",
+            "value": "present",
+            "name": "Present",
+            "definition": "Enhancement is present in the breast mass."
+          },
+          {
+            "code": "TO_BE_DETERMINED3128.1",
+            "value": "absent",
+            "name": "Absent",
+            "definition": "Enhancement is absent in the breast mass."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED6434",
+      "name": "Breast calcifications",
+      "definition": "Presence of breast calcifications.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED6434.0",
+            "value": "present",
+            "name": "Present",
+            "definition": "Breast calcifications are present."
+          },
+          {
+            "code": "TO_BE_DETERMINED6434.1",
+            "value": "absent",
+            "name": "Absent",
+            "definition": "No breast calcifications are present."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED6009",
+      "name": "Skin thickening",
+      "definition": "Presence of skin thickening.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED6009.0",
+            "value": "present",
+            "name": "Present",
+            "definition": "Skin thickening is present."
+          },
+          {
+            "code": "TO_BE_DETERMINED6009.1",
+            "value": "absent",
+            "name": "Absent",
+            "definition": "No skin thickening is present."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED0328",
+      "name": "Nipple retraction",
+      "definition": "Presence of nipple retraction.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED0328.0",
+            "value": "present",
+            "name": "Present",
+            "definition": "Nipple retraction is present."
+          },
+          {
+            "code": "TO_BE_DETERMINED0328.1",
+            "value": "absent",
+            "name": "Absent",
+            "definition": "No nipple retraction is present."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED2917",
+      "name": "Axillary lymphadenopathy",
+      "definition": "Presence of axillary lymphadenopathy.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED2917.0",
+            "value": "present",
+            "name": "Present",
+            "definition": "Axillary lymphadenopathy is present."
+          },
+          {
+            "code": "TO_BE_DETERMINED2917.1",
+            "value": "absent",
+            "name": "Absent",
+            "definition": "No axillary lymphadenopathy is present."
+          }
+        ]
+      }
+    }
+  ]
+}

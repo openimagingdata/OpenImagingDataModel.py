@@ -1,0 +1,478 @@
+{
+  "id": "TO_BE_DETERMINED2380",
+  "name": "compression fracture",
+  "description": "A fracture in one or more vertebrae resulting from compression forces",
+  "set_version": {
+    "number": 1,
+    "date": "2025-02-06"
+  },
+  "schema_version": "1.0.0",
+  "current_status": {
+    "date": "2025-02-06",
+    "status": "Proposed"
+  },
+  "specialties": [
+    {
+      "abbreviation": "CH",
+      "name": "Chest"
+    }
+  ],
+  "elements": [
+    {
+      "id": "TO_BE_DETERMINED0260",
+      "name": "presence",
+      "definition": "Indicates whether a compression fracture is present or absent",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED0260.0",
+            "value": "present",
+            "name": "present",
+            "definition": "A compression fracture is present"
+          },
+          {
+            "code": "TO_BE_DETERMINED0260.1",
+            "value": "absent",
+            "name": "absent",
+            "definition": "No compression fracture is present"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED9104",
+      "name": "acuity",
+      "definition": "The acuity of the compression fracture",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED9104.0",
+            "value": "acute",
+            "name": "acute",
+            "definition": "Recently occurred compression fracture"
+          },
+          {
+            "code": "TO_BE_DETERMINED9104.1",
+            "value": "chronic",
+            "name": "chronic",
+            "definition": "Long-standing compression fracture"
+          },
+          {
+            "code": "TO_BE_DETERMINED9104.2",
+            "value": "subacute",
+            "name": "subacute",
+            "definition": "Compression fracture in the healing phase"
+          },
+          {
+            "code": "TO_BE_DETERMINED9104.3",
+            "value": "healing",
+            "name": "healing",
+            "definition": "Compression fracture in the process of healing"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED6543",
+      "name": "location",
+      "definition": "The location of the compression fracture",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED6543.0",
+            "value": "thoracic",
+            "name": "thoracic",
+            "definition": "Compression fracture in the thoracic region"
+          },
+          {
+            "code": "TO_BE_DETERMINED6543.1",
+            "value": "lumbar",
+            "name": "lumbar",
+            "definition": "Compression fracture in the lumbar region"
+          },
+          {
+            "code": "TO_BE_DETERMINED6543.2",
+            "value": "cervical",
+            "name": "cervical",
+            "definition": "Compression fracture in the cervical region"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED4584",
+      "name": "number_of_vertebrae_affected",
+      "definition": "The number of vertebrae affected by the compression fracture",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED4584.0",
+            "value": "single",
+            "name": "single",
+            "definition": "Compression fracture only affecting a single vertebra"
+          },
+          {
+            "code": "TO_BE_DETERMINED4584.1",
+            "value": "multiple",
+            "name": "multiple",
+            "definition": "Compression fracture affecting multiple vertebrae"
+          },
+          {
+            "code": "TO_BE_DETERMINED4584.2",
+            "value": "diffuse_involvement",
+            "name": "diffuse_involvement",
+            "definition": "Compression fracture with diffuse involvement of vertebrae"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED2151",
+      "name": "severity",
+      "definition": "The severity of the compression fracture",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED2151.0",
+            "value": "mild",
+            "name": "mild",
+            "definition": "Mild compression fracture"
+          },
+          {
+            "code": "TO_BE_DETERMINED2151.1",
+            "value": "moderate",
+            "name": "moderate",
+            "definition": "Moderate compression fracture"
+          },
+          {
+            "code": "TO_BE_DETERMINED2151.2",
+            "value": "severe",
+            "name": "severe",
+            "definition": "Severe compression fracture"
+          },
+          {
+            "code": "TO_BE_DETERMINED2151.3",
+            "value": "collapse",
+            "name": "collapse",
+            "definition": "Compression fracture with collapse of the affected vertebra"
+          },
+          {
+            "code": "TO_BE_DETERMINED2151.4",
+            "value": "complete_destruction",
+            "name": "complete_destruction",
+            "definition": "Compression fracture with complete destruction of the affected vertebra"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED8554",
+      "name": "morphology",
+      "definition": "The morphology of the compression fracture",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED8554.0",
+            "value": "wedge_shaped",
+            "name": "wedge-shaped",
+            "definition": "Compression fracture with a wedge-shaped appearance"
+          },
+          {
+            "code": "TO_BE_DETERMINED8554.1",
+            "value": "biconcave",
+            "name": "biconcave",
+            "definition": "Compression fracture with a biconcave appearance"
+          },
+          {
+            "code": "TO_BE_DETERMINED8554.2",
+            "value": "crush",
+            "name": "crush",
+            "definition": "Compression fracture with a crush appearance"
+          },
+          {
+            "code": "TO_BE_DETERMINED8554.3",
+            "value": "endplate_involvement",
+            "name": "endplate_involvement",
+            "definition": "Compression fracture with endplate involvement"
+          },
+          {
+            "code": "TO_BE_DETERMINED8554.4",
+            "value": "cortical_disruption",
+            "name": "cortical_disruption",
+            "definition": "Compression fracture with cortical disruption"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED7615",
+      "name": "bone_marrow_edema",
+      "definition": "Indicates whether bone marrow edema is present or absent",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED7615.0",
+            "value": "present",
+            "name": "present",
+            "definition": "Bone marrow edema is present"
+          },
+          {
+            "code": "TO_BE_DETERMINED7615.1",
+            "value": "absent",
+            "name": "absent",
+            "definition": "No bone marrow edema is present"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED3797",
+      "name": "adjacent_disc_involvement",
+      "definition": "Indicates whether adjacent disc involvement is present, absent, or shows degenerative changes",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED3797.0",
+            "value": "present",
+            "name": "present",
+            "definition": "Adjacent disc involvement is present"
+          },
+          {
+            "code": "TO_BE_DETERMINED3797.1",
+            "value": "absent",
+            "name": "absent",
+            "definition": "No adjacent disc involvement is present"
+          },
+          {
+            "code": "TO_BE_DETERMINED3797.2",
+            "value": "degenerative_changes",
+            "name": "degenerative_changes",
+            "definition": "Adjacent disc involvement shows degenerative changes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED8725",
+      "name": "soft_tissue_swelling",
+      "definition": "Indicates whether soft tissue swelling is present or absent",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED8725.0",
+            "value": "present",
+            "name": "present",
+            "definition": "Soft tissue swelling is present"
+          },
+          {
+            "code": "TO_BE_DETERMINED8725.1",
+            "value": "absent",
+            "name": "absent",
+            "definition": "No soft tissue swelling is present"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED5574",
+      "name": "canal_compromise",
+      "definition": "Indicates whether canal compromise is present, absent, or shows stenosis",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED5574.0",
+            "value": "present",
+            "name": "present",
+            "definition": "Canal compromise is present"
+          },
+          {
+            "code": "TO_BE_DETERMINED5574.1",
+            "value": "absent",
+            "name": "absent",
+            "definition": "No canal compromise is present"
+          },
+          {
+            "code": "TO_BE_DETERMINED5574.2",
+            "value": "stenosis",
+            "name": "stenosis",
+            "definition": "Canal compromise shows stenosis"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED5925",
+      "name": "paravertebral_hematoma",
+      "definition": "Indicates whether paravertebral hematoma is present or absent",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED5925.0",
+            "value": "present",
+            "name": "present",
+            "definition": "Paravertebral hematoma is present"
+          },
+          {
+            "code": "TO_BE_DETERMINED5925.1",
+            "value": "absent",
+            "name": "absent",
+            "definition": "No paravertebral hematoma is present"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED2403",
+      "name": "neurological_compromise",
+      "definition": "Indicates whether neurological compromise is present or absent",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED2403.0",
+            "value": "present",
+            "name": "present",
+            "definition": "Neurological compromise is present"
+          },
+          {
+            "code": "TO_BE_DETERMINED2403.1",
+            "value": "absent",
+            "name": "absent",
+            "definition": "No neurological compromise is present"
+          }
+        ]
+      }
+    }
+  ]
+}

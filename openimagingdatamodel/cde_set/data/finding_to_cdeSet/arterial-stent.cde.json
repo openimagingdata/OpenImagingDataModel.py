@@ -1,0 +1,402 @@
+{
+  "id": "TO_BE_DETERMINED8584",
+  "name": "arterial stent",
+  "description": "An arterial stent is a tubular device inserted into an artery to improve blood flow.",
+  "set_version": {
+    "number": 1,
+    "date": "2025-02-06"
+  },
+  "schema_version": "1.0.0",
+  "current_status": {
+    "date": "2025-02-06",
+    "status": "Proposed"
+  },
+  "specialties": [
+    {
+      "abbreviation": "CH",
+      "name": "Chest"
+    }
+  ],
+  "elements": [
+    {
+      "id": "TO_BE_DETERMINED4657",
+      "name": "Presence of Arterial Stent",
+      "definition": "Indicates whether an arterial stent is present in the patient.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED4657.0",
+            "value": "present",
+            "name": "Present",
+            "definition": "An arterial stent is present in the patient."
+          },
+          {
+            "code": "TO_BE_DETERMINED4657.1",
+            "value": "absent",
+            "name": "Absent",
+            "definition": "No arterial stent is present in the patient."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED3113",
+      "name": "Status",
+      "definition": "Indicates the status of the arterial stent.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED3113.0",
+            "value": "new_placement",
+            "name": "New placement",
+            "definition": "The arterial stent has been newly placed."
+          },
+          {
+            "code": "TO_BE_DETERMINED3113.1",
+            "value": "unchanged",
+            "name": "Unchanged",
+            "definition": "The arterial stent remains unchanged."
+          },
+          {
+            "code": "TO_BE_DETERMINED3113.2",
+            "value": "complication",
+            "name": "Complication",
+            "definition": "The arterial stent has complications."
+          },
+          {
+            "code": "TO_BE_DETERMINED3113.3",
+            "value": "removed",
+            "name": "Removed",
+            "definition": "The arterial stent has been removed."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED1243",
+      "name": "Location",
+      "definition": "Indicates the location of the arterial stent.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED1243.0",
+            "value": "carotid_artery",
+            "name": "Carotid artery",
+            "definition": "The arterial stent is located in the carotid artery."
+          },
+          {
+            "code": "TO_BE_DETERMINED1243.1",
+            "value": "subclavian_artery",
+            "name": "Subclavian artery",
+            "definition": "The arterial stent is located in the subclavian artery."
+          },
+          {
+            "code": "TO_BE_DETERMINED1243.2",
+            "value": "brachial_artery",
+            "name": "Brachial artery",
+            "definition": "The arterial stent is located in the brachial artery."
+          },
+          {
+            "code": "TO_BE_DETERMINED1243.3",
+            "value": "cephalic_artery",
+            "name": "Cephalic artery",
+            "definition": "The arterial stent is located in the cephalic artery."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED0802",
+      "name": "Side",
+      "definition": "Indicates the side of the body where the arterial stent is located.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED0802.0",
+            "value": "left",
+            "name": "Left",
+            "definition": "The arterial stent is located on the left side of the body."
+          },
+          {
+            "code": "TO_BE_DETERMINED0802.1",
+            "value": "right",
+            "name": "Right",
+            "definition": "The arterial stent is located on the right side of the body."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED3450",
+      "name": "Stent Length",
+      "definition": "The length of the arterial stent.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "float_value": {
+        "min": 0.0,
+        "unit": "cm"
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED6618",
+      "name": "Stent Diameter",
+      "definition": "The diameter of the arterial stent.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "float_value": {
+        "min": 0.0,
+        "unit": "mm"
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED6071",
+      "name": "Intimal Hyperplasia",
+      "definition": "Indicates the presence or absence of intimal hyperplasia around the arterial stent.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED6071.0",
+            "value": "present",
+            "name": "Present",
+            "definition": "Intimal hyperplasia is present around the arterial stent."
+          },
+          {
+            "code": "TO_BE_DETERMINED6071.1",
+            "value": "absent",
+            "name": "Absent",
+            "definition": "No intimal hyperplasia is present around the arterial stent."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED8426",
+      "name": "In-Stent Restenosis",
+      "definition": "Indicates the presence or absence of in-stent restenosis in the arterial stent.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED8426.0",
+            "value": "present",
+            "name": "Present",
+            "definition": "In-stent restenosis is present in the arterial stent."
+          },
+          {
+            "code": "TO_BE_DETERMINED8426.1",
+            "value": "absent",
+            "name": "Absent",
+            "definition": "No in-stent restenosis is present in the arterial stent."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED9741",
+      "name": "Stent Fracture",
+      "definition": "Indicates the presence or absence of stent fracture in the arterial stent.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED9741.0",
+            "value": "present",
+            "name": "Present",
+            "definition": "Stent fracture is present in the arterial stent."
+          },
+          {
+            "code": "TO_BE_DETERMINED9741.1",
+            "value": "absent",
+            "name": "Absent",
+            "definition": "No stent fracture is present in the arterial stent."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED9299",
+      "name": "Stent Migration",
+      "definition": "Indicates the presence or absence of stent migration in the arterial stent.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED9299.0",
+            "value": "present",
+            "name": "Present",
+            "definition": "Stent migration is present in the arterial stent."
+          },
+          {
+            "code": "TO_BE_DETERMINED9299.1",
+            "value": "absent",
+            "name": "Absent",
+            "definition": "No stent migration is present in the arterial stent."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED6728",
+      "name": "Peri-stent Leak",
+      "definition": "Indicates the presence or absence of peri-stent leak in the arterial stent.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED6728.0",
+            "value": "present",
+            "name": "Present",
+            "definition": "Peri-stent leak is present in the arterial stent."
+          },
+          {
+            "code": "TO_BE_DETERMINED6728.1",
+            "value": "absent",
+            "name": "Absent",
+            "definition": "No peri-stent leak is present in the arterial stent."
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED5254",
+      "name": "Thrombosis",
+      "definition": "Indicates the presence or absence of thrombosis in the arterial stent.",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED5254.0",
+            "value": "present",
+            "name": "Present",
+            "definition": "Thrombosis is present in the arterial stent."
+          },
+          {
+            "code": "TO_BE_DETERMINED5254.1",
+            "value": "absent",
+            "name": "Absent",
+            "definition": "No thrombosis is present in the arterial stent."
+          }
+        ]
+      }
+    }
+  ]
+}

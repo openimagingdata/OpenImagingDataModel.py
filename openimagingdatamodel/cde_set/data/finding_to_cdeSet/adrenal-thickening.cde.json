@@ -1,0 +1,182 @@
+{
+  "id": "TO_BE_DETERMINED2002",
+  "name": "adrenal thickening",
+  "description": "Thickening of the adrenal gland",
+  "set_version": {
+    "number": 1,
+    "date": "2025-02-06"
+  },
+  "schema_version": "1.0.0",
+  "current_status": {
+    "date": "2025-02-06",
+    "status": "Proposed"
+  },
+  "specialties": [
+    {
+      "abbreviation": "CH",
+      "name": "Chest"
+    }
+  ],
+  "elements": [
+    {
+      "id": "TO_BE_DETERMINED3294",
+      "name": "presence",
+      "definition": "Presence of adrenal thickening",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED3294.0",
+            "value": "present",
+            "name": "present"
+          },
+          {
+            "code": "TO_BE_DETERMINED3294.1",
+            "value": "absent",
+            "name": "absent"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED4869",
+      "name": "laterality",
+      "definition": "Laterality of the adrenal thickening",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED4869.0",
+            "value": "right",
+            "name": "right"
+          },
+          {
+            "code": "TO_BE_DETERMINED4869.1",
+            "value": "left",
+            "name": "left"
+          },
+          {
+            "code": "TO_BE_DETERMINED4869.2",
+            "value": "bilateral",
+            "name": "bilateral"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED4071",
+      "name": "thickness",
+      "definition": "Severity of the adrenal thickening",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED4071.0",
+            "value": "mild",
+            "name": "mild"
+          },
+          {
+            "code": "TO_BE_DETERMINED4071.1",
+            "value": "moderate",
+            "name": "moderate"
+          },
+          {
+            "code": "TO_BE_DETERMINED4071.2",
+            "value": "severe",
+            "name": "severe"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED1860",
+      "name": "homogeneity",
+      "definition": "Homogeneity of the adrenal thickening",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED1860.0",
+            "value": "homogeneous",
+            "name": "homogeneous"
+          },
+          {
+            "code": "TO_BE_DETERMINED1860.1",
+            "value": "heterogeneous",
+            "name": "heterogeneous"
+          }
+        ]
+      }
+    },
+    {
+      "id": "TO_BE_DETERMINED1597",
+      "name": "lymphadenopathy",
+      "definition": "Presence of lymphadenopathy",
+      "element_version": {
+        "number": 1,
+        "date": "2025-02-06"
+      },
+      "schema_version": "1.0.0",
+      "current_status": {
+        "date": "2025-02-06",
+        "status": "Proposed"
+      },
+      "value_set": {
+        "min_cardinality": 1,
+        "max_cardinality": 1,
+        "values": [
+          {
+            "code": "TO_BE_DETERMINED1597.0",
+            "value": "present",
+            "name": "present"
+          },
+          {
+            "code": "TO_BE_DETERMINED1597.1",
+            "value": "absent",
+            "name": "absent"
+          }
+        ]
+      }
+    }
+  ]
+}
