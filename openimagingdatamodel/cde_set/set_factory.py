@@ -35,14 +35,14 @@ class SetFactory:
         random_digits = SetFactory.random_digits()
         today = date.today().strftime("%Y-%m-%d")
         version = Version(number=1, date=today)
-        status = Status(date=today, status="Proposed")
+        status = Status(date=today, name="Proposed")
         set = CDESet(
             id=f"TO_BE_DETERMINED{random_digits}",
             name=name,
             description=(description or f"Description for {name}"),
             set_version=version,
             schema_version="1.0.0",
-            current_status=status,
+            status=status,
             elements=[],
             specialties=[],
         )
@@ -68,9 +68,9 @@ class SetFactory:
                 "date": today,
             },
             "schema_version": "1.0.0",
-            "current_status": {
+            "status": {
                 "date": today,
-                "status": "Proposed",
+                "name": "Proposed",
             },
         }
 

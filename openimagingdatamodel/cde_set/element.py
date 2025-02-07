@@ -25,6 +25,21 @@ class BaseElement(BaseModel):
     question: str | None = None
     element_version: Version
     schema_version: SchemaVersion
+    status: Status
+    index_codes: list[IndexCode] = Field(default_factory=list)
+    contributors: Contributors | None = None
+    history: list[Event] = Field(default_factory=list)
+    specialty: list[Specialty] = Field(default_factory=list)
+    references: list[Reference] = Field(default_factory=list)
+
+class BaseElement2(BaseModel):
+    id: str = Field(pattern=r"^(RDE|TO_BE_DETERMINED)\d+")
+    parent_set: str | None = Field(default=None, pattern=r"^(RDES|TO_BE_DETERMINED)\d+")
+    name: str
+    definition: str | None = None
+    question: str | None = None
+    element_version: Version
+    schema_version: SchemaVersion
     current_status: Status
     index_codes: list[IndexCode] = Field(default_factory=list)
     body_parts: list[BodyPart] = Field(default_factory=list)

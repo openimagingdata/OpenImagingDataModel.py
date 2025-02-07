@@ -2,6 +2,8 @@ from typing import Annotated, Literal
 
 from pydantic import BaseModel, Field, HttpUrl, BeforeValidator
 from typing import Dict, Any
+from datetime import date
+
 
 
 # Change Specialty to Specialties
@@ -50,12 +52,12 @@ SchemaVersion = Annotated[
 
 
 class Status(BaseModel):
-    date: str  # TODO: Add date format
-    status: Literal["Proposed", "Published", "Retired"]
+    date: str
+    name: Literal["Proposed", "Published", "Retired"]
 
 
 class Event(BaseModel):
-    date: str  # TODO: Add date format
+    date: str
     status: Status
 
 

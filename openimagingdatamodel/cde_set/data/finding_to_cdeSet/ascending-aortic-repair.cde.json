@@ -1,15 +1,15 @@
 {
-  "id": "TO_BE_DETERMINED5899",
+  "id": "TO_BE_DETERMINED2523",
   "name": "ascending aortic repair",
   "description": "Repair of the ascending aorta",
   "set_version": {
     "number": 1,
-    "date": "2025-02-06"
+    "date": "2025-02-07"
   },
   "schema_version": "1.0.0",
-  "current_status": {
-    "date": "2025-02-06",
-    "status": "Proposed"
+  "status": {
+    "date": "2025-02-07",
+    "name": "Proposed"
   },
   "specialties": [
     {
@@ -19,29 +19,29 @@
   ],
   "elements": [
     {
-      "id": "TO_BE_DETERMINED9988",
+      "id": "TO_BE_DETERMINED3594",
       "name": "Presence",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED9988.0",
+            "code": "TO_BE_DETERMINED3594.0",
             "value": "present",
             "name": "Present",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED9988.1",
+            "code": "TO_BE_DETERMINED3594.1",
             "value": "absent",
             "name": "Absent",
             "definition": "None"
@@ -50,41 +50,41 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED4975",
+      "id": "TO_BE_DETERMINED0896",
       "name": "Type of Repair",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED4975.0",
+            "code": "TO_BE_DETERMINED0896.0",
             "value": "graft",
             "name": "Graft",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED4975.1",
+            "code": "TO_BE_DETERMINED0896.1",
             "value": "stent",
             "name": "Stent",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED4975.2",
+            "code": "TO_BE_DETERMINED0896.2",
             "value": "valve_replacement",
             "name": "Valve replacement",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED4975.3",
+            "code": "TO_BE_DETERMINED0896.3",
             "value": "valve_sparing",
             "name": "Valve-sparing",
             "definition": "None"
@@ -93,35 +93,35 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED5524",
+      "id": "TO_BE_DETERMINED6916",
       "name": "Condition Treated",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED5524.0",
+            "code": "TO_BE_DETERMINED6916.0",
             "value": "aneurysm",
             "name": "Aneurysm",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED5524.1",
+            "code": "TO_BE_DETERMINED6916.1",
             "value": "dissection",
             "name": "Dissection",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED5524.2",
+            "code": "TO_BE_DETERMINED6916.2",
             "value": "both",
             "name": "Both",
             "definition": "None"
@@ -130,35 +130,35 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED9357",
+      "id": "TO_BE_DETERMINED7160",
       "name": "Location of Repair",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED9357.0",
+            "code": "TO_BE_DETERMINED7160.0",
             "value": "ascending_aorta",
             "name": "Ascending aorta",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED9357.1",
+            "code": "TO_BE_DETERMINED7160.1",
             "value": "aortic_root",
             "name": "Aortic root",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED9357.2",
+            "code": "TO_BE_DETERMINED7160.2",
             "value": "aortic_arch",
             "name": "Aortic arch",
             "definition": "None"
@@ -167,29 +167,29 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED7158",
+      "id": "TO_BE_DETERMINED2673",
       "name": "Aortic Dilation",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED7158.0",
+            "code": "TO_BE_DETERMINED2673.0",
             "value": "present",
             "name": "Present",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED7158.1",
+            "code": "TO_BE_DETERMINED2673.1",
             "value": "absent",
             "name": "Absent",
             "definition": "None"
@@ -198,29 +198,29 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED5965",
+      "id": "TO_BE_DETERMINED8192",
       "name": "Residual Dissection",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED5965.0",
+            "code": "TO_BE_DETERMINED8192.0",
             "value": "present",
             "name": "Present",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED5965.1",
+            "code": "TO_BE_DETERMINED8192.1",
             "value": "absent",
             "name": "Absent",
             "definition": "None"
@@ -229,29 +229,29 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED2199",
+      "id": "TO_BE_DETERMINED8864",
       "name": "Pericardial Effusion",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED2199.0",
+            "code": "TO_BE_DETERMINED8864.0",
             "value": "present",
             "name": "Present",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED2199.1",
+            "code": "TO_BE_DETERMINED8864.1",
             "value": "absent",
             "name": "Absent",
             "definition": "None"

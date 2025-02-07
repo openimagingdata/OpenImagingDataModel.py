@@ -1,15 +1,15 @@
 {
-  "id": "TO_BE_DETERMINED8018",
+  "id": "TO_BE_DETERMINED4141",
   "name": "Annular Calcifications",
   "description": "Presence of annular calcifications",
   "set_version": {
     "number": 1,
-    "date": "2025-02-06"
+    "date": "2025-02-07"
   },
   "schema_version": "1.0.0",
-  "current_status": {
-    "date": "2025-02-06",
-    "status": "Proposed"
+  "status": {
+    "date": "2025-02-07",
+    "name": "Proposed"
   },
   "specialties": [
     {
@@ -19,29 +19,29 @@
   ],
   "elements": [
     {
-      "id": "TO_BE_DETERMINED9354",
+      "id": "TO_BE_DETERMINED2985",
       "name": "Presence",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED9354.0",
+            "code": "TO_BE_DETERMINED2985.0",
             "value": "present",
             "name": "Present",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED9354.1",
+            "code": "TO_BE_DETERMINED2985.1",
             "value": "absent",
             "name": "Absent",
             "definition": "None"
@@ -50,41 +50,41 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED9252",
+      "id": "TO_BE_DETERMINED6011",
       "name": "Location",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED9252.0",
+            "code": "TO_BE_DETERMINED6011.0",
             "value": "mitral_valve_annulus",
             "name": "Mitral valve annulus",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED9252.1",
+            "code": "TO_BE_DETERMINED6011.1",
             "value": "aortic_valve_annulus",
             "name": "Aortic valve annulus",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED9252.2",
+            "code": "TO_BE_DETERMINED6011.2",
             "value": "tricuspid_valve_annulus",
             "name": "Tricuspid valve annulus",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED9252.3",
+            "code": "TO_BE_DETERMINED6011.3",
             "value": "pulmonary_valve_annulus",
             "name": "Pulmonary valve annulus",
             "definition": "None"
@@ -93,35 +93,35 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED9512",
+      "id": "TO_BE_DETERMINED5664",
       "name": "Severity",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED9512.0",
+            "code": "TO_BE_DETERMINED5664.0",
             "value": "mild",
             "name": "Mild",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED9512.1",
+            "code": "TO_BE_DETERMINED5664.1",
             "value": "moderate",
             "name": "Moderate",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED9512.2",
+            "code": "TO_BE_DETERMINED5664.2",
             "value": "severe",
             "name": "Severe",
             "definition": "None"
@@ -130,29 +130,29 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED3604",
+      "id": "TO_BE_DETERMINED7567",
       "name": "Cardiomegaly",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED3604.0",
+            "code": "TO_BE_DETERMINED7567.0",
             "value": "yes",
             "name": "Yes",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED3604.1",
+            "code": "TO_BE_DETERMINED7567.1",
             "value": "no",
             "name": "No",
             "definition": "None"
@@ -161,29 +161,29 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED5987",
+      "id": "TO_BE_DETERMINED6062",
       "name": "Coronary artery disease",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED5987.0",
+            "code": "TO_BE_DETERMINED6062.0",
             "value": "yes",
             "name": "Yes",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED5987.1",
+            "code": "TO_BE_DETERMINED6062.1",
             "value": "no",
             "name": "No",
             "definition": "None"
@@ -192,29 +192,29 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED1230",
+      "id": "TO_BE_DETERMINED9662",
       "name": "Left atrial enlargement",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED1230.0",
+            "code": "TO_BE_DETERMINED9662.0",
             "value": "yes",
             "name": "Yes",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED1230.1",
+            "code": "TO_BE_DETERMINED9662.1",
             "value": "no",
             "name": "No",
             "definition": "None"
@@ -223,29 +223,29 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED9878",
+      "id": "TO_BE_DETERMINED7660",
       "name": "Pulmonary hypertension",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED9878.0",
+            "code": "TO_BE_DETERMINED7660.0",
             "value": "yes",
             "name": "Yes",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED9878.1",
+            "code": "TO_BE_DETERMINED7660.1",
             "value": "no",
             "name": "No",
             "definition": "None"

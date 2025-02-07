@@ -1,15 +1,15 @@
 {
-  "id": "TO_BE_DETERMINED4283",
+  "id": "TO_BE_DETERMINED9975",
   "name": "cholelithiasis",
   "description": "Cholelithiasis is the presence of gallstones in the gallbladder or bile ducts.",
   "set_version": {
     "number": 1,
-    "date": "2025-02-06"
+    "date": "2025-02-07"
   },
   "schema_version": "1.0.0",
-  "current_status": {
-    "date": "2025-02-06",
-    "status": "Proposed"
+  "status": {
+    "date": "2025-02-07",
+    "name": "Proposed"
   },
   "specialties": [
     {
@@ -19,30 +19,30 @@
   ],
   "elements": [
     {
-      "id": "TO_BE_DETERMINED1444",
+      "id": "TO_BE_DETERMINED3517",
       "name": "Presence",
       "definition": "Indicates the presence or absence of cholelithiasis.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED1444.0",
+            "code": "TO_BE_DETERMINED3517.0",
             "value": "present",
             "name": "Present",
             "definition": "The finding is present."
           },
           {
-            "code": "TO_BE_DETERMINED1444.1",
+            "code": "TO_BE_DETERMINED3517.1",
             "value": "absent",
             "name": "Absent",
             "definition": "The finding is absent."
@@ -51,30 +51,30 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED2848",
+      "id": "TO_BE_DETERMINED6071",
       "name": "Number of stones",
       "definition": "Indicates the number of stones present.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED2848.0",
+            "code": "TO_BE_DETERMINED6071.0",
             "value": "single",
             "name": "Single",
             "definition": "A single stone is present."
           },
           {
-            "code": "TO_BE_DETERMINED2848.1",
+            "code": "TO_BE_DETERMINED6071.1",
             "value": "multiple",
             "name": "Multiple",
             "definition": "More than one stone is present."
@@ -83,47 +83,47 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED8399",
+      "id": "TO_BE_DETERMINED7930",
       "name": "Stone size",
       "definition": "Indicates the size of the stones.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "float_value": {
         "unit": "mm"
       }
     },
     {
-      "id": "TO_BE_DETERMINED6975",
+      "id": "TO_BE_DETERMINED7601",
       "name": "Location",
       "definition": "Indicates the location of the stones.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED6975.0",
+            "code": "TO_BE_DETERMINED7601.0",
             "value": "gallbladder_lumen",
             "name": "Gallbladder lumen",
             "definition": "The stones are located in the gallbladder lumen."
           },
           {
-            "code": "TO_BE_DETERMINED6975.1",
+            "code": "TO_BE_DETERMINED7601.1",
             "value": "bile_ducts",
             "name": "Bile ducts",
             "definition": "The stones are located in the bile ducts."
@@ -132,30 +132,30 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED0648",
+      "id": "TO_BE_DETERMINED9027",
       "name": "Gallbladder wall thickening",
       "definition": "Indicates the presence or absence of gallbladder wall thickening.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED0648.0",
+            "code": "TO_BE_DETERMINED9027.0",
             "value": "yes",
             "name": "Yes",
             "definition": "Gallbladder wall thickening is present."
           },
           {
-            "code": "TO_BE_DETERMINED0648.1",
+            "code": "TO_BE_DETERMINED9027.1",
             "value": "no",
             "name": "No",
             "definition": "Gallbladder wall thickening is absent."
@@ -164,30 +164,30 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED5792",
+      "id": "TO_BE_DETERMINED4655",
       "name": "Pericholecystic fluid",
       "definition": "Indicates the presence or absence of pericholecystic fluid.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED5792.0",
+            "code": "TO_BE_DETERMINED4655.0",
             "value": "yes",
             "name": "Yes",
             "definition": "Pericholecystic fluid is present."
           },
           {
-            "code": "TO_BE_DETERMINED5792.1",
+            "code": "TO_BE_DETERMINED4655.1",
             "value": "no",
             "name": "No",
             "definition": "Pericholecystic fluid is absent."
@@ -196,30 +196,30 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED7289",
+      "id": "TO_BE_DETERMINED3689",
       "name": "Biliary dilatation",
       "definition": "Indicates the presence or absence of biliary dilatation.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED7289.0",
+            "code": "TO_BE_DETERMINED3689.0",
             "value": "yes",
             "name": "Yes",
             "definition": "Biliary dilatation is present."
           },
           {
-            "code": "TO_BE_DETERMINED7289.1",
+            "code": "TO_BE_DETERMINED3689.1",
             "value": "no",
             "name": "No",
             "definition": "Biliary dilatation is absent."
@@ -228,30 +228,30 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED9167",
+      "id": "TO_BE_DETERMINED7778",
       "name": "Signs of acute cholecystitis",
       "definition": "Indicates the presence or absence of signs of acute cholecystitis.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED9167.0",
+            "code": "TO_BE_DETERMINED7778.0",
             "value": "yes",
             "name": "Yes",
             "definition": "Signs of acute cholecystitis are present."
           },
           {
-            "code": "TO_BE_DETERMINED9167.1",
+            "code": "TO_BE_DETERMINED7778.1",
             "value": "no",
             "name": "No",
             "definition": "Signs of acute cholecystitis are absent."

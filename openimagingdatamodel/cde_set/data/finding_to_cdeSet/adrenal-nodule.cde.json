@@ -1,15 +1,15 @@
 {
-  "id": "TO_BE_DETERMINED5802",
+  "id": "TO_BE_DETERMINED3620",
   "name": "adrenal nodule",
   "description": "",
   "set_version": {
     "number": 1,
-    "date": "2025-02-06"
+    "date": "2025-02-07"
   },
   "schema_version": "1.0.0",
-  "current_status": {
-    "date": "2025-02-06",
-    "status": "Proposed"
+  "status": {
+    "date": "2025-02-07",
+    "name": "Proposed"
   },
   "specialties": [
     {
@@ -19,29 +19,29 @@
   ],
   "elements": [
     {
-      "id": "TO_BE_DETERMINED3424",
+      "id": "TO_BE_DETERMINED8883",
       "name": "presence",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED3424.0",
+            "code": "TO_BE_DETERMINED8883.0",
             "value": "present",
             "name": "present",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED3424.1",
+            "code": "TO_BE_DETERMINED8883.1",
             "value": "absent",
             "name": "absent",
             "definition": "None"
@@ -50,35 +50,35 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED3462",
+      "id": "TO_BE_DETERMINED8224",
       "name": "status",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED3462.0",
+            "code": "TO_BE_DETERMINED8224.0",
             "value": "new",
             "name": "new",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED3462.1",
+            "code": "TO_BE_DETERMINED8224.1",
             "value": "stable",
             "name": "stable",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED3462.2",
+            "code": "TO_BE_DETERMINED8224.2",
             "value": "enlarged",
             "name": "enlarged",
             "definition": "None"
@@ -87,45 +87,45 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED2138",
+      "id": "TO_BE_DETERMINED5831",
       "name": "size",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "float_value": {
         "unit": "mm"
       }
     },
     {
-      "id": "TO_BE_DETERMINED9541",
+      "id": "TO_BE_DETERMINED6714",
       "name": "side",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED9541.0",
+            "code": "TO_BE_DETERMINED6714.0",
             "value": "right",
             "name": "right",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED9541.1",
+            "code": "TO_BE_DETERMINED6714.1",
             "value": "left",
             "name": "left",
             "definition": "None"
@@ -134,56 +134,56 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED3645",
+      "id": "TO_BE_DETERMINED4252",
       "name": "Hounsfield units (HU)",
       "definition": "Hounsfield units (HU) at non-contrast CT",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "float_value": {}
     },
     {
-      "id": "TO_BE_DETERMINED4937",
+      "id": "TO_BE_DETERMINED7723",
       "name": "enhancement pattern",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED4937.0",
+            "code": "TO_BE_DETERMINED7723.0",
             "value": "nonenhancing",
             "name": "nonenhancing",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED4937.1",
+            "code": "TO_BE_DETERMINED7723.1",
             "value": "enhancing",
             "name": "enhancing",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED4937.2",
+            "code": "TO_BE_DETERMINED7723.2",
             "value": "rapid_wash_in_and_wash_out",
             "name": "rapid wash-in and wash-out",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED4937.3",
+            "code": "TO_BE_DETERMINED7723.3",
             "value": "delayed_wash_out",
             "name": "delayed wash-out",
             "definition": "None"

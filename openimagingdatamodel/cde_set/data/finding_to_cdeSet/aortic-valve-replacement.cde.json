@@ -1,15 +1,15 @@
 {
-  "id": "TO_BE_DETERMINED0501",
+  "id": "TO_BE_DETERMINED5219",
   "name": "Aortic Valve Replacement",
   "description": "A finding indicating the presence or absence of an aortic valve replacement, along with its characteristics.",
   "set_version": {
     "number": 1,
-    "date": "2025-02-06"
+    "date": "2025-02-07"
   },
   "schema_version": "1.0.0",
-  "current_status": {
-    "date": "2025-02-06",
-    "status": "Proposed"
+  "status": {
+    "date": "2025-02-07",
+    "name": "Proposed"
   },
   "specialties": [
     {
@@ -19,30 +19,30 @@
   ],
   "elements": [
     {
-      "id": "TO_BE_DETERMINED1126",
+      "id": "TO_BE_DETERMINED3117",
       "name": "Presence of Aortic Valve Replacement",
       "definition": "Indication of whether an aortic valve replacement is present or absent.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED1126.0",
+            "code": "TO_BE_DETERMINED3117.0",
             "value": "present",
             "name": "Present",
             "definition": "The finding indicates the presence of an aortic valve replacement."
           },
           {
-            "code": "TO_BE_DETERMINED1126.1",
+            "code": "TO_BE_DETERMINED3117.1",
             "value": "absent",
             "name": "Absent",
             "definition": "The finding indicates the absence of an aortic valve replacement."
@@ -51,42 +51,42 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED8140",
+      "id": "TO_BE_DETERMINED4143",
       "name": "Status",
       "definition": "The status of the aortic valve replacement.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED8140.0",
+            "code": "TO_BE_DETERMINED4143.0",
             "value": "new_placement",
             "name": "New placement",
             "definition": "The aortic valve replacement has been newly placed."
           },
           {
-            "code": "TO_BE_DETERMINED8140.1",
+            "code": "TO_BE_DETERMINED4143.1",
             "value": "unchanged",
             "name": "Unchanged",
             "definition": "The aortic valve replacement has not changed since the previous examination."
           },
           {
-            "code": "TO_BE_DETERMINED8140.2",
+            "code": "TO_BE_DETERMINED4143.2",
             "value": "complication",
             "name": "Complication",
             "definition": "The aortic valve replacement is associated with a complication."
           },
           {
-            "code": "TO_BE_DETERMINED8140.3",
+            "code": "TO_BE_DETERMINED4143.3",
             "value": "removed",
             "name": "Removed",
             "definition": "The aortic valve replacement has been removed."
@@ -95,36 +95,36 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED4200",
+      "id": "TO_BE_DETERMINED9830",
       "name": "Type",
       "definition": "The type of aortic valve replacement.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED4200.0",
+            "code": "TO_BE_DETERMINED9830.0",
             "value": "mechanical",
             "name": "Mechanical",
             "definition": "The aortic valve replacement is mechanical."
           },
           {
-            "code": "TO_BE_DETERMINED4200.1",
+            "code": "TO_BE_DETERMINED9830.1",
             "value": "biological",
             "name": "Biological",
             "definition": "The aortic valve replacement is biological."
           },
           {
-            "code": "TO_BE_DETERMINED4200.2",
+            "code": "TO_BE_DETERMINED9830.2",
             "value": "tavr",
             "name": "TAVR",
             "definition": "The aortic valve replacement utilizes a transcatheter aortic valve replacement method."
@@ -133,30 +133,30 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED6489",
+      "id": "TO_BE_DETERMINED3502",
       "name": "Position",
       "definition": "The position of the aortic valve replacement.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED6489.0",
+            "code": "TO_BE_DETERMINED3502.0",
             "value": "proper",
             "name": "Proper",
             "definition": "The aortic valve replacement is properly positioned."
           },
           {
-            "code": "TO_BE_DETERMINED6489.1",
+            "code": "TO_BE_DETERMINED3502.1",
             "value": "malpositioned",
             "name": "Malpositioned",
             "definition": "The aortic valve replacement is malpositioned."
@@ -165,30 +165,30 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED0341",
+      "id": "TO_BE_DETERMINED0045",
       "name": "Paravalvular Leak",
       "definition": "Indication of whether a paravalvular leak is present or absent.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED0341.0",
+            "code": "TO_BE_DETERMINED0045.0",
             "value": "present",
             "name": "Present",
             "definition": "A paravalvular leak is present."
           },
           {
-            "code": "TO_BE_DETERMINED0341.1",
+            "code": "TO_BE_DETERMINED0045.1",
             "value": "absent",
             "name": "Absent",
             "definition": "No paravalvular leak is present."
@@ -197,30 +197,30 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED2940",
+      "id": "TO_BE_DETERMINED8674",
       "name": "Valve Thrombosis",
       "definition": "Indication of whether valve thrombosis is present or absent.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED2940.0",
+            "code": "TO_BE_DETERMINED8674.0",
             "value": "present",
             "name": "Present",
             "definition": "Valve thrombosis is present."
           },
           {
-            "code": "TO_BE_DETERMINED2940.1",
+            "code": "TO_BE_DETERMINED8674.1",
             "value": "absent",
             "name": "Absent",
             "definition": "No valve thrombosis is present."

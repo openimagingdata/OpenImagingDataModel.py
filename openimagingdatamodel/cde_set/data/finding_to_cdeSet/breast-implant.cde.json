@@ -1,15 +1,15 @@
 {
-  "id": "TO_BE_DETERMINED6020",
+  "id": "TO_BE_DETERMINED1159",
   "name": "Breast Implant",
   "description": "Presence and characteristics of breast implants",
   "set_version": {
     "number": 1,
-    "date": "2025-02-06"
+    "date": "2025-02-07"
   },
   "schema_version": "1.0.0",
-  "current_status": {
-    "date": "2025-02-06",
-    "status": "Proposed"
+  "status": {
+    "date": "2025-02-07",
+    "name": "Proposed"
   },
   "specialties": [
     {
@@ -19,29 +19,29 @@
   ],
   "elements": [
     {
-      "id": "TO_BE_DETERMINED7249",
+      "id": "TO_BE_DETERMINED9188",
       "name": "Presence of Breast Implant",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED7249.0",
+            "code": "TO_BE_DETERMINED9188.0",
             "value": "present",
             "name": "Present",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED7249.1",
+            "code": "TO_BE_DETERMINED9188.1",
             "value": "absent",
             "name": "Absent",
             "definition": "None"
@@ -50,41 +50,41 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED1607",
+      "id": "TO_BE_DETERMINED4782",
       "name": "Status",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED1607.0",
+            "code": "TO_BE_DETERMINED4782.0",
             "value": "new",
             "name": "New",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED1607.1",
+            "code": "TO_BE_DETERMINED4782.1",
             "value": "unchanged",
             "name": "Unchanged",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED1607.2",
+            "code": "TO_BE_DETERMINED4782.2",
             "value": "complication",
             "name": "Complication",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED1607.3",
+            "code": "TO_BE_DETERMINED4782.3",
             "value": "removed",
             "name": "Removed",
             "definition": "None"
@@ -93,35 +93,35 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED7402",
+      "id": "TO_BE_DETERMINED5615",
       "name": "Location",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED7402.0",
+            "code": "TO_BE_DETERMINED5615.0",
             "value": "right_breast",
             "name": "Right breast",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED7402.1",
+            "code": "TO_BE_DETERMINED5615.1",
             "value": "left_breast",
             "name": "Left breast",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED7402.2",
+            "code": "TO_BE_DETERMINED5615.2",
             "value": "bilateral",
             "name": "Bilateral",
             "definition": "None"
@@ -130,29 +130,29 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED7081",
+      "id": "TO_BE_DETERMINED7013",
       "name": "Implant Type",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED7081.0",
+            "code": "TO_BE_DETERMINED7013.0",
             "value": "saline",
             "name": "Saline",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED7081.1",
+            "code": "TO_BE_DETERMINED7013.1",
             "value": "silicone",
             "name": "Silicone",
             "definition": "None"
@@ -161,29 +161,29 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED1505",
+      "id": "TO_BE_DETERMINED9430",
       "name": "Position",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED1505.0",
+            "code": "TO_BE_DETERMINED9430.0",
             "value": "preglandular",
             "name": "Preglandular",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED1505.1",
+            "code": "TO_BE_DETERMINED9430.1",
             "value": "subpectoral",
             "name": "Subpectoral",
             "definition": "None"
@@ -192,35 +192,35 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED7036",
+      "id": "TO_BE_DETERMINED5570",
       "name": "Implant Rupture",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED7036.0",
+            "code": "TO_BE_DETERMINED5570.0",
             "value": "intracapsular",
             "name": "Intracapsular",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED7036.1",
+            "code": "TO_BE_DETERMINED5570.1",
             "value": "extracapsular",
             "name": "Extracapsular",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED7036.2",
+            "code": "TO_BE_DETERMINED5570.2",
             "value": "absent",
             "name": "Absent",
             "definition": "None"
@@ -229,29 +229,29 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED7098",
+      "id": "TO_BE_DETERMINED6063",
       "name": "Silicone Leakage",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED7098.0",
+            "code": "TO_BE_DETERMINED6063.0",
             "value": "present",
             "name": "Present",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED7098.1",
+            "code": "TO_BE_DETERMINED6063.1",
             "value": "absent",
             "name": "Absent",
             "definition": "None"
@@ -260,29 +260,29 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED6639",
+      "id": "TO_BE_DETERMINED5950",
       "name": "Capsular Contracture",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED6639.0",
+            "code": "TO_BE_DETERMINED5950.0",
             "value": "present",
             "name": "Present",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED6639.1",
+            "code": "TO_BE_DETERMINED5950.1",
             "value": "absent",
             "name": "Absent",
             "definition": "None"
@@ -291,29 +291,29 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED3156",
+      "id": "TO_BE_DETERMINED3491",
       "name": "Capsular Calcifications",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED3156.0",
+            "code": "TO_BE_DETERMINED3491.0",
             "value": "present",
             "name": "Present",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED3156.1",
+            "code": "TO_BE_DETERMINED3491.1",
             "value": "absent",
             "name": "Absent",
             "definition": "None"
@@ -322,29 +322,29 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED0814",
+      "id": "TO_BE_DETERMINED5460",
       "name": "Axillary Lymphadenopathy",
       "element_version": {
         "number": 1,
-        "date": "2025-02-06"
+        "date": "2025-02-07"
       },
       "schema_version": "1.0.0",
-      "current_status": {
-        "date": "2025-02-06",
-        "status": "Proposed"
+      "status": {
+        "date": "2025-02-07",
+        "name": "Proposed"
       },
       "value_set": {
         "min_cardinality": 1,
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED0814.0",
+            "code": "TO_BE_DETERMINED5460.0",
             "value": "present",
             "name": "Present",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED0814.1",
+            "code": "TO_BE_DETERMINED5460.1",
             "value": "absent",
             "name": "Absent",
             "definition": "None"
