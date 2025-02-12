@@ -1,14 +1,14 @@
 {
-  "id": "TO_BE_DETERMINED8428",
+  "id": "TO_BE_DETERMINED3689",
   "name": "adrenal thickening",
   "description": "Thickening of the adrenal gland",
   "set_version": {
     "number": 1,
-    "date": "2025-02-07"
+    "date": "2025-02-12"
   },
   "schema_version": "1.0.0",
   "status": {
-    "date": "2025-02-07",
+    "date": "2025-02-12",
     "name": "Proposed"
   },
   "specialties": [
@@ -19,16 +19,16 @@
   ],
   "elements": [
     {
-      "id": "TO_BE_DETERMINED5920",
+      "id": "TO_BE_DETERMINED0482",
       "name": "presence",
       "definition": "Presence of adrenal thickening",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "value_set": {
@@ -36,12 +36,12 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED5920.0",
+            "code": "TO_BE_DETERMINED0482.0",
             "value": "present",
             "name": "present"
           },
           {
-            "code": "TO_BE_DETERMINED5920.1",
+            "code": "TO_BE_DETERMINED0482.1",
             "value": "absent",
             "name": "absent"
           }
@@ -49,16 +49,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED2705",
+      "id": "TO_BE_DETERMINED5290",
       "name": "laterality",
       "definition": "Laterality of the adrenal thickening",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "value_set": {
@@ -66,17 +66,17 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED2705.0",
+            "code": "TO_BE_DETERMINED5290.0",
             "value": "right",
             "name": "right"
           },
           {
-            "code": "TO_BE_DETERMINED2705.1",
+            "code": "TO_BE_DETERMINED5290.1",
             "value": "left",
             "name": "left"
           },
           {
-            "code": "TO_BE_DETERMINED2705.2",
+            "code": "TO_BE_DETERMINED5290.2",
             "value": "bilateral",
             "name": "bilateral"
           }
@@ -84,16 +84,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED0552",
+      "id": "TO_BE_DETERMINED2543",
       "name": "thickness",
       "definition": "Severity of the adrenal thickening",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "value_set": {
@@ -101,17 +101,17 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED0552.0",
+            "code": "TO_BE_DETERMINED2543.0",
             "value": "mild",
             "name": "mild"
           },
           {
-            "code": "TO_BE_DETERMINED0552.1",
+            "code": "TO_BE_DETERMINED2543.1",
             "value": "moderate",
             "name": "moderate"
           },
           {
-            "code": "TO_BE_DETERMINED0552.2",
+            "code": "TO_BE_DETERMINED2543.2",
             "value": "severe",
             "name": "severe"
           }
@@ -119,16 +119,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED4862",
+      "id": "TO_BE_DETERMINED0166",
       "name": "homogeneity",
       "definition": "Homogeneity of the adrenal thickening",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "value_set": {
@@ -136,12 +136,12 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED4862.0",
+            "code": "TO_BE_DETERMINED0166.0",
             "value": "homogeneous",
             "name": "homogeneous"
           },
           {
-            "code": "TO_BE_DETERMINED4862.1",
+            "code": "TO_BE_DETERMINED0166.1",
             "value": "heterogeneous",
             "name": "heterogeneous"
           }
@@ -149,16 +149,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED1886",
+      "id": "TO_BE_DETERMINED8394",
       "name": "lymphadenopathy",
       "definition": "Presence of lymphadenopathy",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "value_set": {
@@ -166,12 +166,12 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED1886.0",
+            "code": "TO_BE_DETERMINED8394.0",
             "value": "present",
             "name": "present"
           },
           {
-            "code": "TO_BE_DETERMINED1886.1",
+            "code": "TO_BE_DETERMINED8394.1",
             "value": "absent",
             "name": "absent"
           }

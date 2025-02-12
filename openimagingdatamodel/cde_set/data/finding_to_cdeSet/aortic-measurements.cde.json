@@ -1,14 +1,14 @@
 {
-  "id": "TO_BE_DETERMINED1915",
+  "id": "TO_BE_DETERMINED2608",
   "name": "aortic measurements",
   "description": "Measurements and characteristics of the thoracic aorta",
   "set_version": {
     "number": 1,
-    "date": "2025-02-07"
+    "date": "2025-02-12"
   },
   "schema_version": "1.0.0",
   "status": {
-    "date": "2025-02-07",
+    "date": "2025-02-12",
     "name": "Proposed"
   },
   "specialties": [
@@ -19,16 +19,16 @@
   ],
   "elements": [
     {
-      "id": "TO_BE_DETERMINED9220",
+      "id": "TO_BE_DETERMINED4861",
       "name": "segment",
       "definition": "The segment of the thoracic aorta",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "value_set": {
@@ -36,47 +36,47 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED9220.0",
+            "code": "TO_BE_DETERMINED4861.0",
             "value": "aortic_root",
             "name": "aortic root"
           },
           {
-            "code": "TO_BE_DETERMINED9220.1",
+            "code": "TO_BE_DETERMINED4861.1",
             "value": "aortic_annulus",
             "name": "aortic annulus"
           },
           {
-            "code": "TO_BE_DETERMINED9220.2",
+            "code": "TO_BE_DETERMINED4861.2",
             "value": "sinus_of_valsalva",
             "name": "sinus of Valsalva"
           },
           {
-            "code": "TO_BE_DETERMINED9220.3",
+            "code": "TO_BE_DETERMINED4861.3",
             "value": "sinotubular_junction",
             "name": "sinotubular junction"
           },
           {
-            "code": "TO_BE_DETERMINED9220.4",
+            "code": "TO_BE_DETERMINED4861.4",
             "value": "ascending_aorta",
             "name": "ascending aorta"
           },
           {
-            "code": "TO_BE_DETERMINED9220.5",
+            "code": "TO_BE_DETERMINED4861.5",
             "value": "proximal_arch",
             "name": "proximal arch"
           },
           {
-            "code": "TO_BE_DETERMINED9220.6",
+            "code": "TO_BE_DETERMINED4861.6",
             "value": "distal_arch",
             "name": "distal arch"
           },
           {
-            "code": "TO_BE_DETERMINED9220.7",
+            "code": "TO_BE_DETERMINED4861.7",
             "value": "descending_thoracic_aorta",
             "name": "descending thoracic aorta"
           },
           {
-            "code": "TO_BE_DETERMINED9220.8",
+            "code": "TO_BE_DETERMINED4861.8",
             "value": "diaphragmatic_hiatus",
             "name": "diaphragmatic hiatus"
           }
@@ -84,16 +84,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED0451",
+      "id": "TO_BE_DETERMINED8995",
       "name": "sac dimensions",
       "definition": "Dimensions of the aortic sac",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "float_value": {
@@ -101,16 +101,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED7371",
+      "id": "TO_BE_DETERMINED0667",
       "name": "length",
       "definition": "Length of the aortic sac",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "float_value": {
@@ -118,16 +118,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED9878",
+      "id": "TO_BE_DETERMINED7427",
       "name": "prior measurement",
       "definition": "Measurement of the aortic sac from a prior examination",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "float_value": {
@@ -135,16 +135,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED8488",
+      "id": "TO_BE_DETERMINED8948",
       "name": "luminal diameter",
       "definition": "Diameter of the aortic sac if mural thrombus is present",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "float_value": {
@@ -152,16 +152,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED2966",
+      "id": "TO_BE_DETERMINED9384",
       "name": "sac morphology",
       "definition": "Morphology of the aortic sac",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "value_set": {
@@ -169,24 +169,24 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED2966.0",
+            "code": "TO_BE_DETERMINED9384.0",
             "value": "dilated",
             "name": "dilated",
             "definition": "≥ 4.0 and < 5.0 cm"
           },
           {
-            "code": "TO_BE_DETERMINED2966.1",
+            "code": "TO_BE_DETERMINED9384.1",
             "value": "aneurysm",
             "name": "aneurysm",
             "definition": "≥ 5.0 cm"
           },
           {
-            "code": "TO_BE_DETERMINED2966.2",
+            "code": "TO_BE_DETERMINED9384.2",
             "value": "fusiform",
             "name": "fusiform"
           },
           {
-            "code": "TO_BE_DETERMINED2966.3",
+            "code": "TO_BE_DETERMINED9384.3",
             "value": "saccular",
             "name": "saccular"
           }
@@ -194,16 +194,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED0405",
+      "id": "TO_BE_DETERMINED9789",
       "name": "characteristics of wall",
       "definition": "Characteristics of the aortic wall",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "value_set": {
@@ -211,25 +211,25 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED0405.0",
+            "code": "TO_BE_DETERMINED9789.0",
             "value": "mural_calcification",
             "name": "mural calcification",
             "definition": "present"
           },
           {
-            "code": "TO_BE_DETERMINED0405.1",
+            "code": "TO_BE_DETERMINED9789.1",
             "value": "mural_calcification",
             "name": "mural calcification",
             "definition": "absent"
           },
           {
-            "code": "TO_BE_DETERMINED0405.2",
+            "code": "TO_BE_DETERMINED9789.2",
             "value": "mural_thrombus",
             "name": "mural thrombus",
             "definition": "present"
           },
           {
-            "code": "TO_BE_DETERMINED0405.3",
+            "code": "TO_BE_DETERMINED9789.3",
             "value": "mural_thrombus",
             "name": "mural thrombus",
             "definition": "absent"
@@ -238,16 +238,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED2749",
+      "id": "TO_BE_DETERMINED8605",
       "name": "related vessels",
       "definition": "Related vessels involved",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "value_set": {
@@ -255,42 +255,42 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED2749.0",
+            "code": "TO_BE_DETERMINED8605.0",
             "value": "brachycephalic_trunk",
             "name": "brachycephalic trunk"
           },
           {
-            "code": "TO_BE_DETERMINED2749.1",
+            "code": "TO_BE_DETERMINED8605.1",
             "value": "right_subclavian_artery",
             "name": "right subclavian artery"
           },
           {
-            "code": "TO_BE_DETERMINED2749.2",
+            "code": "TO_BE_DETERMINED8605.2",
             "value": "right_common_carotid_artery",
             "name": "right common carotid artery"
           },
           {
-            "code": "TO_BE_DETERMINED2749.3",
+            "code": "TO_BE_DETERMINED8605.3",
             "value": "left_subclavian_artery",
             "name": "left subclavian artery"
           },
           {
-            "code": "TO_BE_DETERMINED2749.4",
+            "code": "TO_BE_DETERMINED8605.4",
             "value": "left_common_carotid_artery",
             "name": "left common carotid artery"
           },
           {
-            "code": "TO_BE_DETERMINED2749.5",
+            "code": "TO_BE_DETERMINED8605.5",
             "value": "right_vertebral_artery",
             "name": "right vertebral artery"
           },
           {
-            "code": "TO_BE_DETERMINED2749.6",
+            "code": "TO_BE_DETERMINED8605.6",
             "value": "left_vertebral_artery",
             "name": "left vertebral artery"
           },
           {
-            "code": "TO_BE_DETERMINED2749.7",
+            "code": "TO_BE_DETERMINED8605.7",
             "value": "does_not_involve_great_vessels",
             "name": "does not involve great vessels"
           }

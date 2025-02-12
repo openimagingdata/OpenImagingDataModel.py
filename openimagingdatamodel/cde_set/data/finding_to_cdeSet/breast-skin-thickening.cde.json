@@ -1,14 +1,14 @@
 {
-  "id": "TO_BE_DETERMINED8303",
+  "id": "TO_BE_DETERMINED2022",
   "name": "Breast Skin Thickening",
   "description": "Thickening of the skin in the breast region.",
   "set_version": {
     "number": 1,
-    "date": "2025-02-07"
+    "date": "2025-02-12"
   },
   "schema_version": "1.0.0",
   "status": {
-    "date": "2025-02-07",
+    "date": "2025-02-12",
     "name": "Proposed"
   },
   "specialties": [
@@ -19,16 +19,16 @@
   ],
   "elements": [
     {
-      "id": "TO_BE_DETERMINED1725",
+      "id": "TO_BE_DETERMINED8191",
       "name": "Presence of Breast Skin Thickening",
       "definition": "Whether the breast skin thickening is present or absent.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "value_set": {
@@ -36,13 +36,13 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED1725.0",
+            "code": "TO_BE_DETERMINED8191.0",
             "value": "present",
             "name": "Present",
             "definition": "Breast skin thickening is present."
           },
           {
-            "code": "TO_BE_DETERMINED1725.1",
+            "code": "TO_BE_DETERMINED8191.1",
             "value": "absent",
             "name": "Absent",
             "definition": "No breast skin thickening present."
@@ -51,16 +51,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED7370",
+      "id": "TO_BE_DETERMINED5451",
       "name": "Status",
       "definition": "The status of the breast skin thickening.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "value_set": {
@@ -68,31 +68,31 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED7370.0",
+            "code": "TO_BE_DETERMINED5451.0",
             "value": "new",
             "name": "New",
             "definition": "The breast skin thickening is new."
           },
           {
-            "code": "TO_BE_DETERMINED7370.1",
+            "code": "TO_BE_DETERMINED5451.1",
             "value": "unchanged",
             "name": "Unchanged",
             "definition": "The breast skin thickening has not changed."
           },
           {
-            "code": "TO_BE_DETERMINED7370.2",
+            "code": "TO_BE_DETERMINED5451.2",
             "value": "increased",
             "name": "Increased",
             "definition": "The breast skin thickening has increased."
           },
           {
-            "code": "TO_BE_DETERMINED7370.3",
+            "code": "TO_BE_DETERMINED5451.3",
             "value": "decreased",
             "name": "Decreased",
             "definition": "The breast skin thickening has decreased."
           },
           {
-            "code": "TO_BE_DETERMINED7370.4",
+            "code": "TO_BE_DETERMINED5451.4",
             "value": "resolved",
             "name": "Resolved",
             "definition": "The breast skin thickening has resolved."
@@ -101,16 +101,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED0192",
+      "id": "TO_BE_DETERMINED9922",
       "name": "Location",
       "definition": "The location of the breast skin thickening.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "value_set": {
@@ -118,19 +118,19 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED0192.0",
+            "code": "TO_BE_DETERMINED9922.0",
             "value": "right_breast",
             "name": "Right breast",
             "definition": "The breast skin thickening is in the right breast."
           },
           {
-            "code": "TO_BE_DETERMINED0192.1",
+            "code": "TO_BE_DETERMINED9922.1",
             "value": "left_breast",
             "name": "Left breast",
             "definition": "The breast skin thickening is in the left breast."
           },
           {
-            "code": "TO_BE_DETERMINED0192.2",
+            "code": "TO_BE_DETERMINED9922.2",
             "value": "bilateral",
             "name": "Bilateral",
             "definition": "The breast skin thickening is in both breasts."
@@ -139,16 +139,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED6018",
+      "id": "TO_BE_DETERMINED6019",
       "name": "Extent",
       "definition": "The extent of the breast skin thickening.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "value_set": {
@@ -156,13 +156,13 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED6018.0",
+            "code": "TO_BE_DETERMINED6019.0",
             "value": "localized",
             "name": "Localized",
             "definition": "The breast skin thickening is localized."
           },
           {
-            "code": "TO_BE_DETERMINED6018.1",
+            "code": "TO_BE_DETERMINED6019.1",
             "value": "diffuse",
             "name": "Diffuse",
             "definition": "The breast skin thickening is diffuse."
@@ -171,16 +171,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED2283",
+      "id": "TO_BE_DETERMINED2711",
       "name": "Thickness",
       "definition": "The thickness of the breast skin thickening.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "float_value": {
@@ -188,16 +188,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED5749",
+      "id": "TO_BE_DETERMINED6116",
       "name": "Nipple retraction",
       "definition": "Whether nipple retraction is present or absent.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "value_set": {
@@ -205,13 +205,13 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED5749.0",
+            "code": "TO_BE_DETERMINED6116.0",
             "value": "present",
             "name": "Present",
             "definition": "Nipple retraction is present."
           },
           {
-            "code": "TO_BE_DETERMINED5749.1",
+            "code": "TO_BE_DETERMINED6116.1",
             "value": "absent",
             "name": "Absent",
             "definition": "Nipple retraction is absent."
@@ -220,16 +220,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED1622",
+      "id": "TO_BE_DETERMINED7652",
       "name": "Nipple inversion",
       "definition": "Whether nipple inversion is present or absent.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "value_set": {
@@ -237,13 +237,13 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED1622.0",
+            "code": "TO_BE_DETERMINED7652.0",
             "value": "present",
             "name": "Present",
             "definition": "Nipple inversion is present."
           },
           {
-            "code": "TO_BE_DETERMINED1622.1",
+            "code": "TO_BE_DETERMINED7652.1",
             "value": "absent",
             "name": "Absent",
             "definition": "Nipple inversion is absent."
@@ -252,16 +252,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED5139",
+      "id": "TO_BE_DETERMINED5045",
       "name": "Lymphedema",
       "definition": "Whether lymphedema is present or absent.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "value_set": {
@@ -269,13 +269,13 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED5139.0",
+            "code": "TO_BE_DETERMINED5045.0",
             "value": "present",
             "name": "Present",
             "definition": "Lymphedema is present."
           },
           {
-            "code": "TO_BE_DETERMINED5139.1",
+            "code": "TO_BE_DETERMINED5045.1",
             "value": "absent",
             "name": "Absent",
             "definition": "Lymphedema is absent."
@@ -284,16 +284,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED8026",
+      "id": "TO_BE_DETERMINED3098",
       "name": "Breast Mass",
       "definition": "Whether a breast mass is present or absent.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "value_set": {
@@ -301,13 +301,13 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED8026.0",
+            "code": "TO_BE_DETERMINED3098.0",
             "value": "present",
             "name": "Present",
             "definition": "A breast mass is present."
           },
           {
-            "code": "TO_BE_DETERMINED8026.1",
+            "code": "TO_BE_DETERMINED3098.1",
             "value": "absent",
             "name": "Absent",
             "definition": "No breast mass present."
@@ -316,16 +316,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED4855",
+      "id": "TO_BE_DETERMINED3936",
       "name": "Axillary Lymphadenopathy",
       "definition": "Whether axillary lymphadenopathy is present or absent.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "value_set": {
@@ -333,13 +333,13 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED4855.0",
+            "code": "TO_BE_DETERMINED3936.0",
             "value": "present",
             "name": "Present",
             "definition": "Axillary lymphadenopathy is present."
           },
           {
-            "code": "TO_BE_DETERMINED4855.1",
+            "code": "TO_BE_DETERMINED3936.1",
             "value": "absent",
             "name": "Absent",
             "definition": "No axillary lymphadenopathy present."
@@ -348,16 +348,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED9738",
+      "id": "TO_BE_DETERMINED2141",
       "name": "Breast Calcifications",
       "definition": "Whether breast calcifications are present or absent.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-07"
+        "date": "2025-02-12"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-07",
+        "date": "2025-02-12",
         "name": "Proposed"
       },
       "value_set": {
@@ -365,13 +365,13 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED9738.0",
+            "code": "TO_BE_DETERMINED2141.0",
             "value": "present",
             "name": "Present",
             "definition": "Breast calcifications are present."
           },
           {
-            "code": "TO_BE_DETERMINED9738.1",
+            "code": "TO_BE_DETERMINED2141.1",
             "value": "absent",
             "name": "Absent",
             "definition": "No breast calcifications present."

@@ -1,4 +1,4 @@
-import argparse
+import click
 import json
 from pathlib import Path
 from openimagingdatamodel.cde_set.finding_model import FindingModel
@@ -11,14 +11,12 @@ def create_specialty(specialty: str) -> Specialty:
             return Specialty(abbreviation=abbreviation, name=name)
     raise ValueError(f"Specialty '{specialty}' not found.")
 
-
 def finding_json_to_cde_set(findingModeljson: str, specialtyName: str) -> str:
     findingModelInstance = FindingModel.model_validate(findingModeljson)
     cdeSet = SetFactory.create_set_from_finding_model(findingModelInstance)
     specialty = create_specialty(specialtyName)
     cdeSet.specialties.append(specialty)
     return cdeSet.model_dump_json(exclude_defaults=True, indent=2)
-
 
 def process_directory(directory: Path, specialty: str = "Chest"):
     if not directory.exists() or not directory.is_dir():
@@ -27,7 +25,7 @@ def process_directory(directory: Path, specialty: str = "Chest"):
     for file in directory.iterdir():
         if file.suffix == ".json" and not file.name.endswith(".cde.json"):
             output_file = file.with_name(f"{file.stem}.cde.json")
-            
+
             if file.stat().st_size == 0:
                 raise ValueError(f"Error: '{file.name}' is empty.")
 
@@ -37,31 +35,18 @@ def process_directory(directory: Path, specialty: str = "Chest"):
                 cde_set_json = finding_json_to_cde_set(finding_model_json, specialty)
                 with open(output_file, "w") as outfile:
                     outfile.write(cde_set_json)
-                print(f"Converted '{file.name}' -> '{output_file.name}'")
+                click.echo(f"Converted '{file.name}' -> '{output_file.name}'")
             except json.JSONDecodeError:
                 raise ValueError(f"Error: '{file.name}' contains invalid JSON.")
             except ValueError as e:
                 raise ValueError(f"Error processing '{file.name}': {e}")
 
-
-def main():
-    parser = argparse.ArgumentParser(description="Batch convert all JSON finding models in a directory to CDE sets.")
-    parser.add_argument(
-        "directory",
-        type=str,
-        help="Path to the directory containing JSON finding model files."
-    )
-    parser.add_argument(
-        "specialty",
-        type=str,
-        nargs="?",
-        default="Chest",
-        help="Name of the specialty to add to each CDE set. Defaults to 'Chest'."
-    )
-    args = parser.parse_args()
-    
-    process_directory(Path(args.directory), args.specialty)
-
+@click.command()
+@click.argument("directory", type=click.Path(exists=True, file_okay=False, dir_okay=True, readable=True, path_type=Path))
+@click.option("--specialty", default="Chest", help="Name of the specialty to add to each CDE set. Defaults to 'Chest'.")
+def main(directory, specialty):
+    """Batch convert all JSON finding models in a directory to CDE sets."""
+    process_directory(directory, specialty)
 
 if __name__ == "__main__":
     main()
