@@ -1,14 +1,14 @@
 {
-  "id": "TO_BE_DETERMINED0516",
+  "id": "TO_BE_DETERMINED3495",
   "name": "Breast Calcification",
   "description": "Calcifications in the breast tissue.",
   "set_version": {
     "number": 1,
-    "date": "2025-02-12"
+    "date": "2025-02-19"
   },
   "schema_version": "1.0.0",
   "status": {
-    "date": "2025-02-12",
+    "date": "2025-02-19",
     "name": "Proposed"
   },
   "specialties": [
@@ -19,16 +19,16 @@
   ],
   "elements": [
     {
-      "id": "TO_BE_DETERMINED1643",
+      "id": "TO_BE_DETERMINED1999",
       "name": "Presence of Breast Calcification",
       "definition": "Presence or absence of breast calcification.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -36,13 +36,13 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED1643.0",
+            "code": "TO_BE_DETERMINED1999.0",
             "value": "present",
             "name": "Present",
             "definition": "Calcifications are present."
           },
           {
-            "code": "TO_BE_DETERMINED1643.1",
+            "code": "TO_BE_DETERMINED1999.1",
             "value": "absent",
             "name": "Absent",
             "definition": "Calcifications are absent."
@@ -51,16 +51,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED4833",
+      "id": "TO_BE_DETERMINED0880",
       "name": "Status",
       "definition": "Status of the breast calcification.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -68,25 +68,25 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED4833.0",
+            "code": "TO_BE_DETERMINED0880.0",
             "value": "new",
             "name": "New",
             "definition": "New calcifications."
           },
           {
-            "code": "TO_BE_DETERMINED4833.1",
+            "code": "TO_BE_DETERMINED0880.1",
             "value": "unchanged",
             "name": "Unchanged",
             "definition": "Calcifications remain the same."
           },
           {
-            "code": "TO_BE_DETERMINED4833.2",
+            "code": "TO_BE_DETERMINED0880.2",
             "value": "increased",
             "name": "Increased",
             "definition": "Calcifications have increased in number or size."
           },
           {
-            "code": "TO_BE_DETERMINED4833.3",
+            "code": "TO_BE_DETERMINED0880.3",
             "value": "decreased",
             "name": "Decreased",
             "definition": "Calcifications have decreased in number or size."
@@ -95,16 +95,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED4238",
+      "id": "TO_BE_DETERMINED8942",
       "name": "Location",
       "definition": "Location of the breast calcification.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -112,17 +112,17 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED4238.0",
+            "code": "TO_BE_DETERMINED8942.0",
             "value": "right_breast",
             "name": "Right breast"
           },
           {
-            "code": "TO_BE_DETERMINED4238.1",
+            "code": "TO_BE_DETERMINED8942.1",
             "value": "left_breast",
             "name": "Left breast"
           },
           {
-            "code": "TO_BE_DETERMINED4238.2",
+            "code": "TO_BE_DETERMINED8942.2",
             "value": "bilateral",
             "name": "Bilateral"
           }
@@ -130,16 +130,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED8518",
+      "id": "TO_BE_DETERMINED3103",
       "name": "Distribution Pattern",
       "definition": "Pattern of distribution of the breast calcification.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -147,32 +147,32 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED8518.0",
+            "code": "TO_BE_DETERMINED3103.0",
             "value": "diffuse",
             "name": "Diffuse"
           },
           {
-            "code": "TO_BE_DETERMINED8518.1",
+            "code": "TO_BE_DETERMINED3103.1",
             "value": "regional",
             "name": "Regional"
           },
           {
-            "code": "TO_BE_DETERMINED8518.2",
+            "code": "TO_BE_DETERMINED3103.2",
             "value": "linear",
             "name": "Linear"
           },
           {
-            "code": "TO_BE_DETERMINED8518.3",
+            "code": "TO_BE_DETERMINED3103.3",
             "value": "segmental",
             "name": "Segmental"
           },
           {
-            "code": "TO_BE_DETERMINED8518.4",
+            "code": "TO_BE_DETERMINED3103.4",
             "value": "grouped",
             "name": "Grouped"
           },
           {
-            "code": "TO_BE_DETERMINED8518.5",
+            "code": "TO_BE_DETERMINED3103.5",
             "value": "clustered",
             "name": "Clustered"
           }
@@ -180,16 +180,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED6446",
+      "id": "TO_BE_DETERMINED5607",
       "name": "Morphology",
       "definition": "Morphology of the breast calcification.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -197,32 +197,32 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED6446.0",
+            "code": "TO_BE_DETERMINED5607.0",
             "value": "round",
             "name": "Round"
           },
           {
-            "code": "TO_BE_DETERMINED6446.1",
+            "code": "TO_BE_DETERMINED5607.1",
             "value": "punctate",
             "name": "Punctate"
           },
           {
-            "code": "TO_BE_DETERMINED6446.2",
+            "code": "TO_BE_DETERMINED5607.2",
             "value": "vascular",
             "name": "Vascular"
           },
           {
-            "code": "TO_BE_DETERMINED6446.3",
+            "code": "TO_BE_DETERMINED5607.3",
             "value": "coarse",
             "name": "Coarse"
           },
           {
-            "code": "TO_BE_DETERMINED6446.4",
+            "code": "TO_BE_DETERMINED5607.4",
             "value": "fine_pleomorphic",
             "name": "Fine Pleomorphic"
           },
           {
-            "code": "TO_BE_DETERMINED6446.5",
+            "code": "TO_BE_DETERMINED5607.5",
             "value": "fine_linear_or_fine_linear_branching",
             "name": "Fine Linear or Fine Linear Branching"
           }
@@ -230,16 +230,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED4939",
+      "id": "TO_BE_DETERMINED1905",
       "name": "Breast Skin Thickening",
       "definition": "Presence or absence of breast skin thickening.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -247,12 +247,12 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED4939.0",
+            "code": "TO_BE_DETERMINED1905.0",
             "value": "present",
             "name": "Present"
           },
           {
-            "code": "TO_BE_DETERMINED4939.1",
+            "code": "TO_BE_DETERMINED1905.1",
             "value": "absent",
             "name": "Absent"
           }
@@ -260,16 +260,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED3705",
+      "id": "TO_BE_DETERMINED5792",
       "name": "Dermal Calcifications",
       "definition": "Presence or absence of dermal calcifications.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -277,12 +277,12 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED3705.0",
+            "code": "TO_BE_DETERMINED5792.0",
             "value": "present",
             "name": "Present"
           },
           {
-            "code": "TO_BE_DETERMINED3705.1",
+            "code": "TO_BE_DETERMINED5792.1",
             "value": "absent",
             "name": "Absent"
           }
@@ -290,16 +290,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED3146",
+      "id": "TO_BE_DETERMINED6741",
       "name": "Vascular Calcifications",
       "definition": "Presence or absence of vascular calcifications.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -307,12 +307,12 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED3146.0",
+            "code": "TO_BE_DETERMINED6741.0",
             "value": "present",
             "name": "Present"
           },
           {
-            "code": "TO_BE_DETERMINED3146.1",
+            "code": "TO_BE_DETERMINED6741.1",
             "value": "absent",
             "name": "Absent"
           }
@@ -320,16 +320,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED7703",
+      "id": "TO_BE_DETERMINED8774",
       "name": "Breast Mass",
       "definition": "Presence or absence of a breast mass.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -337,12 +337,12 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED7703.0",
+            "code": "TO_BE_DETERMINED8774.0",
             "value": "present",
             "name": "Present"
           },
           {
-            "code": "TO_BE_DETERMINED7703.1",
+            "code": "TO_BE_DETERMINED8774.1",
             "value": "absent",
             "name": "Absent"
           }
@@ -350,16 +350,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED3840",
+      "id": "TO_BE_DETERMINED4180",
       "name": "Axillary Lymphadenopathy",
       "definition": "Presence or absence of axillary lymphadenopathy.",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -367,12 +367,12 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED3840.0",
+            "code": "TO_BE_DETERMINED4180.0",
             "value": "present",
             "name": "Present"
           },
           {
-            "code": "TO_BE_DETERMINED3840.1",
+            "code": "TO_BE_DETERMINED4180.1",
             "value": "absent",
             "name": "Absent"
           }

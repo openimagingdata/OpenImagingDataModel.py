@@ -1,14 +1,14 @@
 {
-  "id": "TO_BE_DETERMINED0758",
+  "id": "TO_BE_DETERMINED7176",
   "name": "Bochdalek Hernia",
   "description": "Bochdalek Hernia is a congenital diaphragmatic hernia that allows abdominal contents to herniate into the chest cavity through a defect in the diaphragm.",
   "set_version": {
     "number": 1,
-    "date": "2025-02-12"
+    "date": "2025-02-19"
   },
   "schema_version": "1.0.0",
   "status": {
-    "date": "2025-02-12",
+    "date": "2025-02-19",
     "name": "Proposed"
   },
   "specialties": [
@@ -19,15 +19,15 @@
   ],
   "elements": [
     {
-      "id": "TO_BE_DETERMINED5925",
+      "id": "TO_BE_DETERMINED6015",
       "name": "Presence of Bochdalek Hernia",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -35,13 +35,13 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED5925.0",
+            "code": "TO_BE_DETERMINED6015.0",
             "value": "yes",
             "name": "Yes",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED5925.1",
+            "code": "TO_BE_DETERMINED6015.1",
             "value": "no",
             "name": "No",
             "definition": "None"
@@ -50,15 +50,15 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED8875",
+      "id": "TO_BE_DETERMINED3361",
       "name": "Side",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -66,19 +66,19 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED8875.0",
+            "code": "TO_BE_DETERMINED3361.0",
             "value": "left",
             "name": "Left",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED8875.1",
+            "code": "TO_BE_DETERMINED3361.1",
             "value": "right",
             "name": "Right",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED8875.2",
+            "code": "TO_BE_DETERMINED3361.2",
             "value": "bilateral",
             "name": "Bilateral",
             "definition": "None"
@@ -87,15 +87,15 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED3300",
+      "id": "TO_BE_DETERMINED1289",
       "name": "Size",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -103,19 +103,19 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED3300.0",
+            "code": "TO_BE_DETERMINED1289.0",
             "value": "small",
             "name": "Small",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED3300.1",
+            "code": "TO_BE_DETERMINED1289.1",
             "value": "medium",
             "name": "Medium",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED3300.2",
+            "code": "TO_BE_DETERMINED1289.2",
             "value": "large",
             "name": "Large",
             "definition": "None"
@@ -124,15 +124,15 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED2740",
+      "id": "TO_BE_DETERMINED7302",
       "name": "Contents",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -140,25 +140,25 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED2740.0",
+            "code": "TO_BE_DETERMINED7302.0",
             "value": "fat",
             "name": "Fat",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED2740.1",
+            "code": "TO_BE_DETERMINED7302.1",
             "value": "bowel",
             "name": "Bowel",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED2740.2",
+            "code": "TO_BE_DETERMINED7302.2",
             "value": "both",
             "name": "Both",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED2740.3",
+            "code": "TO_BE_DETERMINED7302.3",
             "value": "other",
             "name": "Other",
             "definition": "None"
@@ -167,15 +167,15 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED3831",
+      "id": "TO_BE_DETERMINED4843",
       "name": "Pulmonary Hypoplasia",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -183,13 +183,13 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED3831.0",
+            "code": "TO_BE_DETERMINED4843.0",
             "value": "present",
             "name": "Present",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED3831.1",
+            "code": "TO_BE_DETERMINED4843.1",
             "value": "absent",
             "name": "Absent",
             "definition": "None"
@@ -198,15 +198,15 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED0467",
+      "id": "TO_BE_DETERMINED4765",
       "name": "Other Diaphragmatic Hernias",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -214,13 +214,13 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED0467.0",
+            "code": "TO_BE_DETERMINED4765.0",
             "value": "present",
             "name": "Present",
             "definition": "None"
           },
           {
-            "code": "TO_BE_DETERMINED0467.1",
+            "code": "TO_BE_DETERMINED4765.1",
             "value": "absent",
             "name": "Absent",
             "definition": "None"

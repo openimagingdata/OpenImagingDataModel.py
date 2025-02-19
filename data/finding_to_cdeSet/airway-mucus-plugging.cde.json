@@ -1,14 +1,14 @@
 {
-  "id": "TO_BE_DETERMINED7013",
+  "id": "TO_BE_DETERMINED2924",
   "name": "airway mucus plugging",
   "description": "Mucus plugging in the airways.",
   "set_version": {
     "number": 1,
-    "date": "2025-02-12"
+    "date": "2025-02-19"
   },
   "schema_version": "1.0.0",
   "status": {
-    "date": "2025-02-12",
+    "date": "2025-02-19",
     "name": "Proposed"
   },
   "specialties": [
@@ -19,16 +19,16 @@
   ],
   "elements": [
     {
-      "id": "TO_BE_DETERMINED8676",
+      "id": "TO_BE_DETERMINED9427",
       "name": "Presence",
       "definition": "Presence of mucus plugging",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -36,13 +36,13 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED8676.0",
+            "code": "TO_BE_DETERMINED9427.0",
             "value": "present",
             "name": "Present",
             "definition": "Mucus plugging is present"
           },
           {
-            "code": "TO_BE_DETERMINED8676.1",
+            "code": "TO_BE_DETERMINED9427.1",
             "value": "absent",
             "name": "Absent",
             "definition": "Mucus plugging is absent"
@@ -51,16 +51,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED1771",
+      "id": "TO_BE_DETERMINED1512",
       "name": "Location",
       "definition": "Location of mucus plugging",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -68,19 +68,19 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED1771.0",
+            "code": "TO_BE_DETERMINED1512.0",
             "value": "central_airways",
             "name": "Central airways",
             "definition": "Mucus plugging in the central airways"
           },
           {
-            "code": "TO_BE_DETERMINED1771.1",
+            "code": "TO_BE_DETERMINED1512.1",
             "value": "segmental_bronchi",
             "name": "Segmental bronchi",
             "definition": "Mucus plugging in the segmental bronchi"
           },
           {
-            "code": "TO_BE_DETERMINED1771.2",
+            "code": "TO_BE_DETERMINED1512.2",
             "value": "subsegmental_bronchi",
             "name": "Subsegmental bronchi",
             "definition": "Mucus plugging in the subsegmental bronchi"
@@ -89,16 +89,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED1327",
+      "id": "TO_BE_DETERMINED1939",
       "name": "Extent",
       "definition": "Extent of mucus plugging",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -106,19 +106,19 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED1327.0",
+            "code": "TO_BE_DETERMINED1939.0",
             "value": "focal",
             "name": "Focal",
             "definition": "Mucus plugging is focal"
           },
           {
-            "code": "TO_BE_DETERMINED1327.1",
+            "code": "TO_BE_DETERMINED1939.1",
             "value": "multifocal",
             "name": "Multifocal",
             "definition": "Mucus plugging is multifocal"
           },
           {
-            "code": "TO_BE_DETERMINED1327.2",
+            "code": "TO_BE_DETERMINED1939.2",
             "value": "diffuse",
             "name": "Diffuse",
             "definition": "Mucus plugging is diffuse"
@@ -127,16 +127,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED4279",
+      "id": "TO_BE_DETERMINED2967",
       "name": "Airway Wall Thickening",
       "definition": "Presence of airway wall thickening",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -144,13 +144,13 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED4279.0",
+            "code": "TO_BE_DETERMINED2967.0",
             "value": "present",
             "name": "Present",
             "definition": "Airway wall thickening is present"
           },
           {
-            "code": "TO_BE_DETERMINED4279.1",
+            "code": "TO_BE_DETERMINED2967.1",
             "value": "absent",
             "name": "Absent",
             "definition": "Airway wall thickening is absent"
@@ -159,16 +159,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED9693",
+      "id": "TO_BE_DETERMINED9612",
       "name": "Bronchiectasis",
       "definition": "Presence of bronchiectasis",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -176,13 +176,13 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED9693.0",
+            "code": "TO_BE_DETERMINED9612.0",
             "value": "present",
             "name": "Present",
             "definition": "Bronchiectasis is present"
           },
           {
-            "code": "TO_BE_DETERMINED9693.1",
+            "code": "TO_BE_DETERMINED9612.1",
             "value": "absent",
             "name": "Absent",
             "definition": "Bronchiectasis is absent"
@@ -191,16 +191,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED0575",
+      "id": "TO_BE_DETERMINED7844",
       "name": "Consolidation",
       "definition": "Presence of consolidation",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -208,13 +208,13 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED0575.0",
+            "code": "TO_BE_DETERMINED7844.0",
             "value": "present",
             "name": "Present",
             "definition": "Consolidation is present"
           },
           {
-            "code": "TO_BE_DETERMINED0575.1",
+            "code": "TO_BE_DETERMINED7844.1",
             "value": "absent",
             "name": "Absent",
             "definition": "Consolidation is absent"
@@ -223,16 +223,16 @@
       }
     },
     {
-      "id": "TO_BE_DETERMINED4335",
+      "id": "TO_BE_DETERMINED5421",
       "name": "Ground Glass Opacities",
       "definition": "Presence of ground glass opacities",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -240,13 +240,13 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED4335.0",
+            "code": "TO_BE_DETERMINED5421.0",
             "value": "present",
             "name": "Present",
             "definition": "Ground glass opacities are present"
           },
           {
-            "code": "TO_BE_DETERMINED4335.1",
+            "code": "TO_BE_DETERMINED5421.1",
             "value": "absent",
             "name": "Absent",
             "definition": "Ground glass opacities are absent"

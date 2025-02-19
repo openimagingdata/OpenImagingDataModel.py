@@ -1,14 +1,14 @@
 {
-  "id": "TO_BE_DETERMINED3872",
+  "id": "TO_BE_DETERMINED8038",
   "name": "calcified granuloma",
   "description": "A calcified granuloma is a small, usually harmless nodule that forms in the lung tissue as a result of an infection or inflammation.",
   "set_version": {
     "number": 1,
-    "date": "2025-02-12"
+    "date": "2025-02-19"
   },
   "schema_version": "1.0.0",
   "status": {
-    "date": "2025-02-12",
+    "date": "2025-02-19",
     "name": "Proposed"
   },
   "specialties": [
@@ -19,16 +19,16 @@
   ],
   "elements": [
     {
-      "id": "TO_BE_DETERMINED0923",
-      "name": "presence",
+      "id": "TO_BE_DETERMINED6068",
+      "name": "Presence",
       "definition": "The presence of a calcified granuloma",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -36,31 +36,31 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED0923.0",
+            "code": "TO_BE_DETERMINED6068.0",
             "value": "present",
-            "name": "present",
+            "name": "Present",
             "definition": "A calcified granuloma is present"
           },
           {
-            "code": "TO_BE_DETERMINED0923.1",
+            "code": "TO_BE_DETERMINED6068.1",
             "value": "absent",
-            "name": "absent",
+            "name": "Absent",
             "definition": "A calcified granuloma is absent"
           }
         ]
       }
     },
     {
-      "id": "TO_BE_DETERMINED9727",
-      "name": "status",
+      "id": "TO_BE_DETERMINED6990",
+      "name": "Status",
       "definition": "The status of a calcified granuloma",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -68,55 +68,55 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED9727.0",
+            "code": "TO_BE_DETERMINED6990.0",
             "value": "stable",
-            "name": "stable",
+            "name": "Stable",
             "definition": "The calcified granuloma is stable"
           },
           {
-            "code": "TO_BE_DETERMINED9727.1",
+            "code": "TO_BE_DETERMINED6990.1",
             "value": "new",
-            "name": "new",
+            "name": "New",
             "definition": "A new calcified granuloma has formed"
           },
           {
-            "code": "TO_BE_DETERMINED9727.2",
+            "code": "TO_BE_DETERMINED6990.2",
             "value": "increasing_in_number",
-            "name": "increasing in number",
+            "name": "Increasing in number",
             "definition": "The calcified granulomas are increasing in number"
           },
           {
-            "code": "TO_BE_DETERMINED9727.3",
+            "code": "TO_BE_DETERMINED6990.3",
             "value": "decreasing_in_size",
-            "name": "decreasing in size",
+            "name": "Decreasing in size",
             "definition": "The calcified granuloma is decreasing in size"
           },
           {
-            "code": "TO_BE_DETERMINED9727.4",
+            "code": "TO_BE_DETERMINED6990.4",
             "value": "resolved",
-            "name": "resolved",
+            "name": "Resolved",
             "definition": "The calcified granuloma has resolved"
           },
           {
-            "code": "TO_BE_DETERMINED9727.5",
+            "code": "TO_BE_DETERMINED6990.5",
             "value": "unchanged",
-            "name": "unchanged",
+            "name": "Unchanged",
             "definition": "The calcified granuloma remains unchanged"
           }
         ]
       }
     },
     {
-      "id": "TO_BE_DETERMINED2896",
-      "name": "distribution",
+      "id": "TO_BE_DETERMINED2216",
+      "name": "Distribution",
       "definition": "The distribution of calcified granulomas",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -124,37 +124,37 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED2896.0",
+            "code": "TO_BE_DETERMINED2216.0",
             "value": "solitary",
-            "name": "solitary",
+            "name": "Solitary",
             "definition": "A single calcified granuloma"
           },
           {
-            "code": "TO_BE_DETERMINED2896.1",
+            "code": "TO_BE_DETERMINED2216.1",
             "value": "multiple",
-            "name": "multiple",
+            "name": "Multiple",
             "definition": "Multiple calcified granulomas"
           },
           {
-            "code": "TO_BE_DETERMINED2896.2",
+            "code": "TO_BE_DETERMINED2216.2",
             "value": "clustered",
-            "name": "clustered",
+            "name": "Clustered",
             "definition": "Calcified granulomas clustered together"
           }
         ]
       }
     },
     {
-      "id": "TO_BE_DETERMINED2467",
-      "name": "severity",
+      "id": "TO_BE_DETERMINED2021",
+      "name": "Severity",
       "definition": "The severity of calcified granulomas",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -162,37 +162,37 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED2467.0",
+            "code": "TO_BE_DETERMINED2021.0",
             "value": "mild",
-            "name": "mild",
+            "name": "Mild",
             "definition": "Mild calcified granulomas"
           },
           {
-            "code": "TO_BE_DETERMINED2467.1",
+            "code": "TO_BE_DETERMINED2021.1",
             "value": "moderate",
-            "name": "moderate",
+            "name": "Moderate",
             "definition": "Moderate calcified granulomas"
           },
           {
-            "code": "TO_BE_DETERMINED2467.2",
+            "code": "TO_BE_DETERMINED2021.2",
             "value": "severe",
-            "name": "severe",
+            "name": "Severe",
             "definition": "Severe calcified granulomas"
           }
         ]
       }
     },
     {
-      "id": "TO_BE_DETERMINED0247",
-      "name": "location",
+      "id": "TO_BE_DETERMINED2824",
+      "name": "Location",
       "definition": "The location of calcified granulomas",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -200,55 +200,55 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED0247.0",
+            "code": "TO_BE_DETERMINED2824.0",
             "value": "right_upper_lobe",
-            "name": "right upper lobe",
+            "name": "Right upper lobe",
             "definition": "Calcified granuloma in the right upper lobe"
           },
           {
-            "code": "TO_BE_DETERMINED0247.1",
+            "code": "TO_BE_DETERMINED2824.1",
             "value": "right_middle_lobe",
-            "name": "right middle lobe",
+            "name": "Right middle lobe",
             "definition": "Calcified granuloma in the right middle lobe"
           },
           {
-            "code": "TO_BE_DETERMINED0247.2",
+            "code": "TO_BE_DETERMINED2824.2",
             "value": "right_lower_lobe",
-            "name": "right lower lobe",
+            "name": "Right lower lobe",
             "definition": "Calcified granuloma in the right lower lobe"
           },
           {
-            "code": "TO_BE_DETERMINED0247.3",
+            "code": "TO_BE_DETERMINED2824.3",
             "value": "left_upper_lobe",
-            "name": "left upper lobe",
+            "name": "Left upper lobe",
             "definition": "Calcified granuloma in the left upper lobe"
           },
           {
-            "code": "TO_BE_DETERMINED0247.4",
+            "code": "TO_BE_DETERMINED2824.4",
             "value": "left_lower_lobe",
-            "name": "left lower lobe",
+            "name": "Left lower lobe",
             "definition": "Calcified granuloma in the left lower lobe"
           },
           {
-            "code": "TO_BE_DETERMINED0247.5",
+            "code": "TO_BE_DETERMINED2824.5",
             "value": "bilateral",
-            "name": "bilateral",
+            "name": "Bilateral",
             "definition": "Calcified granuloma in both lungs"
           }
         ]
       }
     },
     {
-      "id": "TO_BE_DETERMINED4899",
-      "name": "size",
+      "id": "TO_BE_DETERMINED7696",
+      "name": "Size",
       "definition": "The size of calcified granulomas",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -256,43 +256,43 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED4899.0",
+            "code": "TO_BE_DETERMINED7696.0",
             "value": "1_cm",
             "name": "<1 cm",
             "definition": "Calcified granuloma size less than 1 cm"
           },
           {
-            "code": "TO_BE_DETERMINED4899.1",
+            "code": "TO_BE_DETERMINED7696.1",
             "value": "1_2_cm",
             "name": "1-2 cm",
             "definition": "Calcified granuloma size between 1-2 cm"
           },
           {
-            "code": "TO_BE_DETERMINED4899.2",
+            "code": "TO_BE_DETERMINED7696.2",
             "value": "2_cm",
             "name": ">2 cm",
             "definition": "Calcified granuloma size greater than 2 cm"
           },
           {
-            "code": "TO_BE_DETERMINED4899.3",
+            "code": "TO_BE_DETERMINED7696.3",
             "value": "not_specified",
-            "name": "not specified",
+            "name": "Not specified",
             "definition": "Calcified granuloma size not specified"
           }
         ]
       }
     },
     {
-      "id": "TO_BE_DETERMINED5687",
-      "name": "associated_findings",
+      "id": "TO_BE_DETERMINED3875",
+      "name": "Associated findings",
       "definition": "The associated findings with calcified granulomas",
       "element_version": {
         "number": 1,
-        "date": "2025-02-12"
+        "date": "2025-02-19"
       },
       "schema_version": "1.0.0",
       "status": {
-        "date": "2025-02-12",
+        "date": "2025-02-19",
         "name": "Proposed"
       },
       "value_set": {
@@ -300,33 +300,33 @@
         "max_cardinality": 1,
         "values": [
           {
-            "code": "TO_BE_DETERMINED5687.0",
+            "code": "TO_BE_DETERMINED3875.0",
             "value": "emphysema",
-            "name": "emphysema",
+            "name": "Emphysema",
             "definition": "Calcified granuloma associated with emphysema"
           },
           {
-            "code": "TO_BE_DETERMINED5687.1",
+            "code": "TO_BE_DETERMINED3875.1",
             "value": "fibrosis",
-            "name": "fibrosis",
+            "name": "Fibrosis",
             "definition": "Calcified granuloma associated with fibrosis"
           },
           {
-            "code": "TO_BE_DETERMINED5687.2",
+            "code": "TO_BE_DETERMINED3875.2",
             "value": "nodules",
-            "name": "nodules",
+            "name": "Nodules",
             "definition": "Calcified granuloma associated with nodules"
           },
           {
-            "code": "TO_BE_DETERMINED5687.3",
+            "code": "TO_BE_DETERMINED3875.3",
             "value": "pleural_effusion",
-            "name": "pleural effusion",
+            "name": "Pleural effusion",
             "definition": "Calcified granuloma associated with pleural effusion"
           },
           {
-            "code": "TO_BE_DETERMINED5687.4",
+            "code": "TO_BE_DETERMINED3875.4",
             "value": "lymphadenopathy",
-            "name": "lymphadenopathy",
+            "name": "Lymphadenopathy",
             "definition": "Calcified granuloma associated with lymphadenopathy"
           }
         ]

@@ -15,6 +15,11 @@ from .element import BooleanElement, FloatElement, FloatValue, IntegerElement, I
 from .set import CDESet
 
 
+def sentence_case(text: str) -> str:
+    text = text.replace("_", " ") 
+    return text[:1].upper() + text[1:] if text else text
+
+
 class SetIddict(BaseModel):
     set_id: str
     element_ids: dict[str, str]
@@ -144,6 +149,7 @@ class SetFactory:
     ) -> ValueSetElement:
         """Return a value set element."""
         element_id = "TO_BE_DETERMINED" + SetFactory.random_digits()
+        name = sentence_case(name)
         boilerplate = SetFactory.default_element_metadata(name)
         boilerplate["id"] = element_id
         if definition:
@@ -163,6 +169,8 @@ class SetFactory:
                 del out_value["description"]
             if "value" not in out_value:
                 out_value["value"] = to_snake(out_value["name"])
+            if "name" in out_value:
+                out_value["name"] = sentence_case(out_value["name"])
             return out_value
 
         values = [check_and_fix_value(value, i) for i, value in enumerate(values)]
