@@ -14,12 +14,12 @@ def create_specialty(specialty: str) -> Specialty:
     raise ValueError(f"Specialty '{specialty}' not found.")
         
 
-def finding_json_to_cde_set(findingModeljson: str, specialtyName: str) -> str:
+def finding_json_to_cde_set(findingModeljson: dict, specialtyName: str) -> dict:
     findingModelInstance = FindingModel.model_validate(findingModeljson)
     cdeSet = SetFactory.create_set_from_finding_model(findingModelInstance)
     specialty = create_specialty(specialtyName)
     cdeSet.specialties.append(specialty)
-    return cdeSet.model_dump_json(exclude_defaults=True, indent=2)
+    return cdeSet.model_dump(exclude_defaults=True)
 
 def main():
     parser = argparse.ArgumentParser(description="Convert a finding model JSON to a CDE set with specified specialty.")
