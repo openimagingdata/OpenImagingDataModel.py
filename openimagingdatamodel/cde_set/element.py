@@ -16,7 +16,8 @@ from .common import (
     Version,
 )
 
-#"required": ["id", "name", "element_version", "current_status", "schema_version"],
+
+# "required": ["id", "name", "element_version", "current_status", "schema_version"],
 class BaseElement(BaseModel):
     id: str = Field(pattern=r"^(RDE|TO_BE_DETERMINED)\d+")
     parent_set: str | None = Field(default=None, pattern=r"^(RDES|TO_BE_DETERMINED)\d+")
@@ -32,7 +33,8 @@ class BaseElement(BaseModel):
     specialty: list[Specialty] = Field(default_factory=list)
     references: list[Reference] = Field(default_factory=list)
 
-class BaseElement2(BaseModel):
+
+class BaseElement11(BaseModel):
     id: str = Field(pattern=r"^(RDE|TO_BE_DETERMINED)\d+")
     parent_set: str | None = Field(default=None, pattern=r"^(RDES|TO_BE_DETERMINED)\d+")
     name: str
@@ -75,11 +77,12 @@ class ValueSetElement(BaseElement):
             self._value_index = {}
             for v in self.value_set.values:
                 self._value_index[v.code.casefold()] = v
-                self._value_index[v.value.casefold()] = v
+                if v.value:
+                    self._value_index[v.value.casefold()] = v
                 self._value_index[v.name.casefold()] = v
         if val.casefold() in self._value_index:
             return self._value_index[val.casefold()]
-        raise ValueError(f"Value '{v}' not found in ValueSet")
+        raise ValueError(f"Value '{val}' not found in ValueSet")
 
 
 # This corresponds to the floatElementSchema class in the cdElement.ts file
