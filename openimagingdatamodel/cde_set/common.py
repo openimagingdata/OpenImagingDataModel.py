@@ -36,10 +36,13 @@ SPECIALTY_NAMES = {
     "VA": "Vascular",
 }
 
+# Define the DateString type with only the pattern
+# date: str = Field(default_factory=lambda: datetime.today().strftime("%Y-%m-%d"))
+DateString = Annotated[str, Field(pattern=r'^\d{4}-\d{2}-\d{2}$')]
 
 class Version(BaseModel):
     number: int  # TODO: Minimum 1
-    date: str  # TODO: Add date format
+    date: Field(default_factory=lambda: datetime.today().strftime("%Y-%m-%d"))
 
 
 # Use Annotated to create a type which is a custom string with a specific regex pattern
@@ -57,7 +60,7 @@ class Status(BaseModel):
 
 
 class Event(BaseModel):
-    date: str
+    date: str = Field(default_factory=lambda: date.today().isoformat(), description="Date in YYYY-MM-DD format")
     status: Status
 
 

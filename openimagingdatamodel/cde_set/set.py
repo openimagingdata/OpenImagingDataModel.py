@@ -43,7 +43,7 @@ class CDESet(BaseModel):
         description="Set names should follow conventions listed here: https://rsna.github.io/ACR-RSNA-CDEs/reference/set/",
         examples=["CAR/DS Adrenal Nodule"],
     )
-    description: str = Field(..., max_length=100, description="Must be 100 or fewer characters long")
+    description: str = Field(..., description="Plain text, or XHTML div are acceptable")
     set_version: Version
     schema_version: Literal["1.0.0"]
     status: Status
