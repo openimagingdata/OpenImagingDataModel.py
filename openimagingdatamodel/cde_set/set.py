@@ -97,15 +97,13 @@ class CDESet11(BaseModel):
     set_version: Version
     schema_version: Literal["1.1.0"]
     current_status: Status
-    status_history: list[Status] = Field(
-        default_factory=list, description="A history of statuses for the CDE set, with at least one required."
-    )
+    status_history: Optional[list[Status]] = Field(default=None, description="A history of statuses for the CDE set, with at least one required.")
     url: Optional[HttpUrl] = Field(default=None, description="A link to the set on radelement.org")
-    index_codes: list[IndexCode] = Field(default_factory=list)
-    body_parts: list[BodyPart] = Field(default_factory=list)
-    contributors: Contributors = Field(default=None)
+    index_codes: Optional[list[IndexCode]] = Field(default=None) 
+    body_parts: Optional[list[BodyPart]] = Field(default=None)
+    contributors: Optional[Contributors] = Field(default=None)
     specialties: List[Specialty] = Field(default_factory=list)
-    modalities: list[Modality] = Field(default_factory=list)
+    modalities: Optional[list[Modality]] = Field(default=list)
     elements: list[CDEElement] = Field(
         ...,
         description="When authoring (e.g., PUT/POST), published elements can be referenced (element_ref_id). GET requests return full element definitions",
