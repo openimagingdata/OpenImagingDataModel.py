@@ -13,6 +13,7 @@ from openimagingdatamodel.cde_set.finding_model import FindingModel
 from .common import Status, Version
 from .element import BooleanElement, FloatElement, FloatValue, IntegerElement, IntegerValue, ValueSet, ValueSetElement
 from .set import CDESet
+from .set import CDESet2
 
 
 def sentence_case(text: str) -> str:
@@ -77,6 +78,36 @@ class SetFactory:
                 "date": today,
                 "name": "Proposed",
             },
+        }
+
+    @staticmethod
+    def default_element_metadata2(name) -> dict[str, str | dict[str, Any] | list[Any]]:
+        """Return a default required CDE Element metadata for v1.1.0."""
+
+        if not name:
+            raise ValueError("Name is required for a CDE Element")
+
+        today = date.today().strftime("%Y-%m-%d")
+        random_digits = SetFactory.random_digits()
+        status = Status(date=today, name="Proposed")
+
+        return {
+            "id": f"TO_BE_DETERMINED{random_digits}",
+            "name": name,
+            "element_version": {
+                "number": 1,
+                "date": today,
+            },
+            "schema_version": "1.1.0",
+            "current_status": status,
+            "history": [Event(date=today, status=status)],
+            "specialties": [],
+            "modalities": [], #Check which fields are options and get rid of non optional fields
+            "images": [],
+            "body_parts": [],
+            "index_codes": [],
+            "contributors": None,
+            "references": []
         }
 
     @staticmethod
@@ -220,26 +251,52 @@ class SetFactory:
     def create_set_from_finding_model(model: FindingModel) -> CDESet:
         try:
             set: CDESet = SetFactory.create_set(model.finding_name)
+            set.description = model.description
+            for element in model.attributes:
+                new_el: FloatElement | ValueSetElement
+                if isinstance(element, finding_model.ChoiceAttribute):
+                    values: list[dict[str, str] | str] = [value.model_dump() for value in element.values]
+                    new_el = SetFactory.create_value_set_element(element.name, values)
+                    for el_value, att_value in zip(new_el.value_set.values, values, strict=True):
+                        if isinstance(att_value, dict) and (description := att_value.get("description")):
+                            el_value.definition = description
+                if isinstance(element, finding_model.NumericAttribute):
+                    new_el = SetFactory.create_float_element(
+                        element.name, min=element.minimum, max=element.maximum, unit=element.unit
+                    )
+                if element.description:
+                    new_el.definition = element.description
+                set.elements.append(new_el)
+            return set
         except ValidationError as e:
-            print(f"Error creating set from model {finding_model}: {e}")
+            print(f"Error creating set from model {model}: {e}")
             raise e
-        set.description = model.description
-        for element in model.attributes:
-            new_el: FloatElement | ValueSetElement
-            if isinstance(element, finding_model.ChoiceAttribute):
-                values: list[dict[str, str] | str] = [value.model_dump() for value in element.values]
-                new_el = SetFactory.create_value_set_element(element.name, values)
-                for el_value, att_value in zip(new_el.value_set.values, values, strict=True):
-                    if isinstance(att_value, dict) and (description := att_value.get("description")):
-                        el_value.definition = description
-            if isinstance(element, finding_model.NumericAttribute):
-                new_el = SetFactory.create_float_element(
-                    element.name, min=element.minimum, max=element.maximum, unit=element.unit
-                )
-            if element.description:
-                new_el.definition = element.description
-            set.elements.append(new_el)
-        return set
+
+    @staticmethod
+    def create_set_from_finding_model_1_1_0(model: FindingModel) -> CDESet2:
+        """Create a CDE Set in v1.1.0 format from a finding model."""
+        try:
+            set: CDESet2 = SetFactory.create_set_2(model.finding_name)
+            set.description = model.description
+            for element in model.attributes:
+                new_el: FloatElement | ValueSetElement
+                if isinstance(element, finding_model.ChoiceAttribute):
+                    values: list[dict[str, str] | str] = [value.model_dump() for value in element.values]
+                    new_el = SetFactory.create_value_set_element_2(element.name, values)
+                    for el_value, att_value in zip(new_el.value_set.values, values, strict=True):
+                        if isinstance(att_value, dict) and (description := att_value.get("description")):
+                            el_value.definition = description
+                if isinstance(element, finding_model.NumericAttribute):
+                    new_el = SetFactory.create_float_element_2(
+                        element.name, min=element.minimum, max=element.maximum, unit=element.unit
+                    )
+                if element.description:
+                    new_el.definition = element.description
+                set.elements.append(new_el)
+            return set
+        except ValidationError as e:
+            print(f"Error creating set from model {model}: {e}")
+            raise e
 
     @staticmethod
     def update_set_ids_from_dict(set: CDESet, dict: SetIddict | dict[str, str | dict[str, str]]) -> None:
@@ -251,3 +308,71 @@ class SetFactory:
             if isinstance(element, ValueSetElement):
                 for i in range(0, len(element.value_set.values)):
                     element.value_set.values[i].code = f"{element.id}.{i}"
+
+    @staticmethod
+    def create_value_set_element_2(
+        name: str,
+        values: list[dict[str, str] | str],
+        /,
+        definition: str | None = None,
+        question: str | None = None,
+        min_cardinality: int = 1,
+        max_cardinality: int = 1,
+    ) -> ValueSetElement:
+        """Return a value set element using BaseElement2."""
+        element_id = "TO_BE_DETERMINED" + SetFactory.random_digits()
+        boilerplate = SetFactory.default_element_metadata2(name)
+        boilerplate["id"] = element_id
+        if definition:
+            boilerplate["definition"] = definition
+        if question:
+            boilerplate["question"] = question
+
+        def check_and_fix_value(value: dict[str, str] | str, ind: int) -> dict[str, str]:
+            out_value = value.copy() if isinstance(value, dict) else {"name": value}
+            if "name" not in out_value:
+                raise ValueError("Value must have a name")
+            out_value["code"] = f"{element_id}.{ind}"
+            if "description" in out_value:
+                out_value["definition"] = out_value["description"]
+                del out_value["description"]
+            if "value" not in out_value:
+                out_value["value"] = to_snake(out_value["name"])
+            if "name" in out_value:
+                out_value["name"] = sentence_case(out_value["name"])
+            return out_value
+
+        values = [check_and_fix_value(value, i) for i, value in enumerate(values)]
+        value_set = ValueSet(
+            min_cardinality=min_cardinality,
+            max_cardinality=max_cardinality,
+            values=values
+        )
+
+        return ValueSetElement(**boilerplate, value_set=value_set)
+
+    @staticmethod
+    def create_float_element_2(
+        name: str,
+        /,
+        min: float | None = None,
+        max: float | None = None,
+        step: float | None = None,
+        unit: str | None = None,
+    ) -> FloatElement:
+        """Return a float element using BaseElement2."""
+        element_id = "TO_BE_DETERMINED" + SetFactory.random_digits()
+        boilerplate = SetFactory.default_element_metadata2(name)
+        boilerplate["id"] = element_id
+
+        float_value_args: dict[str, str | float] = {}
+        if min is not None:
+            float_value_args["min"] = min
+        if max is not None:
+            float_value_args["max"] = max
+        if step is not None:
+            float_value_args["step"] = step
+        if unit is not None:
+            float_value_args["unit"] = unit
+
+        return FloatElement(**boilerplate, float_value=FloatValue(**float_value_args))
