@@ -13,7 +13,7 @@ from openimagingdatamodel.cde_set.finding_model import FindingModel
 from .common import Status, Version
 from .element import BooleanElement, FloatElement, FloatValue, IntegerElement, IntegerValue, ValueSet, ValueSetElement
 from .set import CDESet
-from .set import CDESet2
+from .set import CDESet11
 
 
 def sentence_case(text: str) -> str:
@@ -273,10 +273,10 @@ class SetFactory:
             raise e
 
     @staticmethod
-    def create_set_from_finding_model_1_1_0(model: FindingModel) -> CDESet2:
+    def create_set_from_finding_model_1_1_0(model: FindingModel) -> CDESet11:
         """Create a CDE Set in v1.1.0 format from a finding model."""
         try:
-            set: CDESet2 = SetFactory.create_set_2(model.finding_name)
+            set: CDESet11 = SetFactory.create_set_2(model.finding_name)
             set.description = model.description
             for element in model.attributes:
                 new_el: FloatElement | ValueSetElement
