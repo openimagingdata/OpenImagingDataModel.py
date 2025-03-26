@@ -18,7 +18,6 @@ class Code(NamedTuple):
 class Concept(BaseModel, ABC):
     SYSTEM_NAME: ClassVar[str]
     id: str = Field(alias="_id")
-    embedding_vector: list[float] | None = None
 
     @abstractmethod
     def text_for_embedding(self) -> str: ...
