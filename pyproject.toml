@@ -17,6 +17,7 @@ dependencies = [
     "python-dotenv>=1.0.1",
     "lancedb>=0.17.2b2",
     "motor>=3.7.0",
+    "numpy>=2.2.4",
 ]
 
 [tool.poetry.group.dev.dependencies]
