@@ -1,5 +1,5 @@
 import re
-from typing import Any, Final
+from typing import Any, Final, Optional
 import json
 import pytest  # type: ignore
 from openimagingdatamodel.cde_set.element import BooleanElement, FloatElement, IntegerElement, ValueSetElement

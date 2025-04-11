@@ -2,7 +2,7 @@
 
 import random
 from datetime import date
-from typing import Any
+from typing import Any, List, Optional
 
 from caseswitcher import to_snake
 from pydantic import BaseModel, ValidationError
@@ -229,6 +229,8 @@ class SetFactory:
             if isinstance(element, finding_model.ChoiceAttribute):
                 values: list[dict[str, str] | str] = [value.model_dump() for value in element.values]
                 new_el = SetFactory.create_value_set_element(element.name, values)
+                if element.oifma_id:
+                    new_el.id = "TO_BE_DETERMINED" + element.oifma_id[-6:]
                 for el_value, att_value in zip(new_el.value_set.values, values, strict=True):
                     if isinstance(att_value, dict) and (description := att_value.get("description")):
                         el_value.definition = description
@@ -236,6 +238,8 @@ class SetFactory:
                 new_el = SetFactory.create_float_element(
                     element.name, min=element.minimum, max=element.maximum, unit=element.unit
                 )
+                if element.oifma_id:
+                    new_el.id = "TO_BE_DETERMINED" + element.oifma_id[-6:]
             if element.description:
                 new_el.definition = element.description
             set.elements.append(new_el)

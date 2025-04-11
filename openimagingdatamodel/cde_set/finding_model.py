@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Annotated, Literal
+from typing import Annotated, Literal, Optional
 
 from pydantic import BaseModel, Field
 
@@ -29,6 +29,7 @@ class ChoiceAttribute(BaseModel):
     required: bool = Field(
         False, description="Whether the attribute is used every time a radiologist describes the finding"
     )
+    oifma_id: Optional[str] = Field(default=None, pattern=r"OIFMA_MGBR_\d{6}")
 
 
 class NumericAttribute(BaseModel):
@@ -44,6 +45,7 @@ class NumericAttribute(BaseModel):
     required: bool = Field(
         False, description="Whether the attribute is used every time a radiologist describes the finding"
     )
+    oifma_id: Optional[str] = Field(default=None, pattern=r"OIFMA_MGBR_\d{6}")
 
 
 Attribute = Annotated[
@@ -60,12 +62,14 @@ class FindingModel(BaseModel):
     along with definitions of the relevant attributes that a radiologist might use to characterize the finding in a
     radiology report."""
 
-    finding_name: str = Field(..., title="Finding Name", description="The name of a raidology finding")
+    name: str = Field(..., title="Finding Name", description="The name of a raidology finding")
     description: str = Field(
         ...,
         title="Description",
         description="A one-to-two sentence description of the finding that might be included in a textbook",
     )
+    synonyms: list[str]
+    tags: list[str]
     attributes: Annotated[
         list[Attribute],
         Field(
