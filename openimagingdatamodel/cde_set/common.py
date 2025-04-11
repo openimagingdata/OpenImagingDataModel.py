@@ -39,6 +39,7 @@ SPECIALTY_NAMES = {
 # Define the DateString type with only the pattern
 # date: str = Field(default_factory=lambda: datetime.today().strftime("%Y-%m-%d"))
 DateString = Annotated[str, Field(pattern=r'^\d{4}-\d{2}-\d{2}$')]
+#date: Field(default_factory=lambda: datetime.today().strftime("%Y-%m-%d")) -- Throws error
 
 class Version(BaseModel):
     number: int  # TODO: Minimum 1
